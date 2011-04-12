@@ -1,0 +1,20 @@
+/*
+ ============================================================================
+ Name        : main.c
+ Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
+ Version     : Apr 12, 2011 - 10:44:39 AM
+ Project     : YDKR-Client
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+

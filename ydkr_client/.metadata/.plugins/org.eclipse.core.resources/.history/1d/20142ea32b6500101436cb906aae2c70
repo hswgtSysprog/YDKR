@@ -4,13 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/main.c 
+../src/YDKR-Client.c 
 
 OBJS += \
-./src/main.o 
+./src/YDKR-Client.o 
 
 C_DEPS += \
-./src/main.d 
+./src/YDKR-Client.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
