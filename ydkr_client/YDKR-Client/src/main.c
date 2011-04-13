@@ -18,12 +18,13 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-// Main routine, usage IP Adress, PortNumber
+
+// hauptfunktion erwartet server und portnummer
 int main(int argc, char ** argv)
 {
 	struct addrinfo *addr_info, *p, hints;
 	int ret;
-	//not enough arguments
+	//zu wenig parameter
 	if(argc<=2)
 	{
 
@@ -32,7 +33,7 @@ int main(int argc, char ** argv)
 		exit(1);
 	}
 
-	//set ints
+	//hinweise zur verbindung setzen
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
@@ -55,7 +56,7 @@ int main(int argc, char ** argv)
        int s;
        char dst[INET6_ADDRSTRLEN];
 
-       	/* Create socket for found family */
+       	// neuen socket erstellen
         s = socket(p->ai_family, p->ai_socktype, 0);
 
        /* RTFM: getnameinfo */
@@ -68,6 +69,26 @@ int main(int argc, char ** argv)
 		   NI_NUMERICHOST);
 
        printf("Trying %s ... ",dst);
+
+       fflush(stdout);
+
+       		//verbindungsversuch
+           if (connect(s, p->ai_addr, p->ai_addrlen) == 0)
+           {
+        	   printf("Connected\n");
+
+        	   send(s,"hello world\n", sizeof("hello world\n"),0);
+
+       			//socket verbindung schließen
+       			close(s);
+       			printf("Closed\n");
+       			break;
+            } else
+            {
+            // fehler
+       			perror("Verbindung konnte nicht aufgebaut werden");
+       		}
+       		close(s);
 
        p = p->ai_next;
     }
