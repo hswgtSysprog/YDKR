@@ -13,7 +13,8 @@
 int main(int argc, char ** argv)
 {
 	/**
-	 * Servername und servicenummer
+	 * @todo
+	 * Servername und portnummer(?)
 	 */
 	char *server, *service;
 
@@ -36,7 +37,6 @@ int main(int argc, char ** argv)
 	 * Anzahl der offenen Sockets
 	 */
 	int numsockets = 0;
-
 	int i;
 
 	if (argc == 3)
@@ -78,6 +78,9 @@ int main(int argc, char ** argv)
 		exit(1);
 	}
 
+	/**
+	 * @todo ab hier kommentieren
+	 */
 	p = addr_info;
 	while(p)
 	{
@@ -91,10 +94,16 @@ int main(int argc, char ** argv)
 		 */
 		s = socket(p->ai_family, p->ai_socktype, 0);
 
+		/**
+		 * Socketoptionen setzen
+		 */
 		if(setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) < 0 )
 		{
 			perror("setsockopt"); /* maybe not so fatal, continue */
 		}
+		/**
+		 * IPV6-spezifisch
+		 */
 		if(p->ai_family == AF_INET6)
 		{
 			if(setsockopt(s, IPPROTO_IPV6, IPV6_V6ONLY, &on, sizeof(on)) < 0)
@@ -103,6 +112,9 @@ int main(int argc, char ** argv)
 			}
 		}
 
+		/**
+		 * Konvertiert Socketadresse zu Name und Service
+		 */
 		getnameinfo(p->ai_addr,
 					p->ai_addrlen,
 					dst,
@@ -114,6 +126,9 @@ int main(int argc, char ** argv)
 		printf("Trying %s:%s ... ",dst, service);
 		fflush(stdout);
 
+		/**
+		 * "assigning a name to a socket"
+		 */
 		if(bind(s, p->ai_addr, p->ai_addrlen) == 0)
 		{
 			if(listen(s, 1) < 0)
@@ -123,6 +138,9 @@ int main(int argc, char ** argv)
 			}
 			else
 			{
+				/**
+				 * Anzahl der Nummer der Sockets erhoehen
+				 */
 				printf("bind successful\n");
 				sockets[numsockets++] = s;
 			}
