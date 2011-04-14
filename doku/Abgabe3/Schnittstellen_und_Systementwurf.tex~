@@ -4,8 +4,6 @@
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}      % T1-encoded fonts: auch Wörter mit Umlauten trennen
 \usepackage{graphicx} 
-\usepackage{fancyvrb}
-
 
 %opening
 
@@ -28,12 +26,12 @@
 
 \section{Datenrahmen}
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        |  Length                       |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
  \hspace{2 cm}\=\kill
@@ -43,9 +41,8 @@ Length:\>uint16\_t, Länge der nachfolgenden Zusatzdaten in Bytes
 
 \subsection{Übersicht über die Nachrichtentypen}
 
-\begin{Verbatim}[fontfamily=courier]
-
-+------+------------------+----------------------------------------+---------+
+\begin{verbatim}
+ +------+------------------+----------------------------------------+---------+
 | Type | Name             | Beschreibung                           | Richtg. |
 +------+------------------+----------------------------------------+---------+
 |    1 | LoginRequest     | Anmeldung des Clients am Server        | C ==> S |
@@ -81,7 +78,7 @@ Length:\>uint16\_t, Länge der nachfolgenden Zusatzdaten in Bytes
 +------+------------------+----------------------------------------+---------+
 |  255 | ErrorWarning     | Fehlermeldung an den Client            | C <== S |
 +------+------------------+----------------------------------------+---------+
-\end{Verbatim}
+\end{verbatim}
 Tabelle der Datenrahmentypen und deren Inhalt
 
 \newpage
@@ -100,12 +97,12 @@ Hierbei wird auch ein separater Client-Thread pro Client gestartet, dieser warte
 
 LoginResponseOK
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Client-ID     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
  \hspace{2 cm}\=\kill
@@ -118,14 +115,14 @@ $~~$ \\PlayerList\\ \\
 Die folgende Nachricht wird aus Platzgründen verkürzt dargestellt. Das
 Players-Feld ist immer 37*Spieleranzahl Bytes groß.
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Players ..... =
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 = ........................................................... |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
  \hspace{2 cm}\=\kill
@@ -138,14 +135,14 @@ Players:\>Liste aller derzeit angemeldeten Benutzer
 
 $~~$\\ErrorWarning
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Subtype       |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | [Message] ................................................. |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
  \hspace*{2 cm}\=\\=\kill
@@ -196,12 +193,12 @@ Die Identifizierung wird über die ClientID zugewiesen
 
 CatalogResponse
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | [Filename] .. |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -211,12 +208,12 @@ Filename:\>Dateiname eines Fragekataloges (UTF-8, nicht nullterminiert), oder le
 \end{tabbing}
 
 $~~$\\StartGame
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | [Filename] .. |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -231,14 +228,14 @@ Die folgende Nachricht wird aus Platzgründen verkürzt dargestellt. Wenn
 Fragedaten versendet werden (also nicht die Nachricht verschickt wird, dass es
 keine Fragen mehr gibt), dann ist das Data-Feld genau 770 Bytes groß.
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | [Data] ...... =
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 = ............................................................|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -261,14 +258,14 @@ Aufbau des Data-Felds:\\
 
 $~~$\\QuestionResult
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Selection     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Correct     |
 +-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -280,12 +277,12 @@ Selection:\>uint8\_t, Index der zuvor vom Benutzer gewählten Antwort\\
 
 $~~$\\GameOver
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Rank          |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -340,12 +337,12 @@ Der Command-Thread sendet die eigentlichen Befehle aus Server- oder Client-Threa
 
 LoginRequest
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
  0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Name ........ |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -356,12 +353,12 @@ Name:\>Login-Name, UTF-8, nicht nullterminiert, maximal 31 Bytes\\
 
 $~~$\\CatalogRequest
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -371,12 +368,12 @@ Length:\>0\\
 
 $~~$\\CatalogChange
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Filename .... |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -388,12 +385,12 @@ Filename:\>Dateiname des gewählten Fragekataloges (UTF-8, nicht nullterminiert)
 
 $~~$\\StartGame
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | [Filename] .. |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -406,12 +403,12 @@ Filename:\>Dateiname des zu spielenden Fragekataloges (UTF-8, nicht nullterminie
 
 $~~$\\QuestionAnswered
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23              31
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        | Selection     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
@@ -439,12 +436,12 @@ Verantwortlich für die Wartezeit zwischen den Fragen und das Anfordern neuer Fr
 
 QuestionRequest
 
-\begin{Verbatim}[fontfamily=courier]
+\begin{verbatim}
 0             7              15              23
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Type        | Length                        |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-\end{Verbatim}
+\end{verbatim}
 
 \begin{tabbing}
 \hspace{2 cm}\=\kill
