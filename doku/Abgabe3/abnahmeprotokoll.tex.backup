@@ -1,0 +1,39 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}      % T1-encoded fonts: auch Wörter mit Umlauten trennen
+\usepackage{graphicx} 
+\usepackage{fancyvrb}
+
+
+%opening
+
+\title{Abnahmeprotokoll}
+\author{Rainer Hihn 19859\\Kathrin Holzmann 20228\\Florian Rosenkranz 19895}
+\date{14.4.2011}
+\begin{document}
+
+\maketitle
+\newpage
+%\begin{abstract}
+
+%\end{abstract}
+
+\section{Inhalt}
+
+\tableofcontents
+
+\newpage
+
+\section{Abnahme}
+
+Am 14.4.2011 trafen wir uns mit Herrn Stefan Gast um unsere ersten Programmentwürfe abzugeben.\\
+Es gab ein paar Kritikpunkte:\\
+\begin{itemize}
+       \item Zu wenig Code
+       \item Funktionen in Header-Datei implementiert
+     \end{itemize}
+
+
+
+\end{document}

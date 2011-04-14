@@ -1,0 +1,4 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Inhalt}{2}
+\contentsline {section}{\numberline {2}Abnahme}{3}
+\contentsline {section}{\numberline {3}Weiteres Vorgehen}{3}
