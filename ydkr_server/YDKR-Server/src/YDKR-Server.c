@@ -4,19 +4,137 @@
  Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
  Version     : 12.04.2011 - 16:46:20
  Project     : YDKR-Server
+ Description : Server fuer das Spiel "You dont know Rainer"
  ============================================================================
  */
 
 
 #include "YDKR-Server.h"
 
+/**
+ * struct to pass custom data to echo_thread
+ **/
+struct client_data {
+	int sock;
+	struct sockaddr_storage addr;
+	socklen_t addrlen;
+};
+
+/**
+ * Copy all data from fd -> fd
+ * using a buffer of 512 Byte
+ **/
+static void echo_loop(int fd)
+{
+	int ret;
+	static char buf[512];
+
+	while (1) {
+		ret = read(fd, buf, sizeof(buf));
+		if (ret == 0) {
+			break;
+		}
+		if (ret < 0) {
+			perror("read");
+			break;
+		}
+		if (write(fd, buf, ret) < ret) {
+			perror("write");
+			break;
+		}
+	}
+};
+
+/**
+ * Thread to handle connection in background and run echo_loop
+ * param: struct client_data*
+ **/
+void* echo_thread(void* param)
+{
+	/**
+	 * IPV6-faehig
+	 */
+	char dst[INET6_ADDRSTRLEN];
+	struct client_data * data;
+	data = (struct client_data*)param;
+
+	/* RTFM: getnameinfo */
+	getnameinfo((struct sockaddr*)&data->addr,
+			data->addrlen,
+			dst,
+			sizeof(dst),
+			NULL,
+			0,
+			NI_NUMERICHOST);
+
+	printf("Connection opened from %s\n",dst);
+	echo_loop(data->sock);
+	close(data->sock);
+	printf("Connection closed from %s\n", dst);
+
+	free(data);
+
+	pthread_exit(0);
+	return NULL;
+};
+
+/**
+ * Wait for connection on all available sockets
+ * fd: array of sockets in listen state
+ * numfd: number of valid sockets in fd
+ **/
+void accept_loop(int fd[], int numfd)
+{
+	fd_set set;
+	int max, i, ret;
+
+	if (numfd < 1) {
+		printf("No sockets available!\n");
+		return;
+	}
+	while (1) {
+		max = 0;
+		FD_ZERO(&set);
+		for (i=0; i<numfd; i++) {
+			if (fd[i] > max)
+				max = fd[i];
+			FD_SET(fd[i], &set);
+		}
+
+		/* wait for first fd that has data */
+		ret = select(max+1, &set, NULL, NULL, NULL);
+		if (ret <= 0) {
+			perror("select");
+			return;
+		}
+		for (i=0; i<numfd; i++)
+			if (FD_ISSET(fd[i], &set)) {
+				struct client_data *data;
+
+				data = (struct client_data*)malloc(sizeof(struct client_data));
+
+				data->addrlen = sizeof(data->addr);
+				data->sock = accept(fd[i], (struct sockaddr*) &data->addr, &data->addrlen);
+
+				if (data->sock < 0) {
+					perror("accept");
+					free(data);
+				} else {
+					pthread_t thread_id;
+					/* Background new connection */
+					pthread_create(&thread_id, NULL, echo_thread, data);
+				}
+			}
+	}
+};
+
 int main(int argc, char ** argv)
 {
 	/**
-	 * @todo
-	 * Servername und portnummer(?)
+	 * service = Port | "http"
 	 */
-	char *server, *service;
+	char *server = "0.0.0.0";
+	char *service;
 
 	/**
 	 * Anzahl der moeglichen Socketverbindungen
@@ -39,12 +157,14 @@ int main(int argc, char ** argv)
 	int numsockets = 0;
 	int i;
 
+	/**
+	 * @todo default port?
+	 */
 	if (argc == 3)
 	{
 		/**
-		 * wenn Servername und service angegeben wurde
+		 * Port = argv[2]
 		 */
-		server = argv[1];
 		service = argv[2];
 	}
 	else
@@ -58,9 +178,13 @@ int main(int argc, char ** argv)
 	}
 
 	/**
-	 * Kriterien fuer getaddrinfo()
+	 * Mit 0 initialisieren
 	 */
 	memset(&hints, 0, sizeof(hints));
+
+	/**
+	 * Kriterien fuer getaddrinfo()
+	 */
 	hints.ai_family = AF_UNSPEC; /* Protokollfamilie: IPV4 oder IPV6 oder unspecified */
 	hints.ai_socktype = SOCK_STREAM; /* Socket-Typ: verbindungsorientiert */
 	hints.ai_protocol = IPPROTO_TCP; /* Protokoll: TCP */
@@ -147,6 +271,9 @@ int main(int argc, char ** argv)
 		}
 		else
 		{
+			/**
+			 * binding fehlgeschlagen
+			 */
 			perror("bind");
 			close(s);
 		}
@@ -156,6 +283,9 @@ int main(int argc, char ** argv)
 
 	freeaddrinfo(addr_info);
 	printf("Waiting for connections...\n\n");
+	/**
+	 * Eigentliche Schleife die auf Verbindungen wartet
+	 */
 	accept_loop(sockets, numsockets);
 	for(i = 0; i < numsockets; i++)
 	{
