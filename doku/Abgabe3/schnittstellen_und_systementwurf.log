@@ -1,0 +1,250 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.12)  14 APR 2011 16:06
+entering extended mode
+ %&-line parsing enabled.
+**schnittstellen_und_systementwurf.tex
+(./schnittstellen_und_systementwurf.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf-texlive/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+(/usr/share/texmf-texlive/tex/latex/ucs/ucs.sty
+Package: ucs 2004/10/17 UCS: Unicode input support
+
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-global.def
+File: uni-global.def 2004/10/17 UCS: Unicode global data
+)
+\uc@secondtry=\count87
+\uc@combtoks=\toks16
+\uc@combtoksb=\toks17
+\uc@temptokena=\toks18
+)
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/ngermanb.ldf
+Language: ngermanb 2008/07/06 v2.6n new German support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `ngerman'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@ngerman = a dialect from \language0
+\l@naustrian = a dialect from \language\l@ngerman 
+Package babel Info: Making " an active character on input line 92.
+)) (/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/usr/share/texmf-texlive/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count90
+\FV@InFile=\read1
+\FV@TabBox=\box26
+\c@FancyVerbLine=\count91
+\FV@StepNumber=\count92
+\FV@OutFile=\write3
+) (./schnittstellen_und_systementwurf.aux)
+\openout1 = `schnittstellen_und_systementwurf.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+(/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
+File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
+)
+(/usr/share/texmf/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count93
+\scratchdimen=\dimen106
+\scratchbox=\box27
+\nofMPsegments=\count94
+\nofMParguments=\count95
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count96
+\MPscratchDim=\dimen107
+\MPnumerator=\count97
+\everyMPtoPDFconversion=\toks21
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 17.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(./schnittstellen_und_systementwurf.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+)
+\tf@toc=\write4
+\openout4 = `schnittstellen_und_systementwurf.toc'.
+
+ [2]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 31.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
+) [3]
+Underfull \hbox (badness 10000) in paragraph at lines 117--120
+
+ []
+
+[4]
+</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png, id=21,
+ 406.51875pt x 932.48375pt>
+File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png Gr
+aphic file (type png)
+
+<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png>
+[5] [6 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png 
+(PNG copy)>] (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
+) [7]
+Underfull \hbox (badness 10000) in paragraph at lines 233--237
+
+ []
+
+
+</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png, id=32
+, 504.88625pt x 2201.22375pt>
+File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png G
+raphic file (type png)
+
+<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png>
+[8] [9 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png
+ (PNG copy)>]
+Overfull \hbox (4.4275pt too wide) in paragraph at lines 314--319
+ [] 
+ []
+
+
+Overfull \hbox (99.86948pt too wide) in paragraph at lines 322--331
+ [] 
+ []
+
+[10]
+</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.png, id=4
+2, 665.48625pt x 769.87625pt>
+File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.png 
+Graphic file (type png)
+
+<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.png>
+[11] [12 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.
+png (PNG copy)>]
+</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread.png,
+ id=49, 128.48pt x 482.80376pt>
+File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread
+.png Graphic file (type png)
+
+<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread.
+png>
+</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Listener-Thread.png, id=
+50, 496.85625pt x 443.6575pt>
+File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Listener-Thread.png
+ Graphic file (type png)
+
+<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Listener-Thread.png>
+[13 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread.
+png (PNG copy)>] [14 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Lis
+tener-Thread.png (PNG copy)>] (./schnittstellen_und_systementwurf.aux) ) 
+Here is how much of TeX's memory you used:
+ 2912 strings out of 495061
+ 38261 string characters out of 1182621
+ 97566 words of memory out of 3000000
+ 6075 multiletter control sequences out of 15000+50000
+ 12387 words of font info for 32 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 25i,6n,24p,359b,562s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home
+/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk>{/usr/share/texmf-te
+xlive/fonts/enc/dvips/base/8r.enc} </home/flo/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecbx1000.600pk> </home/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx144
+0.600pk> </home/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </ho
+me/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/flo/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-texlive/fonts
+/type1/urw/courier/ucrr8a.pfb>
+Output written on schnittstellen_und_systementwurf.pdf (14 pages, 212892 bytes)
+.
+PDF statistics:
+ 309 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+
