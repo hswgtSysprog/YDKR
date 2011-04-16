@@ -18,63 +18,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-static void echo_loop(int sock)
-{
-	fd_set set;
-	int ret;
-	static char buf[512];
-
-	while (1) {
-		int max;
-		FD_ZERO(&set);
-		FD_SET(sock, &set);
-		FD_SET(STDIN_FILENO, &set);
-		max = (sock>STDIN_FILENO)?sock:STDIN_FILENO;
-
-		/* RTFM: select */
-		ret = select(max+1, &set, NULL, NULL, NULL);
-		if (ret <= 0) {
-			perror("select");
-			break;
-		}
-		/**
-		 * sock -> STD_OUT
-		 **/
-		if (FD_ISSET(sock, &set)) {
-			ret = read(sock, buf, sizeof(buf));
-			if (ret == 0) {
-				break;
-			}
-			if (ret < 0) {
-				perror("read");
-				break;
-			}
-			if (write(STDOUT_FILENO, buf, ret) < ret) {
-				perror("write");
-				break;
-			}
-		}
-		/**
-		 * STDIN -> sock
-		 **/
-		if (FD_ISSET(STDIN_FILENO, &set)) {
-			ret = read(STDIN_FILENO, buf, sizeof(buf));
-			if (ret == 0) {
-				break;
-			}
-			if (ret < 0) {
-				perror("read");
-				break;
-			}
-			if (write(sock, buf, ret) < ret) {
-				perror("write");
-				break;
-			}
-		}
-	}
-}
-
-
 
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char ** argv)
@@ -135,7 +78,6 @@ int main(int argc, char ** argv)
         	   printf("Connected\n");
 
         	   send(s,"hello world\n", sizeof("hello world\n"),0);
-        	 //  echo_loop(s);
 
        			//socket verbindung schließen
        			close(s);

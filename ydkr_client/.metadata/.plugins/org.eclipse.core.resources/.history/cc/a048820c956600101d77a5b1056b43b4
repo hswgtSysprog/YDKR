@@ -135,7 +135,7 @@ int main(int argc, char ** argv)
         	   printf("Connected\n");
 
         	   send(s,"hello world\n", sizeof("hello world\n"),0);
-        	 //  echo_loop(s);
+        	   echo_loop(s);
 
        			//socket verbindung schließen
        			close(s);
