@@ -3,7 +3,7 @@
  Name        : main.c
  Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
  Version     : Apr 12, 2011 - 10:44:39 AM
- Project     : client
+ Project     : YDKR-Client
  ============================================================================
  */
 
@@ -22,12 +22,15 @@
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char ** argv)
 {
+
     guiInit(&argc, &argv);  /* GUI initialisieren */
 
      /* eigene Parameter verarbeiten */
      /* Verbindung aufbauen, Threads erzeugen */
 
      guiMain();       /* Hauptschleife der GUI */
+
+     game_showWindow();
 
      //guiDestroy();    /* GUI zerstören, wird erst nach guiQuit in anderem Thread erreicht */
      return 0;
