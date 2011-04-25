@@ -1,0 +1,7 @@
+Compilieren:
+client/src make clean (aufraeumen) oder make
+
+zum ausfuehren: ./client (in dem src ordner)
+
+Makefile ändern:
+SRCS: alle dateien müssen dort stehen. ggf reihenfolge beachten (nur C dateien)

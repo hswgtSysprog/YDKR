@@ -22,6 +22,25 @@ void preparation_onWindowClosed(void){
 void game_onAnswerClicked(int index){
 
 }
+/*
+ ========================================================================
+ Funktion:
+	 game_onWindowClosed
+ Kurzbeschreibung:
+	 Callback Funktion.
+	 Wird aufgerufen wenn ein Benutzer den Schliessen Button (x) des
+	 Anwendungsfensters betaetigt.
+
+ ========================================================================
+ */
+
 void game_onWindowClosed(void){
+
+	if(popupQuestionDialog("Sind Sie sicher?","Wollen Sie das Programm wirklich beenden?"))
+		{
+			guiDestroy();    /* GUI zerstören, wird erst nach guiQuit in anderem Thread erreicht */
+			return FALSE;  /* Event "destroy" einleiten */
+		}
+		return TRUE;
 
 }

@@ -13,7 +13,7 @@ all: $(OBJS)
 	@echo Compiling Client
 	$(Q)$(CC) -o $(BIN) $(CFLAGS) $(OBJS) $(LDFLAGS)
 
-.c.o: commons.h
+.c.o: 
 	@echo Compiling $<
 	$(Q)$(CC) $(CFLAGS) -c $<
 
