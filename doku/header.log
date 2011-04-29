@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.12)  29 APR 2011 15:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.12)  14 APR 2011 16:18
 entering extended mode
  %&-line parsing enabled.
-**schnittstellen_und_systementwurf.tex
-(./schnittstellen_und_systementwurf.tex
+**header.tex
+(./header.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, loaded.
@@ -104,8 +104,8 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \c@FancyVerbLine=\count91
 \FV@StepNumber=\count92
 \FV@OutFile=\write3
-) (./schnittstellen_und_systementwurf.aux)
-\openout1 = `schnittstellen_und_systementwurf.aux'.
+) (./header.aux)
+\openout1 = `header.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
@@ -144,107 +144,27 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 17.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(./schnittstellen_und_systementwurf.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
-)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./header.toc)
 \tf@toc=\write4
-\openout4 = `schnittstellen_und_systementwurf.toc'.
-
- [2]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 31.
-
-(/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
-File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
-) [3]
-Underfull \hbox (badness 10000) in paragraph at lines 117--120
-
- []
-
-[4]
-</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png, id=21,
- 406.51875pt x 932.48375pt>
-File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png Gr
-aphic file (type png)
-
-<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png>
-[5] [6 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Login-Thread.png 
-(PNG copy)>] (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-32.def
-File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
-) [7]
-Underfull \hbox (badness 10000) in paragraph at lines 233--237
-
- []
+\openout4 = `header.toc'.
 
 
-</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png, id=32
-, 504.88625pt x 2201.22375pt>
-File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png G
-raphic file (type png)
-
-<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png>
-[8] [9 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Client-Thread.png
- (PNG copy)>]
-Overfull \hbox (4.4275pt too wide) in paragraph at lines 314--319
- [] 
- []
-
-
-Overfull \hbox (99.86948pt too wide) in paragraph at lines 322--331
- [] 
- []
-
-[10]
-</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.png, id=4
-2, 665.48625pt x 769.87625pt>
-File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.png 
-Graphic file (type png)
-
-<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.png>
-[11] [12 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Command-Thread.
-png (PNG copy)>]
-</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread.png,
- id=49, 128.48pt x 482.80376pt>
-File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread
-.png Graphic file (type png)
-
-<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread.
-png>
-</home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Listener-Thread.png, id=
-50, 496.85625pt x 443.6575pt>
-File: /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Listener-Thread.png
- Graphic file (type png)
-
-<use /home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Listener-Thread.png>
-[13 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Fragewechsel-Thread.
-png (PNG copy)>] [14 </home/flo/Dokumente/Studium/SysProg/YDKR/doku/Abgabe3/Lis
-tener-Thread.png (PNG copy)>] (./schnittstellen_und_systementwurf.aux) ) 
+[2] (./header.aux) ) 
 Here is how much of TeX's memory you used:
- 2912 strings out of 495061
- 38261 string characters out of 1182621
- 97566 words of memory out of 3000000
- 6075 multiletter control sequences out of 15000+50000
- 12387 words of font info for 32 fonts, out of 3000000 for 9000
+ 2099 strings out of 495061
+ 27748 string characters out of 1182621
+ 87531 words of memory out of 3000000
+ 5283 multiletter control sequences out of 15000+50000
+ 10214 words of font info for 28 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 25i,6n,24p,359b,562s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home
-/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk>{/usr/share/texmf-te
-xlive/fonts/enc/dvips/base/8r.enc} </home/flo/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecbx1000.600pk> </home/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx144
-0.600pk> </home/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </ho
-me/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/flo/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-texlive/fonts
-/type1/urw/courier/ucrr8a.pfb>
-Output written on schnittstellen_und_systementwurf.pdf (14 pages, 211507 bytes)
-.
+ 25i,6n,24p,333b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440
+.600pk> </home/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </hom
+e/flo/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/flo/.texmf-
+var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk>
+Output written on header.pdf (2 pages, 17064 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
