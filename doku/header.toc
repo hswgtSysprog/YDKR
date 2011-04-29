@@ -1,2 +1,0 @@
-\select@language {ngerman}
-\contentsline {section}{\numberline {1}Inhalt}{2}
