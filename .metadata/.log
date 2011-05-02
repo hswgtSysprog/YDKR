@@ -7,3 +7,28 @@ Command-line arguments:  -os linux -ws gtk -arch x86
 
 !ENTRY org.eclipse.cdt.core 1 0 2011-04-16 08:23:59.630
 !MESSAGE Indexed 'client' (1 sources, 70 headers) in 1.96 sec: 2,995 declarations; 2,742 references; 3 unresolved inclusions; 1 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2011-04-25 08:10:17.173 -----------------------------------------------
+eclipse.buildId=M20100211-1343
+java.version=1.6.0_20
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.ui.workbench 2 0 2011-04-25 08:56:09.443
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2011-04-25 08:56:09.443
+!MESSAGE Conflict for 'org.eclipse.ui.navigate.forwardHistory':
+HandlerActivation(commandId=org.eclipse.ui.navigate.forwardHistory,
+	handler=ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@833763),
+	expression=ActiveShellExpression(Shell {Java - client/src/gui.h - Eclipse SDK}),sourcePriority=17408)
+HandlerActivation(commandId=org.eclipse.ui.navigate.forwardHistory,
+	handler=ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@a97a2f),
+	expression=ActiveShellExpression(Shell {Properties for gui.h}),sourcePriority=17408)
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2011-04-25 08:56:09.443
+!MESSAGE Conflict for 'org.eclipse.ui.navigate.backwardHistory':
+HandlerActivation(commandId=org.eclipse.ui.navigate.backwardHistory,
+	handler=ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@94e4a0),
+	expression=ActiveShellExpression(Shell {Properties for gui.h}),sourcePriority=17408)
+HandlerActivation(commandId=org.eclipse.ui.navigate.backwardHistory,
+	handler=ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@12dd930),
+	expression=ActiveShellExpression(Shell {Java - client/src/gui.h - Eclipse SDK}),sourcePriority=17408)
