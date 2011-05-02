@@ -135,7 +135,14 @@ void *gui_thread(void *data)
 void *command_thread(void *data)
 {
 
+	/*message queue?*/
+	while(1)
+	{
+		// rreceive mq
+	}
 	loginRequest();
 
 
 }
+
+void send_login()
