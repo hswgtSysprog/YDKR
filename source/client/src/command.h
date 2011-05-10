@@ -10,7 +10,7 @@
 
 void * command_thread(void *data);
 
-void send_login();
+void send_login(int s, char* name);
 void choose_questions();
 void start_game();
 void send_answer();
