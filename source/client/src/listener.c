@@ -13,6 +13,7 @@ void *listener_thread(void *data)
 {
 	t_msg_header hdr;
 	int receiver=0;
+	int parser=0;
 	
 	
 	while(1)
@@ -22,5 +23,18 @@ void *listener_thread(void *data)
 		{
 				raise(SIGINT);
 		}	
+		
+		hdr.length = ntohs(hdr.length);
+		parser = parse_msg();
 	}
+}
+
+void parse_msg(t_msg_header *hdr)
+{
+    size_t ret =0;
+    
+    if(hdr->type == FOOBAR)
+    {
+      
+    }
 }
