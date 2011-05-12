@@ -29,21 +29,5 @@ void* command_thread(void *data)
 
 void send_login(int sock, char* name)
 {
-	char msg[MAX_MSG];
-	t_msg_header hdr;
-
-	bzero(msg, sizeof(msg));
-	
-	hdr.type = RFC_LOGIN;
-	hdr.length = htons(strlen(name) + 1);
-	
-	memcpy(msg,
-	       &hdr, sizeof(hdr));
-	memcpy(msg + sizeof(hdr),
-	       &role, sizeof(uint8_t));
-	memcpy(msg + sizeof(hdr) + sizeof(uint8_t),
-	       name, strlen(name));
-
-	message_queue_send_command(msg);
 
 }

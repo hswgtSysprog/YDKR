@@ -22,43 +22,18 @@
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char ** argv)
 {
-		int id 		 = 0;
-		char *name   = "Eric";
-		char *server = "localhost";
-		char *port   = "50000";
-		int thread;
-
-		GCI.name = name;
-		struct addrinfo *addr_info, *p, hints;
-
-		//zu wenig parameter
-		if(argc<=2)
-		{
-
-			printf("Simple Echo-Client\nUsage: %s [SERVER] [PORT]\n", argv[0]);
-			printf("\nExample: %s www.sixxs.net 80\n", argv[0]);
-			exit(1);
-		}
-
-		//hinweise zur verbindung setzen
-		memset(&hints, 0, sizeof(hints));
-		hints.ai_family = AF_UNSPEC;
-		hints.ai_socktype = SOCK_STREAM;
-		hints.ai_protocol = IPPROTO_TCP;
-		hints.ai_flags = 0 /* | AI_ADDRCONFIG */;
+    int id 		 = 0;
+	char *name   = "Eric";
+	char *server = "localhost";
+	char *port   = "50000";
+	int thread;
 
 
+	GCI.name = name;
+	struct addrinfo *addr_info, *p, hints;
 
-		/* RTFM: getaddrinfo */
-			thread = getaddrinfo(argv[1], argv[2], &hints, &addr_info);
-			if (thread)
-		{
-			printf("getaddrinfo: %s\n", gai_strerror(ret));
-			exit(1);
-		}
-
-		printf("\n");
-			p = addr_info;
+	bzero(&GCI.status, sizeof(t_msg_status));
+	
 
 		//Threads starten
 		while (p)
