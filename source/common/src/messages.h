@@ -48,5 +48,14 @@
 #define RFC_ERROR_FATAL       1
 #define RFC_ERROR_LOGIN_FAIL 10
 
+//Datenrahmen
+
+struct msg_header {
+	uint8_t type;    // describe the type of the message
+	uint16_t length; // length of the next bytes
+} __attribute__((__packed__));
+
+typedef struct msg_header t_msg_header;
+
 
 #endif

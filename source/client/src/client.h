@@ -28,7 +28,6 @@ typedef struct
 global_client_info GCI;
 
 void *gui_thread(void *data);
-void sigint_handler(int sig);
 
 
 

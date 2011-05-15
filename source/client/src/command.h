@@ -14,6 +14,6 @@ void choose_questions();
 void start_game();
 void send_answer();
 void end_game();
-void shutdown();
+void shutdown_game();
 
 #endif /* COMMAND_H_ */

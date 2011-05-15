@@ -25,7 +25,6 @@ pthread_t gui_thread_id, command_thread_id, listener_thread_id;
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char **argv)
 {
-	int id = 0;
 	char *name   = "Eric";
 	char *server = "localhost";
 	char *port   = "50000";
@@ -34,6 +33,7 @@ int main(int argc, char **argv)
 
 	GCI.name = name;
 	struct addrinfo *addr_info, *p, hints;
+	//signal(SIGINT, sigint_handler);
 	
 
 		//Threads starten
@@ -77,12 +77,11 @@ int main(int argc, char **argv)
 			p = p->ai_next;
 		}
 		printf("Could not connect to server :/\n");
-	 /***************************	
-	  * raise(SIGINT)
-	  **************************/
+		//raise(SIGINT)
+	  
 		freeaddrinfo(addr_info);
 		return 0;
-	}
+}
 
 
 /*
@@ -100,8 +99,4 @@ void *gui_thread(void *data)
 	     /* Verbindung aufbauen, Threads erzeugen */
 
 	   guiMain();       /* Hauptschleife der GUI */
-
-
 }
-
-)

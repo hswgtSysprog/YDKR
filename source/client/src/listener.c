@@ -18,21 +18,19 @@ void *listener_thread(void *data)
 	
 	while(1)
 	{
-		receiver = recv(GCI.s, &hdr, sizeof(hdr), MSG_WAITALL);		
+		receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);		
 		if (receiver ==0 || receiver < sizeof(hdr))
 		{
-		  raise(SIGINT);
+		 printf("Fehler");
 		}	
 		
 		hdr.length = ntohs(hdr.length);
-		parser = parse_msg();
+		parser = parse_msg(&hdr);
 	}
 }
 
-void parse_msg(t_msg_header *hdr)
-{
-    size_t ret =0;
-    
+int parse_msg(t_msg_header *hdr)
+{    
     if(hdr->type == RFC_PLAYERLIST)
     {
 	//Rangliste aktualisieren

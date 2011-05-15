@@ -8,8 +8,9 @@
  Project     : client
  =============================================================================*/
 
-#include "../common/messages.h"
+#include "../../common/src/messages.h"
 
 void *listener_thread(void *data);
+int parse_msg(t_msg_header *hdr);
 
 #endif /* LISTENER_H */
