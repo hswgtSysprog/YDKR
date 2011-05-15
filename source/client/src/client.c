@@ -18,11 +18,14 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "gui_interface.h"
+#include "client.h"
+#include "command.h"
 
+pthread_t gui_thread_id, command_thread_id, listener_thread_id;
 // hauptfunktion erwartet server und portnummer
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
-    int id 		 = 0;
+	int id = 0;
 	char *name   = "Eric";
 	char *server = "localhost";
 	char *port   = "50000";
@@ -31,8 +34,6 @@ int main(int argc, char ** argv)
 
 	GCI.name = name;
 	struct addrinfo *addr_info, *p, hints;
-
-	bzero(&GCI.status, sizeof(t_msg_status));
 	
 
 		//Threads starten
@@ -76,7 +77,9 @@ int main(int argc, char ** argv)
 			p = p->ai_next;
 		}
 		printf("Could not connect to server :/\n");
-		raise(SIGINT);
+	 /***************************	
+	  * raise(SIGINT)
+	  **************************/
 		freeaddrinfo(addr_info);
 		return 0;
 	}
@@ -91,7 +94,7 @@ int main(int argc, char ** argv)
 void *gui_thread(void *data)
 {
 
-	  guiInit(&argc, &argv);  /* GUI initialisieren */
+	  guiInit(0, NULL);  // GUI initialisieren */
 
 	     /* eigene Parameter verarbeiten */
 	     /* Verbindung aufbauen, Threads erzeugen */

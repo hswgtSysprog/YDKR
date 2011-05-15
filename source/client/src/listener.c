@@ -21,7 +21,7 @@ void *listener_thread(void *data)
 		receiver = recv(GCI.s, &hdr, sizeof(hdr), MSG_WAITALL);		
 		if (receiver ==0 || receiver < sizeof(hdr))
 		{
-				raise(SIGINT);
+		  raise(SIGINT);
 		}	
 		
 		hdr.length = ntohs(hdr.length);
@@ -33,8 +33,20 @@ void parse_msg(t_msg_header *hdr)
 {
     size_t ret =0;
     
-    if(hdr->type == FOOBAR)
+    if(hdr->type == RFC_PLAYERLIST)
     {
-      
+	//Rangliste aktualisieren
+	// void refresh_playerlist(datenrahmen);
     }
+    else if(hdr->type == RFC_QUESTION)
+    {
+      //Frage anzeigen
+      // 
+    }
+    else if (hdr->type == RFC_ERRORWARNING)
+    {
+      //Warnung ausgeben
+    }
+    
+    return 0;
 }

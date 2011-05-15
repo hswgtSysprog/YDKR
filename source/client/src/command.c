@@ -6,7 +6,7 @@
  =============================================================================
 */
 
-void* command_thread(void *data)
+void *command_thread(void *data)
 {
 	MSG msg;
 		uint16_t len;
@@ -47,3 +47,35 @@ void send_login(int sock, char* name)
 	message_queue_send_command(msg);
 
 }
+
+void choose_questions()
+{
+  //do something great
+  return 0;
+}
+
+void start_game()
+{
+  //do something great
+  return 0;
+  
+}
+
+void send_answer()
+{
+  //do something great
+  return 0;
+}
+
+void end_game()
+{
+  //do something great
+  return 0;
+}
+
+void shutdown()
+{
+  //do something great
+  return 0;
+}
+  

@@ -10,7 +10,7 @@
 */
 
 
-#include "../common/messages.h"
+#include "../../common/src/messages.h"
 
 #define ERR_OOM -1
 #define ERR_KILL_CLIENT -2
@@ -21,7 +21,8 @@ typedef struct
 	int ID;
 	char* name;
 	int sock;
-	t_msg_status status;
+	unsigned long score;
+	char* question;
 }global_client_info;
 
 global_client_info GCI;
