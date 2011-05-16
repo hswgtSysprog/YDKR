@@ -107,8 +107,16 @@ void accept_loop(int fd[], int numfd)
 			perror("select");
 			return;
 		}
+
 		for (i=0; i<numfd; i++)
 			if (FD_ISSET(fd[i], &set)) {
+
+				/**
+				 * listen - receive
+				 */
+				static char buf[512];
+				recv(fd[i], &buf, sizeof(buf), MSG_WAITALL);
+
 				struct client_data *data;
 
 				data = (struct client_data*)malloc(sizeof(struct client_data));
@@ -287,6 +295,7 @@ int main(int argc, char ** argv)
 	 * Eigentliche Schleife die auf Verbindungen wartet
 	 */
 	accept_loop(sockets, numsockets);
+
 	for(i = 0; i < numsockets; i++)
 	{
 		close(sockets[i]);
