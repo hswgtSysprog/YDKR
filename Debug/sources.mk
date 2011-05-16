@@ -13,5 +13,7 @@ EXECUTABLES :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+source/server/src \
+source/common/src \
 source/client/src \
 

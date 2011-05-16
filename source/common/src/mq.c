@@ -67,20 +67,14 @@ MSG2LOGGER message_queue_receive(key_t key) {
 	return msg;
 }
 
-
-
-int message_queue_send_logger(char *text) {
-	return message_queue_send(keymng(KEY_LOGGER_MQ), text);
-}
-
-MSG2LOGGER message_queue_receive_logger() {
-	return message_queue_receive(keymng(KEY_LOGGER_MQ));
-}
-
-
-
 int message_queue_send_command(char *text) {
 	return message_queue_send(keymng_local(KEY_COMMAND_MQ), text);
 }
 
+<<<<<<< HEAD
 MSG2LOGGER message_queue_receive_command() {}
+=======
+MSG2LOGGER message_queue_receive_command() {
+	return message_queue_receive(keymng_local(KEY_COMMAND_MQ));
+}
+>>>>>>> d835996798c4a08c4ce70178bb20e9da46bf6ddb

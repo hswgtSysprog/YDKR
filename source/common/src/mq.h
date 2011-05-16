@@ -13,8 +13,6 @@
 #define MAX_MSG 1280
 #define MAX_LOGGER_MSG 1280
 
-#define LOG(x) message_queue_send_logger(x)
-
 typedef struct {
 	long mtype;
 	char text[MAX_MSG];
@@ -28,9 +26,6 @@ void message_queue_remove(key_t key);
 
 int message_queue_send(key_t key, char *msg);
 MSG2LOGGER message_queue_receive(key_t key);
-
-int message_queue_send_logger(char *msg);
-MSG2LOGGER message_queue_receive_logger();
 
 int message_queue_send_command(char *msg);
 MSG2LOGGER message_queue_receive_command();

@@ -18,47 +18,23 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "gui_interface.h"
+#include "client.h"
+#include "command.h"
 
+pthread_t gui_thread_id, command_thread_id, listener_thread_id;
 // hauptfunktion erwartet server und portnummer
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
-		int id 		 = 0;
-		char *name   = "Eric";
-		char *server = "localhost";
-		char *port   = "50000";
-		int thread;
-
-		GCI.name = name;
-		struct addrinfo *addr_info, *p, hints;
-
-		//zu wenig parameter
-		if(argc<=2)
-		{
-
-			printf("Simple Echo-Client\nUsage: %s [SERVER] [PORT]\n", argv[0]);
-			printf("\nExample: %s www.sixxs.net 80\n", argv[0]);
-			exit(1);
-		}
-
-		//hinweise zur verbindung setzen
-		memset(&hints, 0, sizeof(hints));
-		hints.ai_family = AF_UNSPEC;
-		hints.ai_socktype = SOCK_STREAM;
-		hints.ai_protocol = IPPROTO_TCP;
-		hints.ai_flags = 0 /* | AI_ADDRCONFIG */;
+	char *name   = "Eric";
+	char *server = "localhost";
+	char *port   = "50000";
+	int thread;
 
 
-
-		/* RTFM: getaddrinfo */
-			thread = getaddrinfo(argv[1], argv[2], &hints, &addr_info);
-			if (thread)
-		{
-			printf("getaddrinfo: %s\n", gai_strerror(ret));
-			exit(1);
-		}
-
-		printf("\n");
-			p = addr_info;
+	GCI.name = name;
+	struct addrinfo *addr_info, *p, hints;
+	//signal(SIGINT, sigint_handler);
+	
 
 		//Threads starten
 		while (p)
@@ -101,10 +77,11 @@ int main(int argc, char ** argv)
 			p = p->ai_next;
 		}
 		printf("Could not connect to server :/\n");
-		raise(SIGINT);
+		//raise(SIGINT)
+	  
 		freeaddrinfo(addr_info);
 		return 0;
-	}
+}
 
 
 /*
@@ -116,14 +93,10 @@ int main(int argc, char ** argv)
 void *gui_thread(void *data)
 {
 
-	  guiInit(&argc, &argv);  /* GUI initialisieren */
+	  guiInit(0, NULL);  // GUI initialisieren */
 
 	     /* eigene Parameter verarbeiten */
 	     /* Verbindung aufbauen, Threads erzeugen */
 
 	   guiMain();       /* Hauptschleife der GUI */
-
-
 }
-
-)

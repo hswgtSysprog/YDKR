@@ -18,6 +18,8 @@
 
 /* client */
 #define KEY_COMMAND_MQ      0x41 // command message queue
+#define KEY_RANKING	    0x44 // triggers update of ranking list
+#define KEY_QUESTION	    0x43 // next question
 
 key_t keymng(int offset);
 key_t keymng_local(int offset);

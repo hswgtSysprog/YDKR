@@ -15,7 +15,7 @@ key_t keymng(int offset) {
 	key_t key;
 	key = ftok(".", offset);
 	if(key == -1) {
-		LOG("Error to create key!\n");
+		printf("Error to create key!\n");
 		exit(0);
 	}
 	return key;

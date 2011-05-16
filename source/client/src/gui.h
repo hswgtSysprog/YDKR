@@ -8,11 +8,4 @@
  =============================================================================
 */
 
-typedef struct
-{
-	int ID;
-	char* name;
-	int sock;
-}global_client_info;
-
-global_client_info GCI;
+#endif

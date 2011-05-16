@@ -7,6 +7,7 @@
  ============================================================================
  */
 
+#include <stdio.h>
 #include "gui_interface.h"
 
 void preparation_onCatalogChanged(const char *newSelection){
@@ -34,13 +35,6 @@ void game_onAnswerClicked(int index){
  ========================================================================
  */
 
-void game_onWindowClosed(void){
-
-	if(popupQuestionDialog("Sind Sie sicher?","Wollen Sie das Programm wirklich beenden?"))
-		{
-			guiDestroy();    /* GUI zerstören, wird erst nach guiQuit in anderem Thread erreicht */
-			return FALSE;  /* Event "destroy" einleiten */
-		}
-		return TRUE;
-
+void game_onWindowClosed(void) {
+	guiShowMessageDialog("Wollen Sie das Programm wirklich beenden?", 1);
 }
