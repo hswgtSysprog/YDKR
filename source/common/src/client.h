@@ -13,8 +13,10 @@ struct client_info {
 
 	char     *name;
 	uint16_t client_id;
-	uint16_t role;
+
+	int first_send;
 };
+
 
 typedef struct client_info t_client_info;
 typedef t_client_info* tp_client_info;
