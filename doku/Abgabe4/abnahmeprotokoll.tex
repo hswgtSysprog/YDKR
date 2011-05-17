@@ -1,0 +1,77 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}      % T1-encoded fonts: auch Wörter mit Umlauten trennen
+\usepackage{graphicx} 
+\usepackage{fancyvrb}
+
+
+%opening
+
+\title{Abnahmeprotokoll}
+\author{Rainer Hihn 19859\\Kathrin Holzmann 20228\\Florian Rosenkranz 19895}
+\date{17.5.2011}
+\begin{document}
+
+\maketitle
+\newpage
+%\begin{abstract}
+
+%\end{abstract}
+
+\section*{Inhalt}
+
+\tableofcontents
+
+\newpage
+
+\section{Abnahme}
+
+Am 17.5.2011 trafen wir uns mit Herrn Elias Drotleff um unseren ersten Zwischenstand abzugeben.\\
+Es gab einige Kritikpunkte:\\
+\begin{itemize}
+       \item Keine Message-Queue, sondern Sockets
+       \item Aktives Warten im Client umgehen
+       \item Realisierung Phase 1 (Spielvorbereitung):
+       \begin{itemize}
+	  \item Client-Server Kommunikation (Sockets)
+	  \item Login
+	  \item Threads im Client und Server
+	  \item Loader-Kommunikation (Pipes)
+	  \item Mutexe
+	\end{itemize}
+       \item Realisierung Phase 2(Spiel):
+       \begin{itemize}
+        \item Shared Mem. erzeugen
+	\item Spielablauf (Frage=>Antwort, Timeouts, Punktestand)
+	\item ...
+       \end{itemize}
+
+     \end{itemize}
+
+\section{Weiteres Vorgehen}
+
+Wir haben auch unser weiteres Vorgehen besprochen. Hierbei werden wir uns insbesondere auf folgende Punkte konzentrieren:\\
+\begin{itemize}
+ \item Message-Queue entfernen
+ \item keygen entfernen
+ \item Thread-Start ändern -> nur 3 Threads
+ \item Senden und Empfangen nur durch Sockets
+ \item Funktionalität entwickeln:
+      \begin{itemize}
+       \item Login
+       \item Playerliste aktualisieren
+       \item Fraenkatalog auswählen
+       \item Unterschiede in der Behandlung von Spielleiter/Spieler
+      \end{itemize}
+
+ \item Playerliste als Array
+ \item generell Produktivität/Output steigern
+\end{itemize}
+
+
+
+
+
+
+\end{document}
