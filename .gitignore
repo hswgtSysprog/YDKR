@@ -10,4 +10,4 @@
 .cproject
 
 # src files
-.o
+*.o
