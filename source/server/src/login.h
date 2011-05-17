@@ -10,11 +10,23 @@
 #ifndef LOGIN_H_
 #define LOGIN_H_
 
+// Systemdateien
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
-// Local
-#include "../common/network.h"
+
+// lokale Dateien
+#include "../../common/src/network.h"
 
 // Functions
-void *loginThread(void *data);
+void *loginThread(int service);
 
 #endif /* LOGIN_H_ */

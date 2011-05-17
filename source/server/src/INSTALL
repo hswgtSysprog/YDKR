@@ -1,1 +1,1 @@
-gcc -Wall -O2 -o server YDKR-Server.c -lpthread
+gcc -Wall -O2 -o server server.c login.c -lpthread
