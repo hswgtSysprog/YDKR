@@ -8,3 +8,6 @@
 # Eclipse
 .project
 .cproject
+
+# src files
+.o
