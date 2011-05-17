@@ -7,23 +7,14 @@
  ============================================================================
  */
 
-#ifndef YDKRSERVER_H_
-#define YDKRSERVER_H_
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <netdb.h>
-#include <sys/socket.h>
-#include <string.h>
+#ifndef LOGIN_H_
+#define LOGIN_H_
 
 
-/**
- * structs
- */
-struct client_data;
+// Local
+#include "../common/network.h"
 
-/**
- * functions
- */
+// Functions
+void *loginThread(void *data);
 
-#endif /* YDKRSERVER_H_ */
+#endif /* LOGIN_H_ */
