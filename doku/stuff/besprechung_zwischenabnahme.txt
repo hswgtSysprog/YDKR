@@ -1,0 +1,34 @@
+SystemProgrammierung	17.5.2011
+
+Alles bis 'Spielbeginn' muss bis naechste Woche funktionieren
+	(und vielleich das 'Abmelden')
+
+Client:
+
+> keine Message-Queue, sondern Sockets
+
+> kein 'aktives' Warten
+
+> keine Schleife, die Threads verbindet/oeffnet
+
+> GUI-Thread soll Command-Thread sein
+
+> Listener-Thread verarbeitet Anfragen von Server
+
+> GUI-Thread verschickt Kommandos
+
+> 3 Threads!
+>>> Command-Thread = GUI-Thread = Main-Thread
+>>>>>> ohne 'create', existiert schon durch 'main'
+>>> Listener-Thread wird nach erfolgreichem login erzeugt (mit 'pThreadCreate' oder so ;) )
+>>> Fragewechsel-Thread (momentan noch uninteressant)
+
+>fclose auf socketfiledescriptor
+
+
+Server:
+
+> login-Thread kann auch im main-Thread sein (muss aber nicht); geht in Schleife und wartet auf Clients
+	(erster Client = Spielleiter, etc.)
+
+> Katalog-Anfrage (catalog_select)
