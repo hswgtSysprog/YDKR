@@ -55,7 +55,6 @@ int main(int argc, char **argv)
 			{
 				GCI.sock = s;
 
-
 				thread = pthread_create(&gui_thread_id, NULL, &gui_thread, NULL);
 				if(thread)
 				{
@@ -99,4 +98,7 @@ void *gui_thread(void *data)
 	     /* Verbindung aufbauen, Threads erzeugen */
 
 	   guiMain();       /* Hauptschleife der GUI */
+	   
+	   //TODO: darf das hier so stehen bleiben ???
+	   //void guiDestroy(void);
 }

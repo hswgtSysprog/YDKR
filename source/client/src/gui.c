@@ -36,5 +36,10 @@ void game_onAnswerClicked(int index){
  */
 
 void game_onWindowClosed(void) {
+  /*TODO: rueckgabe von guiShowMessageDialog, welche Reihenfolge zum beenden?
+   */
 	guiShowMessageDialog("Wollen Sie das Programm wirklich beenden?", 1);
+	/*
+	 *void guiQuit(void);
+	 */
 }
