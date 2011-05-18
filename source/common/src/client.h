@@ -5,18 +5,16 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdint.h>
-#include "common.h"
 
+/**
+ * struct das die spielerinfo beinhaltet
+ */
 struct client_info {
-	int sock;
-	pthread_t thread;
-
-	char     *name;
-	uint16_t client_id;
-
-	int first_send;
+	int sock; // socket ueber den der spieler sich verbindet
+	pthread_t thread; // der client thread auf dem server
+	char *name; // eindeutiger spielername
+	uint8_t client_id; // eindeutige client id
 };
-
 
 typedef struct client_info t_client_info;
 typedef t_client_info* tp_client_info;

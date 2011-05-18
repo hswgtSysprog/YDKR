@@ -25,8 +25,9 @@
 
 // lokale Dateien
 #include "../../common/src/network.h"
+#include "../../common/src/client.h"
 
 // Functions
-void *loginThread(int service);
+void loginThread(int service);
 
 #endif /* LOGIN_H_ */
