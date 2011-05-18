@@ -1,0 +1,6 @@
+git how-to
+
+1) git pull
+2) git add <files> <folder>
+3) git commit // commit messages
+4) git push -u origin <branch> // master || doku
