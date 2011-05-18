@@ -18,7 +18,6 @@ void loginThread(int service) {
 
 	login_sock = sock_open(port);
 	if (login_sock == 0) {
-		LOG("Socket open failed\n\n");
 		perror("Socket open failed");
 		raise(SIGINT);
 	}
@@ -26,9 +25,8 @@ void loginThread(int service) {
 
 	while( 1 ) {
 		if ((client_sock = sock_acct(login_sock)) < 0) {
-			LOG("Login thread: Connection error\n");
 			raise(SIGINT);
-			return NULL;
+			return;
 		}
 
 		ci = (tp_client_info) malloc( sizeof( t_client_info ) );
@@ -37,12 +35,9 @@ void loginThread(int service) {
 			continue;
 		}
 
-		LOG("Login thread: Connection successfull...\n");
-
 		ci->sock      = client_sock;
 		ci->name      = NULL;
 		ci->client_id = -1;
-		ci->first_send = 1;
 
 		ret = pthread_create(&ci->thread, NULL, clientThread, ci);
 		if (ret != 0) {
@@ -53,6 +48,6 @@ void loginThread(int service) {
 		pthread_detach(ci->thread);
 	}
 
-	return NULL;
+	return;
 
 }
