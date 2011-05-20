@@ -27,8 +27,8 @@ typedef struct
 
 global_client_info GCI;
 
-void *gui_thread(void *data);
-
+void send_login(char* name);
+int wait_loginOK();
 
 
 

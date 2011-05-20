@@ -21,7 +21,7 @@
 #include "client.h"
 #include "command.h"
 
-pthread_t gui_thread_id, command_thread_id, listener_thread_id;
+pthread_t command_thread_id, listener_thread_id;
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char **argv)
 {
@@ -29,14 +29,20 @@ int main(int argc, char **argv)
 	char *server = "localhost";
 	char *port   = "50000";
 	int thread;
+	int ret;
 
 
 	GCI.name = name;
 	struct addrinfo *addr_info, *p, hints;
-	//signal(SIGINT, sigint_handler);
-	
 
-		//Threads starten
+	ret = getaddrinfo(server, port, NULL, &addr_info);
+	if(ret) {
+		printf("getaddrinfo: %s\n", gai_strerror(ret));
+		exit(-1);
+	}
+
+	p = addr_info;
+
 		while (p)
 		{
 			if(p->ai_socktype != SOCK_STREAM)/* we only care about TCP */
@@ -44,61 +50,88 @@ int main(int argc, char **argv)
 				p = p->ai_next;
 				continue;
 			}
-			int s = socket(p->ai_family, p->ai_socktype, 0);
-			if(s == -1)
+			int sock = socket(p->ai_family, p->ai_socktype, 0);
+			if(sock == -1)
 			{
 				perror("socket");
 				exit(-1);
 			}
 
-			if(connect(s, p->ai_addr, p->ai_addrlen) == 0)
+			if(connect(sock, p->ai_addr, p->ai_addrlen) == 0)
 			{
-				GCI.sock = s;
-
-				thread = pthread_create(&gui_thread_id, NULL, &gui_thread, NULL);
+				GCI.sock = sock;
+				send_login(GCI.name);
+				wait_loginOK();
+				printf("juhu ich bin eingeloggt");
+				
+				guiInit(&argc, &argv);
+				guiMain();
+				/*
+				 * thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
 				if(thread)
 				{
-					printf("Failed to start GUI-Thread\n");
+					printf("Failed to start Listener Thread\n");
 					exit(0);
 				}
-
-				sleep(1); /* mutex me please */
-
+				//
 				thread = pthread_create(&command_thread_id, NULL, &command_thread, NULL);
 				if(thread)
 				{
 					printf("Failed to start Command-Thread\n");
 					exit(0);
 				}
+				*/
 			}
 
-			close(s);
+			close(sock);
 			p = p->ai_next;
 		}
 		printf("Could not connect to server :/\n");
-		//raise(SIGINT)
 	  
 		freeaddrinfo(addr_info);
 		return 0;
 }
 
-
-/*
- ======================================================================
-***************************** GUI Thread*******************************
- ======================================================================
- */
-
-void *gui_thread(void *data)
+void send_login(char* name)
 {
+	t_msg_header hdr;
+	
+	hdr.type = RFC_LOGINREQUEST;
+	//umdrehen <=16 Bit werte
+	hdr.length = htons(strlen(name) + 1);
+	
+	send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
+	send(GCI.sock, &name, sizeof(char) + strlen(name), 0);	
+}
 
-	  guiInit(0, NULL);  // GUI initialisieren */
 
-	     /* eigene Parameter verarbeiten */
-	     /* Verbindung aufbauen, Threads erzeugen */
-
-	   guiMain();       /* Hauptschleife der GUI */
-	   
-	   //TODO: darf das hier so stehen bleiben ???
-	   //void guiDestroy(void);
+int wait_loginOK()
+{
+  int receiver, ret;
+  t_msg_header hdr;
+  receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
+  // timer fuer timeout hier setzen
+  
+  
+  if(receiver == 0 || receiver < sizeof(hdr)) 
+    return -1;
+  
+  hdr.length = ntohs(hdr.length);
+  
+  //is it what whe want?
+  if(hdr.type != RFC_LOGINRESPONSEOK)
+    return -1;
+  
+  // size of what we want?
+  if(hdr.length!=sizeof(GCI.ID))
+    return -1;
+    
+  // receive rest of package
+  ret = recv(GCI.sock, &GCI.ID, sizeof(GCI.ID), 0);
+    
+ //did we receive great things?
+  if(ret == 0 || receiver < sizeof(GCI.ID))
+      return -1;
+    
+ return 0;
 }

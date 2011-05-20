@@ -97,8 +97,9 @@ void refresh_playerlist(t_msg_header *hdr)
       game_setPlayerScore(int position, unsigned long score);
     }
     
-    //eigenen Usernamen hervorheben:
+      eigenen Usernamen hervorheben:
     void game_highlightPlayer(GCI.ID);
     */
+  return;
 
 }

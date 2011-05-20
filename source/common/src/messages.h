@@ -25,7 +25,7 @@
 #define RFC_CATALOGCHANGE        6
 #define RFC_STARTGAME            7
 #define RFC_QUESTIONREQUEST      8 
-#define RFC_QUESTION              9
+#define RFC_QUESTION             9
 #define RFC_QUESTIONANSWERED     10
 #define RFC_QUESTIONRESULT       11
 #define RFC_GAMEOVER             12

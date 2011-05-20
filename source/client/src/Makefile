@@ -4,7 +4,7 @@ MAKE=make
 Q=@
 CFLAGS=-g -pthread -Wall `pkg-config --cflags  gtk+-2.0 --libs` `pkg-config gthread-2.0 --libs`
 LDFLAGS=`pkg-config --libs gtk+-2.0` -lgthread-2.0 -lpthread
-SRCS=client.c gui.c command.c listener.c
+SRCS=client.c gui.c
 OBJS=$(SRCS:.c=.o) libquizgui.a ../../common/src/mq.o ../../common/src/keymanager.o
 BIN=./client
 
