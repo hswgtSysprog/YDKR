@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 {
 	char *name   = "Eric";
 	char *server = "localhost";
-	char *port   = "50000";
+	char *port   = "54321";
 	int thread;
 	int ret;
 
