@@ -6,47 +6,24 @@
  =============================================================================
 */
 #include <stdlib.h>
-#include <arpa/inet.h>
 #include <stdio.h>
 #include <string.h>
-
-#include "../../common/src/mq.h"
+#include <sys/time.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include "command.h"
-#include "client.h"
+#include "gui_interface.h"
 void *command_thread(void *data)
 {
-	MSG msg;
-	uint16_t len;
-	send_login(GCI.name);
-
-	while(1)
-	{
-		msg = message_queue_receive_command();
-		memcpy(&len, msg.text+1, sizeof(uint16_t));
-		if(ntohs(len) > 1277) continue; /* sorry, but the message was lost in the mq -> don't send */
-		send(GCI.sock, msg.text, ntohs(len) + sizeof(t_msg_header), 0);
-	}
+	printf("huhu");
+	
 	return NULL;
 }
 
-void send_login(char* name)
-{
-	char msg[MAX_MSG];
-	t_msg_header hdr;
-
-	bzero(msg, sizeof(msg));
-	
-	hdr.type = RFC_LOGINREQUEST;
-	hdr.length = htons(strlen(name) + 1);
-	
-	memcpy(msg,
-	       &hdr, sizeof(hdr));
-	memcpy(msg + sizeof(hdr) + sizeof(uint8_t),
-	       name, strlen(name));
-
-	message_queue_send_command(msg);
-
-}
 	
 void choose_questions()
 {
@@ -61,7 +38,17 @@ void start_game()
 void send_answer()
 {
   //do something great
-}
+  /*
+   * variable anlgegen, header typ ist RFC_QUESTIONANSWERED
+   * 
+   *
+  
+  if (write(GCI.sock, &hdr, ret) < ret)
+	{
+		perror("write");
+		break;
+	}*/
+} 
 
 void end_game()
 {

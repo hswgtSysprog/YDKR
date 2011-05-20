@@ -6,7 +6,7 @@ CFLAGS=-g -pthread -Wall `pkg-config --cflags  gtk+-2.0 --libs` `pkg-config gthr
 LDFLAGS=`pkg-config --libs gtk+-2.0` -lgthread-2.0 -lpthread
 SRCS=client.c gui.c
 OBJS=$(SRCS:.c=.o) libquizgui.a ../../common/src/mq.o ../../common/src/keymanager.o
-BIN=./client
+BIN=./client.bin
 
 # Client
 all: $(OBJS)

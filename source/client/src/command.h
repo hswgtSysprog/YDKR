@@ -9,7 +9,7 @@
 #define COMMAND_H_
 
 void *command_thread(void *data);
-void send_login(char* name);
+
 void choose_questions();
 void start_game();
 void send_answer();
