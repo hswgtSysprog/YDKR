@@ -27,6 +27,7 @@
 #include "../../common/src/network.h"
 #include "../../common/src/client.h"
 
+
 // Functions
 void loginThread(int service);
 

@@ -71,4 +71,4 @@ int message_queue_send_command(char *text) {
 	return message_queue_send(keymng_local(KEY_COMMAND_MQ), text);
 }
 
-MSG2LOGGER message_queue_receive_command() {}
+// MSG2LOGGER message_queue_receive_command() {}
