@@ -86,20 +86,19 @@ void refresh_playerlist(t_msg_header *hdr)
 {
   //hier die Spieler Reihenfolge anhand der uebrgebenen Datenaktualisieren
   /*
-   * TODO: herausfinden ob das ein array ist auf das sizeof anwenden geht
+   * 
   int anzSpieler = sizeof(array)/sizeof(int);
   int i=0;
   
     while(i<anzSpieler)
     {
-    TODO: darf ich das hier aufrufen?
+   
       game_setPlayerName(int position, const char *name);
       game_setPlayerScore(int position, unsigned long score);
     }
     
-      eigenen Usernamen hervorheben:
+     
     void game_highlightPlayer(GCI.ID);
     */
-  return;
-
+  printf("foobar");
 }

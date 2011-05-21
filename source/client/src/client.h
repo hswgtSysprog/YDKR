@@ -29,7 +29,7 @@ global_client_info GCI;
 
 void send_login(char* name);
 int wait_loginOK();
-
+void setClientMode();
 
 
 #endif /*CLIENT_H_*/

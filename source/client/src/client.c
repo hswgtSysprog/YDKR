@@ -20,6 +20,7 @@
 #include "gui_interface.h"
 #include "client.h"
 #include "command.h"
+#include "listener.h"
 
 pthread_t command_thread_id, listener_thread_id;
 // hauptfunktion erwartet server und portnummer
@@ -63,6 +64,7 @@ int main(int argc, char **argv)
 				GCI.sock = sock;
 				send_login(GCI.name);
 				int state = wait_loginOK();
+				
 				if(state !=0){
 				 printf("Keine antwort erhalten \n");
 				 return 0;
@@ -70,9 +72,16 @@ int main(int argc, char **argv)
 				printf("juhu ich bin eingeloggt \n");
 				
 				guiInit(&argc, &argv);
+				printf("GUI init \n");
+				
 				guiMain();
-				/*
-				 * thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
+				printf("GUI MAIN \n");
+				
+				setClientMode();
+				preparation_showWindow(); 
+				
+				// start the threads
+				thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
 				if(thread)
 				{
 					printf("Failed to start Listener Thread\n");
@@ -85,7 +94,7 @@ int main(int argc, char **argv)
 					printf("Failed to start Command-Thread\n");
 					exit(0);
 				}
-				*/
+				
 			}
 
 			close(sock);
@@ -137,7 +146,9 @@ int wait_loginOK()
   }
 //receive rest of package
   ret = recv(GCI.sock, &GCI.ID, sizeof(GCI.ID), 0);
-    
+  GCI.ID = ntohs(GCI.ID);  
+  
+  printf("Client ID: %d",GCI.ID);
  //did we receive great things?
   if(ret == 0 || ret < sizeof(GCI.ID))
   {
@@ -145,4 +156,17 @@ int wait_loginOK()
       return -1;
   } 
  return 0;
+}
+
+void setClientMode()
+{
+    if(GCI.ID ==0)
+    {
+      printf("Spielleiter\n");
+      preparation_setMode(PREPARATION_MODE_PRIVILEGED);
+    }else
+    {
+      printf("Spieler \n");
+      preparation_setMode(PREPARATION_MODE_NORMAL);
+    }
 }
