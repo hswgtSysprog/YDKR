@@ -59,10 +59,15 @@ int main(int argc, char **argv)
 
 			if(connect(sock, p->ai_addr, p->ai_addrlen) == 0)
 			{
+			    printf("Socket OK");
 				GCI.sock = sock;
 				send_login(GCI.name);
-				wait_loginOK();
-				printf("juhu ich bin eingeloggt");
+				int state = wait_loginOK();
+				if(state !=0){
+				 printf("Keine antwort erhalten \n");
+				 return 0;
+				}
+				printf("juhu ich bin eingeloggt \n");
 				
 				guiInit(&argc, &argv);
 				guiMain();
@@ -102,6 +107,7 @@ void send_login(char* name)
 	
 	send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
 	send(GCI.sock, &name, sizeof(char) + strlen(name), 0);	
+	printf("login was send \n");
 }
 
 
@@ -114,24 +120,29 @@ int wait_loginOK()
   
   
   if(receiver == 0 || receiver < sizeof(hdr)) 
+  {
+    printf("message wrong size \n");
     return -1;
+  }
+  
+   printf("hdr length erstes: %d \n",hdr.length);
   
   hdr.length = ntohs(hdr.length);
   
   //is it what whe want?
   if(hdr.type != RFC_LOGINRESPONSEOK)
+  {
+    printf("message wrong type \n");
     return -1;
-  
-  // size of what we want?
-  if(hdr.length!=sizeof(GCI.ID))
-    return -1;
-    
-  // receive rest of package
+  }
+//receive rest of package
   ret = recv(GCI.sock, &GCI.ID, sizeof(GCI.ID), 0);
     
  //did we receive great things?
-  if(ret == 0 || receiver < sizeof(GCI.ID))
+  if(ret == 0 || ret < sizeof(GCI.ID))
+  {
+    printf("rest vom paket falsch \n");
       return -1;
-    
+  } 
  return 0;
 }
