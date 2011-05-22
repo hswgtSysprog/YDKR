@@ -74,11 +74,8 @@ int main(int argc, char **argv)
 				guiInit(&argc, &argv);
 				printf("GUI init \n");
 				
-				guiMain();
-				printf("GUI MAIN \n");
-				
 				setClientMode();
-				preparation_showWindow(); 
+				preparation_showWindow();
 				
 				// start the threads
 				thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
@@ -94,6 +91,8 @@ int main(int argc, char **argv)
 					printf("Failed to start Command-Thread\n");
 					exit(0);
 				}
+				
+				guiMain();
 				
 			}
 
@@ -145,12 +144,12 @@ int wait_loginOK()
     return -1;
   }
 //receive rest of package
-  ret = recv(GCI.sock, &GCI.ID, sizeof(GCI.ID), 0);
-  GCI.ID = ntohs(GCI.ID);  
+  ret = recv(GCI.sock, &GCI.ID, hdr.length, 0);
+ // GCI.ID = ntohs(GCI.ID);  
   
   printf("Client ID: %d",GCI.ID);
  //did we receive great things?
-  if(ret == 0 || ret < sizeof(GCI.ID))
+  if(ret == 0 || ret < hdr.length)
   {
     printf("rest vom paket falsch \n");
       return -1;
