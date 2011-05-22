@@ -85,7 +85,7 @@ int main(int argc, char **argv)
 	GCI.name = name;
 	
 	printf("Benutzername: %s\n", GCI.name);
-	struct addrinfo *addr_info, *p, hints;
+	struct addrinfo *addr_info, *p;
 
 	ret = getaddrinfo(server, port, NULL, &addr_info);
 	if(ret) {
@@ -135,7 +135,8 @@ int main(int argc, char **argv)
 					printf("Failed to start Listener Thread\n");
 					exit(0);
 				}
-				//
+				
+				sleep(2);
 				thread = pthread_create(&command_thread_id, NULL, &command_thread, NULL);
 				if(thread)
 				{
@@ -156,20 +157,25 @@ int main(int argc, char **argv)
 		return 0;
 }
 
+
+/*-----------void send_login(char* name)----------------------
+@description: sends the login name to the server
+-----------------------------------------------------------*/
 void send_login(char* name)
 {
-	t_msg_header hdr;
+  t_msg_header hdr;
 	
-	hdr.type = RFC_LOGINREQUEST;
-	//umdrehen <=16 Bit werte
-	hdr.length = htons(strlen(name));
-	
-	send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
-	send(GCI.sock, name, strlen(name), 0);	
-	printf("login was send \n");
+  hdr.type = RFC_LOGINREQUEST;
+  //umdrehen <=16 Bit werte
+  hdr.length = htons(strlen(name));	
+  send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
+  send(GCI.sock, name, strlen(name), 0);	
+  printf("login was send \n");
 }
 
-
+/*-----------int wat_loginOK()---------------------------
+@description: waits until login response is ok
+-----------------------------------------------------------*/
 int wait_loginOK()
 {
   int receiver, ret;
@@ -194,9 +200,9 @@ int wait_loginOK()
     printf("message wrong type \n");
     return -1;
   }
-//receive rest of package
+//receive rest of package and save the getted client ID
   ret = recv(GCI.sock, &GCI.ID, hdr.length, 0);
- // GCI.ID = ntohs(GCI.ID);  
+  
   
   printf("Client ID: %d",GCI.ID);
  //did we receive great things?
@@ -207,6 +213,10 @@ int wait_loginOK()
   } 
  return 0;
 }
+
+/*-----------void setClientMode()---------------------------
+@description: sets the Client Mode to privileged or normal
+-----------------------------------------------------------*/
 
 void setClientMode()
 {

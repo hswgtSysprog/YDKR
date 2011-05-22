@@ -15,5 +15,6 @@ void start_game();
 void send_answer();
 void end_game();
 void shutdown_game();
+void sendCR();
 
 #endif /* COMMAND_H_ */

@@ -35,6 +35,7 @@ void *listener_thread(void *data)
 		if (receiver ==0 || receiver < sizeof(hdr))
 		{
 		 printf("Fehler");
+		 return 0;
 		}	
 		
 		hdr.length = ntohs(hdr.length);
@@ -99,17 +100,26 @@ int parse_msg(t_msg_header *hdr)
 	}
   
     }
-    else if(hdr->type == RFC_QUESTION)
+  /*  else if(hdr->type == RFC_CATALOGRESPONSE)
     {
-      //Frage anzeigen
-      //TODO: darf ich das hier aufrufen?
-      // void game_setQuestion(const char *text);
-    }
+      int ret, laenge;
+      
+     // ret= recv(GCI.sock, &laenge, 32, 0);
+      
+      //printf("laenge: %d \n", laenge);
+      char * katalogname;
+      
+     // preparation_addCatalog(katalogname);
+      
+    }*/
     else if (hdr->type == RFC_ERRORWARNING)
     {
       //TODO: Fehlerbehandlungsmethoden entwickeln
       //Warnung ausgeben
     }
-    
+    else 
+        {
+	  printf("WAHH KENN ICH NED %i\n", hdr->type);
+	}  
     return 0;
 }
