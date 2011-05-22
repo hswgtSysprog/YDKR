@@ -12,6 +12,6 @@
 
 void *listener_thread(void *data);
 int parse_msg(t_msg_header *hdr);
-void refresh_playerlist(t_msg_header *hdr);
+void preparation_refresh_playerlist(t_msg_header *hdr);
 
 #endif /* LISTENER_H */

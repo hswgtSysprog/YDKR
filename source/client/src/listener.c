@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <signal.h>
@@ -7,6 +8,7 @@
 #include "client.h"
 #include "gui.h"
 #include "command.h"
+#include "gui_interface.h"
 
 /*============================================================================
  Name        : listener.c
@@ -56,7 +58,46 @@ int parse_msg(t_msg_header *hdr)
     if(hdr->type == RFC_PLAYERLIST)
     {
 	//Rangliste aktualisieren
-	// void refresh_playerlist(&hdr);
+	
+	printf("Spielerliste erhalten \n");
+	
+	uint32_t punktestand;
+	uint8_t playerid;
+	int i, anzahl, length, ret;
+	
+	 
+	anzahl= (hdr->length/37);
+	printf("Anzahl der Spieler: %d \n", anzahl);
+	
+	// erstmal aufraeumen
+	
+	preparation_clearPlayers();
+	
+	for(i=0; i < anzahl; ++i) 
+	{
+	  // for each player
+	  char*  playername = malloc(32); // speicher vorbereiten
+	  if( playername == NULL) { printf("shit happend\n"); exit(-1);}
+	 
+	 // spielername
+	 ret= recv(GCI.sock, playername, 32, MSG_WAITALL);
+	 if( ret ==0 || ret < 32)
+	 {
+	    printf("zu wenig byte gelesen");
+	    return -1;
+	  }
+	  recv(GCI.sock, &punktestand, 4, MSG_WAITALL);
+	  recv(GCI.sock, &playerid, 1, 0);
+	  
+	  length = strlen(playername);
+	  printf("Playername: %s \n", playername);
+	  preparation_addPlayer(playername);
+	  
+	  // speicher wieder freigeben
+	  free(playername);
+	  
+	}
+  
     }
     else if(hdr->type == RFC_QUESTION)
     {
@@ -71,34 +112,4 @@ int parse_msg(t_msg_header *hdr)
     }
     
     return 0;
-}
-
-/*
- ========================================================================
- Funktion:
-	 refresh_playerlist()
- Kurzbeschreibung:
-	Funktion zum aktualisieren der Spielerliste
-========================================================================
- */
-
-void refresh_playerlist(t_msg_header *hdr)
-{
-  //hier die Spieler Reihenfolge anhand der uebrgebenen Datenaktualisieren
-  /*
-   * 
-  int anzSpieler = sizeof(array)/sizeof(int);
-  int i=0;
-  
-    while(i<anzSpieler)
-    {
-   
-      game_setPlayerName(int position, const char *name);
-      game_setPlayerScore(int position, unsigned long score);
-    }
-    
-     
-    void game_highlightPlayer(GCI.ID);
-    */
-  printf("foobar");
 }

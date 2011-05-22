@@ -21,8 +21,23 @@
 #include "client.h"
 #include "command.h"
 #include "listener.h"
+#include <getopt.h>
 
 pthread_t command_thread_id, listener_thread_id;
+
+void print_help(char *self) {
+	printf("%s [params] [server]\n"
+	       "   parameters:\n"
+	       "                 -h  --help\n"
+	       "                 -n  --name <Guest>\n"
+	       "                 -p  --port <5000>\n"
+	       "                 -s  --student\n"
+	       "                 -d  --dozent\n"
+	       "\n", self);
+	exit(0);
+}
+
+
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char **argv)
 {
@@ -30,10 +45,46 @@ int main(int argc, char **argv)
 	char *server = "localhost";
 	char *port   = "54321";
 	int thread;
-	int ret;
+	int ret, c;
 
 
+	while(optind < argc) {
+		int option_index = 0;
+		static struct option long_options[] = {
+			{"name",    optional_argument, 0, 'n'},
+			{"port",    optional_argument, 0, 'p'},
+			{"help",    no_argument,       0, 'h'},
+			{0,0,0,0}
+		};
+		c = getopt_long(argc, argv, "dshn:p:", long_options, &option_index);
+		if(c == -1) break;
+
+		switch(c) {
+			case '?': /* unknown parameter */
+			case ':': /* missing argument */
+				print_help(argv[0]);
+				break;
+			case 'n':
+				name = strdup(optarg);
+				if(!name) return -1;
+				break;
+			case 'p':
+				port = strdup(optarg);
+				break;
+			case 'h':
+				print_help(argv[0]);
+				break;
+			default:
+				break;
+		}
+	}
+	while(optind < argc) {
+		server = argv[optind++];
+	}
+	
 	GCI.name = name;
+	
+	printf("Benutzername: %s\n", GCI.name);
 	struct addrinfo *addr_info, *p, hints;
 
 	ret = getaddrinfo(server, port, NULL, &addr_info);
@@ -111,10 +162,10 @@ void send_login(char* name)
 	
 	hdr.type = RFC_LOGINREQUEST;
 	//umdrehen <=16 Bit werte
-	hdr.length = htons(strlen(name) + 1);
+	hdr.length = htons(strlen(name));
 	
 	send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
-	send(GCI.sock, &name, sizeof(char) + strlen(name), 0);	
+	send(GCI.sock, name, strlen(name), 0);	
 	printf("login was send \n");
 }
 
