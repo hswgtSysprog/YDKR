@@ -102,14 +102,14 @@ int parse_msg(t_msg_header *hdr)
     }
   /*  else if(hdr->type == RFC_CATALOGRESPONSE)
     {
-      int ret, laenge;
-      
-     // ret= recv(GCI.sock, &laenge, 32, 0);
-      
-      //printf("laenge: %d \n", laenge);
-      char * katalogname;
-      
-     // preparation_addCatalog(katalogname);
+	int ret, laenge;
+	
+      // ret= recv(GCI.sock, &laenge, 32, 0);
+	
+	//printf("laenge: %d \n", laenge);
+	char * katalogname;
+	
+      // preparation_addCatalog(katalogname);
       
     }*/
     else if (hdr->type == RFC_ERRORWARNING)
