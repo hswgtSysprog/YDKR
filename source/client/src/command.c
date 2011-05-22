@@ -24,9 +24,6 @@ void *command_thread(void *data)
 	
 	printf("huuhu \n");
 	sendCR();
-	while(1) {
-	  sleep(1);
-	}
 	return 0;
 }
 
@@ -39,8 +36,9 @@ void sendCR()
   
   t_msg_header hdr;
   hdr.type = RFC_CATALOGREQUEST;
+  printf("cr: %i \n", hdr.type);
     //umdrehen <=16 Bit werte
-  hdr.length =0;	
+  hdr.length = 0;	
   send(GCI.sock, &hdr, sizeof(hdr), 0);
   printf("CR was send \n"); 
 }
