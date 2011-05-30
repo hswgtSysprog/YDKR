@@ -63,7 +63,7 @@ void send_QR()
 
 int getQuestion()
 {
-  int receiver, ret, i;
+  int receiver, ret, i, time, answ;
   t_msg_header hdr;
   receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
   // timer fuer timeout hier setzen
@@ -96,29 +96,32 @@ int getQuestion()
   
   for(i=0; i<4; i++)
   {
-       char* antwort=malloc(128 + 1);
+       char* antwort=malloc(128+1);
        if( antwort == NULL) { printf("shit happend\n"); exit(-1);}
         printf("mallociren %d \n",i);
-        if(i==3)
-        {
-            ret= recv(GCI.sock, antwort, 128, 0);
-        }
-        else
-        {
-            ret= recv(GCI.sock, antwort, 128, MSG_WAITALL);
-        }
-   
-        if(ret == 0 || ret < hdr.length)
+       
+        ret= recv(GCI.sock, antwort, 128, MSG_WAITALL);
+        
+       printf("Antwort: %s\n", antwort);
+        if(ret == 0 || ret <128)
         {
             printf("rest vom paket falsch \n");
             return -1;
         }
-        printf("Antwort: %s\n", antwort);
-        game_setAnswer(i+1, antwort);
+        
+     
+        answ = i+1;
+        game_setAnswer(answ, antwort);
         
         free(antwort);
   }
- 
+  
+ ret= recv(GCI.sock, &time, 2, 0);
+       if(ret == 0 || ret <2)
+        {
+            printf("rest vom paket falsch \n");
+            return -1;
+        }
  return 0;
     
 }
