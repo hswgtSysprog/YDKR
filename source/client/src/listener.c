@@ -12,15 +12,11 @@
 
 /*============================================================================
  Name        : listener.c
- Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
+ Author      :Kathrin Holzmann
  Version     : May 16, 2011 08:38:47 PM
  Project     : client
  =============================================================================
 */
-
-
-/* TODO: Handshake zwischen listener und anderen threads? semaphor?
- */
 
 void *listener_thread(void *data)
 {
@@ -34,7 +30,7 @@ void *listener_thread(void *data)
 		receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);		
 		if (receiver ==0 || receiver < sizeof(hdr))
 		{
-		 printf("Fehler");
+		 printf("Fehler\n");
 		 return 0;
 		}	
 		
@@ -73,7 +69,7 @@ int parse_msg(t_msg_header *hdr)
 		printf("Anzahl der Spieler: %d \n", anzahl);
 		
 		// erstmal aufraeumen
-		
+		if(GCI.status==preparation)
 		preparation_clearPlayers();
 		
 		for(i=0; i < anzahl; ++i) 
@@ -91,7 +87,11 @@ int parse_msg(t_msg_header *hdr)
 			
 			length = strlen(playername);
 			printf("Playername: %s \n", playername);
-			preparation_addPlayer(playername);
+                        if(GCI.status==preparation)
+                        {
+                            preparation_addPlayer(playername);
+                        }
+			
 			// speicher wieder freigeben
 			free(playername);
 		}
@@ -122,8 +122,12 @@ int parse_msg(t_msg_header *hdr)
 			return ERR_KILL_CLIENT;
 		}
 		filename[hdr->length] = '\0';
+		GCI.status = playing;
 
 		// TODO: Tell the gui to start the game
+                preparation_hideWindow();
+                game_showWindow();
+                
 		// TODO: Check if filename 0 (it's allowed)
 
 		free(filename);

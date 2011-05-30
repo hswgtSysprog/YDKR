@@ -8,8 +8,6 @@
 #ifndef COMMAND_H_
 #define COMMAND_H_
 
-void *command_thread(void *data);
-
 void choose_questions();
 void start_game();
 void send_answer();

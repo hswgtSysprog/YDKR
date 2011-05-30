@@ -121,6 +121,7 @@ int main(int argc, char **argv)
 				 return 0;
 				}
 				printf("juhu ich bin eingeloggt \n");
+                                GCI.status = preparation;
 				
 				guiInit(&argc, &argv);
 				printf("GUI init \n");
@@ -137,15 +138,11 @@ int main(int argc, char **argv)
 				}
 				
 				sleep(2);
-				thread = pthread_create(&command_thread_id, NULL, &command_thread, NULL);
-				if(thread)
-				{
-					printf("Failed to start Command-Thread\n");
-					exit(0);
-				}
+				
+				sendCR();
 				
 				guiMain();
-				
+				guiDestroy();
 			}
 
 			close(sock);
@@ -230,3 +227,56 @@ void setClientMode()
       preparation_setMode(PREPARATION_MODE_NORMAL);
     }
 }
+
+
+/*-----------void sendCR()---------------------------
+@description: sends the Catalouge Request
+-----------------------------------------------------------*/
+
+void sendCR()
+{
+  
+  t_msg_header hdr;
+  hdr.type = RFC_CATALOGREQUEST;
+  printf("cr: %i \n", hdr.type);
+    //umdrehen <=16 Bit werte
+  hdr.length = 0;       
+  send(GCI.sock, &hdr, sizeof(hdr), 0);
+  printf("CR was send \n"); 
+}
+        
+void choose_questions()
+{
+  //do something great
+}
+
+void start_game()
+{
+  //do something great
+}
+
+void send_answer()
+{
+  //do something great
+  /*
+   * variable anlgegen, header typ ist RFC_QUESTIONANSWERED
+   * 
+   *
+  
+  if (write(GCI.sock, &hdr, ret) < ret)
+        {
+                perror("write");
+                break;
+        }*/
+} 
+
+void end_game()
+{
+  //do something great
+}
+
+void shutdown_game()
+{
+  //do something great
+}
+  

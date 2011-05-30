@@ -14,7 +14,12 @@
 
 #define ERR_OOM -1
 #define ERR_KILL_CLIENT -2
-
+enum gameStatus
+{
+    preparation, 
+    playing, 
+    end
+};
 
 typedef struct
 {
@@ -23,9 +28,11 @@ typedef struct
 	int sock;
 	unsigned long score;
 	char* question;
+        enum gameStatus status;
 }global_client_info;
 
 global_client_info GCI;
+
 
 void send_login(char* name);
 int wait_loginOK();
