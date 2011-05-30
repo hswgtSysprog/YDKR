@@ -17,7 +17,8 @@
 
 
 /* client */
-#define KEY_GCI_SEM 0x42 // key for global struct
+#define KEY_GCI_SEM     0x42 // key for global struct
+#define KEY_GCISOCK_SEM 0x23 // key for client socket
 
 #define KEY_COMMAND_MQ      0x41 // command message queue
 #define KEY_RANKING	    0x44 // triggers update of ranking list
