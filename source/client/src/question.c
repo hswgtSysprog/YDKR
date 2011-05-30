@@ -23,6 +23,7 @@
 #include "client.h"
 #include "command.h"
 #include "listener.h"
+#include "question.h"
 #include <getopt.h>
 
 void *question_thread(void *data)
@@ -35,7 +36,9 @@ void *question_thread(void *data)
        receive=getQuestion();
       //waitAnswer
        //semaphor 
+       receive =0;
     }
+    return 0;
 }
 
 /*
@@ -62,8 +65,6 @@ int getQuestion()
 {
   int receiver, ret, i;
   t_msg_header hdr;
-  char* frage = malloc(256);
-  char* antwort;
   receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
   // timer fuer timeout hier setzen
   
@@ -74,31 +75,50 @@ int getQuestion()
     return -1;
   }
   
-   printf("hdr length erstes: %d \n",hdr.length);
+   printf("hdr length: %d \n",hdr.length);
   
-  hdr.length = ntohs(hdr.length);
+  //hdr.length = ntohs(hdr.length);
   
   //is it what whe want?
   if(hdr.type != RFC_QUESTION)
   {
-    printf("message wrong type \n");
+    printf("message wrong type %d \n", hdr.type);
     return -1;
   }
+  printf("Type: Question:\n");
+  char* frage = malloc(256);
 //receive rest of package and save the getted client ID
   ret = recv(GCI.sock, frage, hdr.length, MSG_WAITALL);
-  printf("Frage: %s",frage);
+  printf("Frage: %s\n",frage);
+  game_setQuestion(frage);
  //did we receive great things?
+  free(frage);
   
   for(i=0; i<4; i++)
   {
-      antwort=malloc(128);
+       char* antwort=malloc(128);
+       if( antwort == NULL) { printf("shit happend\n"); exit(-1);}
+        printf("mallociren %d \n",i);
+        if(i==3)
+        {
+            ret= recv(GCI.sock, antwort, 128, 0);
+        }
+        else
+        {
             ret= recv(GCI.sock, antwort, 128, MSG_WAITALL);
-   }
-  if(ret == 0 || ret < hdr.length)
-  {
-    printf("rest vom paket falsch \n");
-      return -1;
-  } 
+        }
+   
+        if(ret == 0 || ret < hdr.length)
+        {
+            printf("rest vom paket falsch \n");
+            return -1;
+        }
+        printf("Antwort: %s\n", antwort);
+        game_setAnswer(i+1, antwort);
+        
+        free(antwort);
+  }
+ 
  return 0;
     
 }

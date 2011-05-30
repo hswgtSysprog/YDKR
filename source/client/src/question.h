@@ -1,5 +1,5 @@
-#ifndef QUESTION_H_
-#define QUESTION_H_
+#ifndef QUESTION_H
+#define QUESTION_H
 /*============================================================================
  Name        : question.h
  Author      : Kathrin Holzmann
@@ -12,4 +12,5 @@ void *question_thread(void *data);
 
 void send_QR();
 
+int getQuestion();
 #endif

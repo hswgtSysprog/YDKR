@@ -17,13 +17,14 @@
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <getopt.h>
 #include "gui_interface.h"
 #include "client.h"
 #include "command.h"
 #include "listener.h"
-#include <getopt.h>
 
-pthread_t command_thread_id, listener_thread_id;
+
+pthread_t listener_thread_id;
 
 void print_help(char *self) {
 	printf("%s [params] [server]\n"
@@ -245,38 +246,3 @@ void sendCR()
   printf("CR was send \n"); 
 }
         
-void choose_questions()
-{
-  //do something great
-}
-
-void start_game()
-{
-  //do something great
-}
-
-void send_answer()
-{
-  //do something great
-  /*
-   * variable anlgegen, header typ ist RFC_QUESTIONANSWERED
-   * 
-   *
-  
-  if (write(GCI.sock, &hdr, ret) < ret)
-        {
-                perror("write");
-                break;
-        }*/
-} 
-
-void end_game()
-{
-  //do something great
-}
-
-void shutdown_game()
-{
-  //do something great
-}
-  

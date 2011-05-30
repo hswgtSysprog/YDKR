@@ -1,15 +1,22 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include <sys/socket.h>
+#include <netdb.h>
+#include <netinet/in.h>
 #include <arpa/inet.h>
-#include <signal.h>
+#include <getopt.h>
 #include "listener.h"
 #include "client.h"
 #include "gui.h"
 #include "command.h"
+#include "question.h"
 #include "gui_interface.h"
 
+pthread_t question_thread_id;
 /*============================================================================
  Name        : listener.c
  Author      :Kathrin Holzmann
@@ -114,6 +121,7 @@ int parse_msg(t_msg_header *hdr)
 		free(filename);
 	}
 	else if (hdr->type == RFC_STARTGAME) {
+                int thread;
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
 
@@ -126,8 +134,15 @@ int parse_msg(t_msg_header *hdr)
 
 		// TODO: Tell the gui to start the game
                 preparation_hideWindow();
-                game_showWindow();
                 
+                thread = pthread_create(&question_thread_id, NULL, &question_thread, NULL);
+                if(thread)
+                {
+                    printf("Failed to start Listener Thread\n");
+                    exit(0);
+                }
+                game_showWindow();
+                          
 		// TODO: Check if filename 0 (it's allowed)
 
 		free(filename);
