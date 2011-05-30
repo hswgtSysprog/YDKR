@@ -86,7 +86,7 @@ int getQuestion()
     return -1;
   }
   printf("Type: Question:\n");
-  char* frage = malloc(256);
+  char* frage = malloc(hdr.length + 1);
 //receive rest of package and save the getted client ID
   ret = recv(GCI.sock, frage, hdr.length, MSG_WAITALL);
   printf("Frage: %s\n",frage);
@@ -96,7 +96,7 @@ int getQuestion()
   
   for(i=0; i<4; i++)
   {
-       char* antwort=malloc(128);
+       char* antwort=malloc(128 + 1);
        if( antwort == NULL) { printf("shit happend\n"); exit(-1);}
         printf("mallociren %d \n",i);
         if(i==3)
