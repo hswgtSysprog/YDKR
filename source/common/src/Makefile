@@ -7,7 +7,7 @@ CC=gcc
 MAKE=make
 
 CFLAGS=
-SRCS=keymanager.c 
+SRCS=keymanager.c sem.c 
 OBJS=$(SRCS:.c=.o)
 LIB=
 
