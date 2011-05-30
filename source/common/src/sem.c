@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <signal.h>
 #include "sem.h"
-#include "mq.h"
 
 int sem_open(key_t key) {
 	int id = semget(key, 0, 0); /* Semaphor benutzen */
