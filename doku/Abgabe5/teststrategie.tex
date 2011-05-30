@@ -10,7 +10,7 @@
 %opening
 
 \title{Teststrategie}
-\author{Rainer Hihn 19859\\Kathrin Holzmann 20228\\Florian Rosenkranz 19895}
+\author{Kathrin Holzmann 20228}
 \date{22.5.2011}
 \begin{document}
 \sffamily
@@ -41,4 +41,48 @@ am Ende der Entwicklungsphase durchgeführt. Der White-Box-Test betrachtet vorer
 vorhandenen Programmmodule und wird dann zur gegebenen Zeit erweitert.
 Wird beim White-Box-Test ein Fehler auftreten kann dieser direkt im Quellcode als „To-Do“ markiert
 werden. Eine Beschreibung für den Entwickler kann als Kommentar eingefügt werden.
+\newpage
+\section{Black-Box-Test}
+Vorraussetzungen: Zwei Rechner die über ein Netzwerk verbunden sind. Auf einem der PCs sind die Dateien für den Server vorhanden auf dem anderen die für den Client.
+\newline
+
+\begin{tabular}{|l|p{5cm}|p{5cm}|l|}
+\hline Spielphase & Vorgehen & erwartetes Ergebniss & Testergebniss \\ 
+\hline Login 01 & Starten des Clients, ohne den Server vorher zu starten & Fehlermeldung durch den Client ausgegeben. & • \\ 
+\hline Login  02 & Server starten, bei den nachfolgenden Testfällen läuft der Server bereits.  Starten des Clients ohne Parameter & Fehlermeldung durch den Client, wegen Fehlender Parameter & • \\ 
+\hline Login  03 & Starten des Clients mit angabe des parameters -h & Anzeigen der Hilfe & • \\ 
+\hline Login 04 &  Starten des Clients mit angabe des Namens & Spiel vorbereitungsfenster wird angezeigt. Spieler ist Spielleiter.Liste der Kataloge ist angezeigt. Spielername wird lorrekt in der Spielerliste angezeigt & • \\ 
+\hline Login 05 & Test Login 04 ist voraussetzung. Weiteren Client anmelden & Spiel vorbereitungsfenster wird angezeigt.Catalogliste wird angezeigt. Spielernamen aller Spieler werden sowohl beim neuen Spieler als auch beim Spielleiter angezeigt. & • \\ 
+\hline Login 06 & Test Login 05 ist vorraussetzung. Der Spielleiter wählt einen anderen Katalog aus & Der Spieler bekommt die änderung der Auswahl angezeigt & • \\ 
+\hline Login 07 & Der Spielleiter beendet das Spiel & Der Mitspieler bekommt eine Fehlermeldung und das Spiel beendet sich. & • \\ 
+\hline Login 08 & Der Spieler beendet das Spiel & Die Benutzerliste des Spielleiters wird aktualisiert. & • \\ 
+\hline 
+\end{tabular} 
+\newpage
+
+Vorraussetzungen: Der Server läuft bereits. Der Spielleiter ist bereits angemeldet.
+\newline
+\begin{tabular}{|l|p{5cm}|p{5cm}|l|}
+\hline Spielphase & Vorgehen & erwartetes Ergebnis & Testergebnis \\ 
+\hline Spiel 01 & Der Spielleiter klickt auf starten & Fehlermeldung & • \\ 
+\hline Spiel 02 & mindestens ein Weiterer Spieler ist nun angemeldet. Der Spielleiter klickt auf Start & Die erste Frage wird auf allen Clients angezeigt & • \\ 
+\hline Spiel 03 & Der Spieler lässt die Zeit ablaufen & Der Spieler bekommt keine Punkte. Der Spieler bekommt eine neue Frage & • \\ 
+\hline Spiel 04 & Der Spieler beantwortet die Frage vor ablauf der zeit: richtig & Der Spieler erhält einen Punktestand * verbleibender Zeit und eine neue Frage. & • \\ 
+\hline Spiel 05 & Der Spieler beantwortet eine Frage vor ablauf der zeit: Falsch & Der Spiele bekommt keine Punkte und eine neue Frage. & • \\ 
+\hline Spiel 06 & Der Spieler verlässt vorzeitig das Spiel & Die Rangliste aller Spieler wird aktualisiert & • \\ 
+\hline Spiel 07 & Ein anderer Spieler hat eine Frage richtig beantwortet. & Die Rangliste auf allen Clients wird aktualisiert. & • \\ 
+\hline Spiel 08 & Der Spielleiter verlässt das Spiel & Das Spiel wird mit einer Fehlermeldung abgebrochen & • \\ 
+\hline Spiel 09 & Ein weiterer Mitspieler versucht sich anzumelden & Der Client erhält eine Fehlermeldung und wird nicht angemeldet & • \\ 
+\hline 
+\end{tabular} 
+\newline
+Voraussetzungen: Mehrere Spieler sind angemeldet und unterschiedlich weit im beantworten der Fragen fortgeschritten.
+\newline
+\begin{tabular}{|l|p{5cm}|p{5cm}|l|}
+\hline Spielphase & Vorgehen & erwartetes Ergebnis & Testergebnis \\ 
+\hline Ende 01 & Der Spieler hat die letzte Frage beantwortet. & Es erscheint das Ende Fenster. Die Rangliste verändert sich noch & • \\ 
+\hline Ende 02 & Der Spieler hat die meisten Punkte & Es erscheint ein Fenster "Sie haben gewonnen" & • \\ 
+\hline 
+\end{tabular} 
+
 \end{document}

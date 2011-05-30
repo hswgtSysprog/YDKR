@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.5.22)  22 MAY 2011 09:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.5.22)  26 MAY 2011 03:44
 entering extended mode
  %&-line parsing enabled.
 **teststrategie.tex
@@ -159,14 +159,95 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--44
 
  []
 
-[3] (./teststrategie.aux) ) 
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 46--48
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 49.
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 51.
+
+LaTeX Font Info:    No file OMScmss.fd. on input line 51.
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbullet' on input line 51.
+
+
+Underfull \hbox (badness 7796) in paragraph at lines 54--54
+[]\T1/cmss/m/n/10 Spiel vor-bere-itungs-fen-ster wird
+ []
+
+
+Underfull \hbox (badness 3623) in paragraph at lines 54--54
+\T1/cmss/m/n/10 angezeigt. Spiel-er ist Spielleit-
+ []
+
+
+Underfull \hbox (badness 7796) in paragraph at lines 55--55
+[]\T1/cmss/m/n/10 Spiel vor-bere-itungs-fen-ster wird
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+\T1/cmss/m/n/10 angezeigt.Catalogliste wird
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+\T1/cmss/m/n/10 angezeigt. Spiel-er-na-men aller
+ []
+
+
+Underfull \hbox (badness 7326) in paragraph at lines 57--57
+[]\T1/cmss/m/n/10 Der Mit-spiel-er bekommt eine
+ []
+
+
+Overfull \hbox (101.4201pt too wide) in paragraph at lines 49--61
+[][] 
+ []
+
+[4]
+Underfull \hbox (badness 1028) in paragraph at lines 68--68
+\T1/cmss/m/n/10 nun angemeldet. Der Spielleit-er
+ []
+
+
+Underfull \hbox (badness 1132) in paragraph at lines 68--68
+[]\T1/cmss/m/n/10 Die er-ste Frage wird auf allen
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 84--84
+[]\T1/cmss/m/n/10 Es er-scheint ein Fen-ster ßie
+ []
+
+
+Overfull \hbox (82.5877pt too wide) in paragraph at lines 63--87
+[] 
+ []
+
+
+Overfull \hbox (82.5877pt too wide) in paragraph at lines 63--87
+[] 
+ []
+
+[5] (./teststrategie.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2498 strings out of 495062
- 31510 string characters out of 1182644
- 80162 words of memory out of 3000000
- 5678 multiletter control sequences out of 15000+50000
+ 2510 strings out of 495062
+ 31659 string characters out of 1182644
+ 86123 words of memory out of 3000000
+ 5688 multiletter control sequences out of 15000+50000
  11741 words of font info for 30 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 25i,6n,24p,340b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,8n,24p,340b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on teststrategie.dvi (3 pages, 1964 bytes).
+Output written on teststrategie.dvi (5 pages, 9380 bytes).
