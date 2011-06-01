@@ -11,6 +11,7 @@
 
 
 #include "../../common/src/messages.h"
+#include "../../common/src/question.h"
 
 #define ERR_OOM -1
 #define ERR_KILL_CLIENT -2

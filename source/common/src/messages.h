@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include <pthread.h>
 #include <sys/types.h>
+#include "./question.h"
 
 /*
  * RFC type defines
@@ -155,7 +156,7 @@ typedef struct question_request{
 typedef struct question{
         const uint8_t type;
         uint16_t length;
-        char* data;
+        QuestionMessage data;
 }QUESTION;
 
 

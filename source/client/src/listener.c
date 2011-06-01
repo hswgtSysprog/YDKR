@@ -13,7 +13,6 @@
 #include "client.h"
 #include "gui.h"
 #include "command.h"
-#include "question.h"
 #include "gui_interface.h"
 
 pthread_t question_thread_id;
@@ -60,7 +59,7 @@ void *listener_thread(void *data)
 int parse_msg(t_msg_header *hdr)
 {
 	size_t ret = 0;
-
+/*####################PLAYERLISTE######################*/
 	if(hdr->type == RFC_PLAYERLIST)
 	{
 		//Rangliste aktualisieren
@@ -98,11 +97,19 @@ int parse_msg(t_msg_header *hdr)
                         {
                             preparation_addPlayer(playername);
                         }
+                        else if(GCI.status==playing)
+                        {
+                            game_setPlayerName(i+1,playername);
+                            if(GCI.ID==playerid){ game_highlightPlayer(i+1);} //highlight player
+                            game_setPlayerScore(i+1,ntohl(punktestand));
+                        }
 			
 			// speicher wieder freigeben
 			free(playername);
 		}
 	}
+	
+/*###############################CATALOG HANDLING#################################*/
 	else if(hdr->type == RFC_CATALOGRESPONSE || hdr->type == RFC_CATALOGCHANGE) {
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
@@ -120,8 +127,9 @@ int parse_msg(t_msg_header *hdr)
 
 		free(filename);
 	}
+	
+/*#################################GAME ON STARTUP ####################################*/
 	else if (hdr->type == RFC_STARTGAME) {
-                int thread;
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
 
@@ -134,19 +142,16 @@ int parse_msg(t_msg_header *hdr)
 
 		// TODO: Tell the gui to start the game
                 preparation_hideWindow();
-                
-                thread = pthread_create(&question_thread_id, NULL, &question_thread, NULL);
-                if(thread)
-                {
-                    printf("Failed to start Listener Thread\n");
-                    exit(0);
-                }
                 game_showWindow();
+                    //get first Question
+                send_QR(0);
+
                           
 		// TODO: Check if filename 0 (it's allowed)
 
 		free(filename);
 	}
+/*##########################ERROR HONEY###########################################*/
 	else if (hdr->type == RFC_ERRORWARNING) {
 		uint8_t error_code;
 		char *error_message = "Fail!";
@@ -174,5 +179,70 @@ int parse_msg(t_msg_header *hdr)
 				return ERR_KILL_CLIENT;		
 		}
 	}
+/*#########################################QUESTION COMES IN###################################################*/
+	else if(hdr->type == RFC_QUESTION)
+        {
+            printf("get question: \n");
+          int i, ret;
+                char message[50];
+                memset(message,0,50);
+                game_setStatusIcon(0);
+
+                QuestionMessage fragen;
+                ret = recv(GCI.sock, &fragen, hdr->length, MSG_WAITALL);
+                printf("frage: %s", fragen.question);
+                game_setQuestion(fragen.question);
+
+                //show answers
+                for(i=0;i<=3;i++)
+                {
+                    printf("answer: %s", fragen.answers[i]);
+                    game_setAnswer(i, fragen.answers[i]);
+                   
+                }
+
+                //show Time
+                sprintf(message,"Sie haben %i Sekunden Zeit",ntohs(fragen.timeout));
+                game_setStatusText(message);
+
+      }
+/*#######################Question Result#####################*/
+        else if(hdr->type== RFC_QUESTIONRESULT)
+        {
+            printf("Questionresul: \n");
+            int ret;
+            game_unmarkAnswers();
+            questionResult result;
+            ret = recv(GCI.sock, &result, hdr->length, MSG_WAITALL);
+            
+            if(ret ==0 || ret <hdr->length)
+            {
+                printf("Falsche paketgroesse \n");
+                return -1;
+            }
+            
+            game_markAnswerCorrect(result.correct);
+            
+            //parse result
+            
+            if(result.selection == 255)
+            {
+               game_setStatusText("Zeit abgelaufen");
+                game_setStatusIcon(3);
+            }
+            else if(result.selection!=result.correct)
+            {
+                 game_setStatusText("Schade, leider Falsch!");
+                game_setStatusIcon(2);
+                game_markAnswerWrong(result.selection);
+            }else
+            {
+                game_setStatusText("Super richtige Antwort!");
+                game_setStatusIcon(1);
+            }
+            
+            send_QR(5);
+            game_unmarkAnswers();
+        }
     return 0;
 }

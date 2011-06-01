@@ -14,5 +14,6 @@ void send_answer();
 void end_game();
 void shutdown_game();
 void sendCR();
+void send_QR();
 
 #endif /* COMMAND_H_ */

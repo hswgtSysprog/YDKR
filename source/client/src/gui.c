@@ -19,7 +19,7 @@
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "gui_interface.h"
+#include "../../common/src/messages.h"
 #include "client.h"
 #include "command.h"
 #include "listener.h"
@@ -55,6 +55,15 @@ void preparation_onCatalogChanged(const char *newSelection)
 
 }
 
+/*
+ ========================================================================
+ Funktion:
+         preparation_onStartClicked
+ Kurzbeschreibung:
+         Callback Funktion.
+         Wird aufgerufen wenn der Spielleiter auf die Start Schaltflaeche geklickt hat
+ ========================================================================
+ */
 void preparation_onStartClicked(const char *currentSelection){
     
     printf("cataloge change \n");
@@ -69,17 +78,46 @@ void preparation_onStartClicked(const char *currentSelection){
     hdr.length = htons(strlen(currentSelection));   
     send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
     send(GCI.sock, currentSelection, strlen(currentSelection), 0);
-
 }
+
+
+/*
+ ========================================================================
+ Funktion:
+         preparation_onWindowClosed
+ Kurzbeschreibung:
+         Callback Funktion.
+         Wird aufgerufen wenn der Spieler das Fenster schliesst
+ ========================================================================
+ */
 void preparation_onWindowClosed(void){
     
-  guiShowMessageDialog("Wollen Sie das Programm wirklich beenden?", 0);
-  sleep(2);
+  guiShowMessageDialog("Bis bald!", 0);
+  sleep(20);
         guiQuit();
 }
 
-void game_onAnswerClicked(int index){
+/*
+ ========================================================================
+ Funktion:
+         preparation_onAnswerClicked
+ Kurzbeschreibung:
+         Callback Funktion.
+         Wird aufgerufen wenn der Spieler eine Antwort gewaehlt hat.
+ ========================================================================
+ */
 
+void game_onAnswerClicked(int index)
+{
+    printf("Answer clicked: %d\n", index);
+    t_msg_header hdr;
+    hdr.type = RFC_QUESTIONANSWERED;
+    hdr.length = 1;
+    hdr.length=htons(hdr.length);
+   
+    
+    send(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
+    send(GCI.sock, &index, 1,0);
 }
 /*
  ========================================================================
@@ -94,10 +132,8 @@ void game_onAnswerClicked(int index){
  */
 
 void game_onWindowClosed(void) {
-  /*TODO: rueckgabe von guiShowMessageDialog, welche Reihenfolge zum beenden?
-   */
-	guiShowMessageDialog("Wollen Sie das Programm wirklich beenden?", 0);
-        sleep(2);
+        guiShowMessageDialog("Bis bald!", 0);
+        sleep(10);
 	guiQuit();
 	 
 }

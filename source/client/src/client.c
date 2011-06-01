@@ -245,4 +245,24 @@ void sendCR()
   send(GCI.sock, &hdr, sizeof(hdr), 0);
   printf("CR was send \n"); 
 }
-        
+
+/* ========================================================================
+ Funktion:
+        send_QR
+ Kurzbeschreibung:
+        Fordert die nächste Frage an.
+ ========================================================================
+ */
+
+void send_QR(int sleepTime)
+{
+   sleep(sleepTime);
+  t_msg_header hdr;
+  hdr.type = RFC_QUESTIONREQUEST;
+  printf("cr: %i \n", hdr.type);
+    //umdrehen <=16 Bit werte
+  hdr.length = 0;       
+  send(GCI.sock, &hdr, sizeof(hdr), 0);
+  printf("QR was send \n"); 
+}
+
