@@ -7,7 +7,11 @@ CC=gcc
 MAKE=make
 
 CFLAGS=
+
 SRCS= 
+
+ 
+
 OBJS=$(SRCS:.c=.o)
 LIB=
 

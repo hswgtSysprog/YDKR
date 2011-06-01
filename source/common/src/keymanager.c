@@ -8,7 +8,6 @@
 
 #include <unistd.h>
 #include "keymanager.h"
-#include "mq.h"
 
 /* generic keymanager */
 key_t keymng(int offset) {
