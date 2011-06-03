@@ -90,10 +90,9 @@ void preparation_onStartClicked(const char *currentSelection){
          Wird aufgerufen wenn der Spieler das Fenster schliesst
  ========================================================================
  */
-void preparation_onWindowClosed(void){
-    
-  guiShowMessageDialog("Bis bald!", 0);
-  sleep(20);
+void preparation_onWindowClosed(void)
+{
+
         guiQuit();
 }
 
@@ -131,9 +130,7 @@ void game_onAnswerClicked(int index)
  ========================================================================
  */
 
-void game_onWindowClosed(void) {
-        guiShowMessageDialog("Bis bald!", 0);
-        sleep(10);
-	guiQuit();
-	 
+void game_onWindowClosed(void)
+{
+	guiQuit();	 
 }

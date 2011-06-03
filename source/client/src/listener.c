@@ -193,22 +193,33 @@ int parse_msg(t_msg_header *hdr)
                 game_setStatusIcon(0);
 
                 QuestionMessage fragen;
-                ret = recv(GCI.sock, &fragen, hdr->length, MSG_WAITALL);
-                printf("frage: %s", fragen.question);
-                game_setQuestion(fragen.question);
-
-                //show answers
-                for(i=0;i<=3;i++)
+                
+                printf("\nsize of header: %i\n", hdr->length);
+                if( hdr->length != 0 )
                 {
-                    printf("answer: %s", fragen.answers[i]);
-                    game_setAnswer(i, fragen.answers[i]);
+                   ret = recv(GCI.sock, &fragen, hdr->length, 0);
+                
+                   printf("frage: %s", fragen.question);
+                   game_setQuestion(fragen.question);
+                   bzero(fragen.question,sizeof(fragen.question));
+                   //fragen.question = NULL;
+                    //show answers
+                    for(i=0;i<=3;i++)
+                    {
+                        printf("answer: %s", fragen.answers[i]);
+                        game_setAnswer(i, fragen.answers[i]);
+                       
+                    }
                    
-                }
-
-                //show Time
-                sprintf(message,"Sie haben %i Sekunden Zeit",ntohs(fragen.timeout));
-                game_setStatusText(message);
-
+                    //show Time
+                    sprintf(message,"Sie haben %i Sekunden Zeit",ntohs(fragen.timeout));
+               }else
+               {
+                   sprintf(message,"Alle Fragen beantwortet, bitte Warten.");
+               }
+                
+              game_setStatusText(message);
+              sprintf(message," ");
       }
 /*#######################Question Result#####################*/
         else if(hdr->type== RFC_QUESTIONRESULT)
@@ -245,8 +256,17 @@ int parse_msg(t_msg_header *hdr)
                 game_setStatusIcon(1);
             }
             
-            send_QR(5);
+            send_QR(3);
             game_unmarkAnswers();
         }
+        else if(hdr->type == RFC_GAMEOVER)
+        {
+            uint8_t rank;
+            char message[50];
+            ret = recv(GCI.sock, &rank, hdr->length, MSG_WAITALL);
+            sprintf(message,"Game Over! Du hast Rang: %i erreicht!",rank);
+            guiShowMessageDialog(message, 1);
+        }
+
     return 0;
 }
