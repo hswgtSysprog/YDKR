@@ -83,8 +83,12 @@ int parse_msg(t_msg_header *hdr)
 			// for each player
 			char*  playername = malloc(32); // speicher vorbereiten
 			if( playername == NULL) { printf("shit happend\n"); exit(-1);}
-				 // spielername
+				 
+				 
+			sem_P(keymng_local(KEY_GCI_SEM));	 
+			 // spielername 
 			ret= recv(GCI.sock, playername, 32, MSG_WAITALL);
+                        sem_V(keymng_local(KEY_GCI_SEM));
 			if( ret ==0 || ret < 32) {
 				return ERR_KILL_CLIENT;
 			}
@@ -232,7 +236,7 @@ int parse_msg(t_msg_header *hdr)
             }
             else if(result.selection!=result.correct)
             {
-                 game_setStatusText("Schade, leider Falsch!");
+                game_setStatusText("Schade, leider Falsch!");
                 game_setStatusIcon(2);
                 game_markAnswerWrong(result.selection);
             }else

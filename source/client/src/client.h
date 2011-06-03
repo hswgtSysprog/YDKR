@@ -12,7 +12,8 @@
 
 #include "../../common/src/messages.h"
 #include "../../common/src/question.h"
-
+#include "../../common/src/sem.h"
+#include "../../common/src/keymanager.h"
 #define ERR_OOM -1
 #define ERR_KILL_CLIENT -2
 enum gameStatus

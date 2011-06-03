@@ -8,7 +8,7 @@ MAKE=make
 
 CFLAGS=
 
-SRCS= 
+SRCS=sem.c keymanager.c 
 
  
 

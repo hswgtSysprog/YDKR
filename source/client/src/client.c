@@ -117,6 +117,9 @@ int main(int argc, char **argv)
 				send_login(GCI.name);
 				int state = wait_loginOK();
 				
+                                // move to better positioon
+                                sem_V(keymng_local(KEY_GCI_SEM));
+                                
 				if(state !=0){
 				 printf("Keine antwort erhalten \n");
 				 return 0;
