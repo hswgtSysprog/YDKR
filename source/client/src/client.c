@@ -31,9 +31,7 @@ void print_help(char *self) {
 	       "   parameters:\n"
 	       "                 -h  --help\n"
 	       "                 -n  --name <Guest>\n"
-	       "                 -p  --port <5000>\n"
-	       "                 -s  --student\n"
-	       "                 -d  --dozent\n"
+	       "                 -p  --port <54321>\n"
 	       "\n", self);
 	exit(0);
 }
@@ -42,24 +40,21 @@ void print_help(char *self) {
 // hauptfunktion erwartet server und portnummer
 int main(int argc, char **argv)
 {
-	char *name   = "Eric";
+	char *name   = "Guest";
 	char *server = "localhost";
 	char *port   = "54321";
 	int thread;
 	int ret, c;
-        
-      
-
 
 	while(optind < argc) {
 		int option_index = 0;
 		static struct option long_options[] = {
-			{"name",    optional_argument, 0, 'n'},
+			{"name",    required_argument, 0, 'n'},
 			{"port",    optional_argument, 0, 'p'},
 			{"help",    no_argument,       0, 'h'},
 			{0,0,0,0}
 		};
-		c = getopt_long(argc, argv, "dshn:p:", long_options, &option_index);
+		c = getopt_long(argc, argv, "hp:n:", long_options, &option_index);
 		if(c == -1) break;
 
 		switch(c) {
@@ -84,7 +79,7 @@ int main(int argc, char **argv)
 	while(optind < argc) {
 		server = argv[optind++];
 	}
-	
+
 	GCI.name = name;
 	
 	printf("Benutzername: %s\n", GCI.name);
