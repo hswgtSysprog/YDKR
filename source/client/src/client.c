@@ -159,8 +159,6 @@ int main(int argc, char **argv)
 			p = p->ai_next;
 		}
 		printf("Could not connect to server :/\n");
-                char *error_message = "Could not connect to Server!";
-                guiShowErrorDialog(error_message, 1);
                 
                 freeaddrinfo(addr_info);
 		exit(0);
