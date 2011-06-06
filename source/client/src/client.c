@@ -47,6 +47,8 @@ int main(int argc, char **argv)
 	char *port   = "54321";
 	int thread;
 	int ret, c;
+        
+      
 
 
 	while(optind < argc) {
@@ -112,35 +114,39 @@ int main(int argc, char **argv)
 
 			if(connect(sock, p->ai_addr, p->ai_addrlen) == 0)
 			{
-			    printf("Socket OK");
-				GCI.sock = sock;
-				send_login(GCI.name);
-				int state = wait_loginOK();
-				
-                                // move to better positioon
-                                sem_V(keymng_local(KEY_GCI_SEM));
+			    signal(SIGINT, sigint_handler);
+                            printf("Socket OK");
+                            GCI.sock = sock;
+                            send_login(GCI.name);
+                            int state = wait_loginOK();
+                            
+                            // move to better positioon
+                            sem_V(keymng_local(KEY_GCI_SEM));
                                 
-				if(state !=0){
-				 printf("Keine antwort erhalten \n");
-				 return 0;
-				}
-				printf("juhu ich bin eingeloggt \n");
-                                GCI.status = preparation;
-				
-				guiInit(&argc, &argv);
-				printf("GUI init \n");
-				
-				setClientMode();
-				preparation_showWindow();
-				
-				// start the threads
-				thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
-				if(thread)
-				{
-					printf("Failed to start Listener Thread\n");
-					exit(0);
-				}
-				
+                            if(state !=0)
+                            {
+                                printf("Keine antwort erhalten \n");
+                                return 0;
+                            }
+
+                            printf("juhu ich bin eingeloggt \n");
+                            GCI.status = preparation;
+
+                            guiInit(&argc, &argv);
+                            printf("GUI init \n");
+
+                            setClientMode();
+                            preparation_showWindow();
+
+                            // start the threads
+                            thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
+                            
+                            if(thread)
+                            {
+                                printf("Failed to start Listener Thread\n");
+                                exit(0);
+                            }
+
 				sleep(2);
 				
 				sendCR();
@@ -153,9 +159,11 @@ int main(int argc, char **argv)
 			p = p->ai_next;
 		}
 		printf("Could not connect to server :/\n");
-	  
-		freeaddrinfo(addr_info);
-		return 0;
+                char *error_message = "Could not connect to Server!";
+                guiShowErrorDialog(error_message, 1);
+                
+                freeaddrinfo(addr_info);
+		exit(0);
 }
 
 
@@ -244,8 +252,12 @@ void sendCR()
   hdr.type = RFC_CATALOGREQUEST;
   printf("cr: %i \n", hdr.type);
     //umdrehen <=16 Bit werte
-  hdr.length = 0;       
+  hdr.length = 0;
+  
+  sem_P(keymng_local(KEY_GCI_SEM));
   send(GCI.sock, &hdr, sizeof(hdr), 0);
+  sem_V(keymng_local(KEY_GCI_SEM));
+  
   printf("CR was send \n"); 
 }
 
@@ -265,7 +277,25 @@ void send_QR(int sleepTime)
   printf("cr: %i \n", hdr.type);
     //umdrehen <=16 Bit werte
   hdr.length = 0;       
+  
+  sem_P(keymng_local(KEY_GCI_SEM));
   send(GCI.sock, &hdr, sizeof(hdr), 0);
+  sem_V(keymng_local(KEY_GCI_SEM));
+  
   printf("QR was send \n"); 
 }
 
+void sigint_handler(int sig) {
+       signal(sig, SIG_IGN);
+        
+        printf("Shutting down... ");
+        guiQuit();
+        // fuck off, doing things aem random things break all 
+        pthread_cancel(listener_thread_id);
+        sem_remove(keymng_local(KEY_GCI_SEM));
+     
+        printf("OK\n");
+       
+        
+        exit(0);
+}

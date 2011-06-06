@@ -50,8 +50,10 @@ void preparation_onCatalogChanged(const char *newSelection)
         
   hdr.type = RFC_CATALOGCHANGE;
   hdr.length = htons(strlen(newSelection));   
+  sem_P(keymng_local(KEY_GCI_SEM));
   send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
   send(GCI.sock, newSelection, strlen(newSelection), 0);
+  sem_V(keymng_local(KEY_GCI_SEM));
 
 }
 
@@ -76,8 +78,10 @@ void preparation_onStartClicked(const char *currentSelection){
     
     hdr.type = RFC_STARTGAME;
     hdr.length = htons(strlen(currentSelection));   
+    sem_P(keymng_local(KEY_GCI_SEM));
     send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
     send(GCI.sock, currentSelection, strlen(currentSelection), 0);
+    sem_V(keymng_local(KEY_GCI_SEM));
 }
 
 
@@ -93,7 +97,9 @@ void preparation_onStartClicked(const char *currentSelection){
 void preparation_onWindowClosed(void)
 {
 
-        guiQuit();
+      char *message = "Bis Bald!";
+      guiShowMessageDialog(message, 1);
+      raise(SIGINT);
 }
 
 /*
@@ -109,14 +115,16 @@ void preparation_onWindowClosed(void)
 void game_onAnswerClicked(int index)
 {
     printf("Answer clicked: %d\n", index);
+    game_setAnswerButtonsEnabled(0);
     t_msg_header hdr;
     hdr.type = RFC_QUESTIONANSWERED;
     hdr.length = 1;
     hdr.length=htons(hdr.length);
    
-    
+    sem_P(keymng_local(KEY_GCI_SEM));
     send(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
     send(GCI.sock, &index, 1,0);
+    sem_V(keymng_local(KEY_GCI_SEM));
 }
 /*
  ========================================================================
@@ -132,5 +140,7 @@ void game_onAnswerClicked(int index)
 
 void game_onWindowClosed(void)
 {
-	guiQuit();	 
+        char *message = "Bis Bald!";
+        guiShowMessageDialog(message, 1);
+        raise(SIGINT);
 }

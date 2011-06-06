@@ -92,9 +92,11 @@ int parse_msg(t_msg_header *hdr)
 			if( ret ==0 || ret < 32) {
 				return ERR_KILL_CLIENT;
 			}
-			recv(GCI.sock, &punktestand, 4, MSG_WAITALL);
-			recv(GCI.sock, &playerid, 1, 0);
-			
+			sem_P(keymng_local(KEY_GCI_SEM));
+                            recv(GCI.sock, &punktestand, 4, MSG_WAITALL);
+                            recv(GCI.sock, &playerid, 1, 0);
+                        sem_V(keymng_local(KEY_GCI_SEM));
+                          
 			length = strlen(playername);
 			printf("Playername: %s \n", playername);
                         if(GCI.status==preparation)
@@ -117,9 +119,12 @@ int parse_msg(t_msg_header *hdr)
 	else if(hdr->type == RFC_CATALOGRESPONSE || hdr->type == RFC_CATALOGCHANGE) {
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
-
-		ret = recv(GCI.sock, filename, hdr->length, 0);
-		if( ret == 0 || ret < hdr->length ) {
+                
+                sem_P(keymng_local(KEY_GCI_SEM));
+                    ret = recv(GCI.sock, filename, hdr->length, 0);
+		sem_V(keymng_local(KEY_GCI_SEM));
+                if( ret == 0 || ret < hdr->length )
+                {
 			return ERR_KILL_CLIENT;
 		}
 		filename[hdr->length] = '\0';
@@ -136,9 +141,13 @@ int parse_msg(t_msg_header *hdr)
 	else if (hdr->type == RFC_STARTGAME) {
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
-
+                
+                sem_P(keymng_local(KEY_GCI_SEM));
 		ret = recv(GCI.sock, filename, hdr->length, 0);
-		if( ret == 0 || ret < hdr->length ) {
+		sem_V(keymng_local(KEY_GCI_SEM));
+                
+                if( ret == 0 || ret < hdr->length )
+                {
 			return ERR_KILL_CLIENT;
 		}
 		filename[hdr->length] = '\0';
@@ -159,23 +168,35 @@ int parse_msg(t_msg_header *hdr)
 	else if (hdr->type == RFC_ERRORWARNING) {
 		uint8_t error_code;
 		char *error_message = "Fail!";
+                
+                sem_P(keymng_local(KEY_GCI_SEM));
 		ret = recv(GCI.sock, &error_code, sizeof(uint8_t), MSG_WAITALL);
-		if(ret == 0 || ret < sizeof(uint8_t)) {
+		sem_V(keymng_local(KEY_GCI_SEM));
+                
+                if(ret == 0 || ret < sizeof(uint8_t))
+                {
 			return ERR_KILL_CLIENT;
 		}
 
-		if(hdr->length != 1) {
+		if(hdr->length != 1)
+                {
 			error_message = malloc(hdr->length + 1);
 			if(!error_message) return ERR_OOM;
-			ret = recv(GCI.sock, error_message, hdr->length - 1, MSG_WAITALL);
-			if( ret == 0 || ret < hdr->length ) { /* disconnect or error */
+			
+                        sem_P(keymng_local(KEY_GCI_SEM));
+                        ret = recv(GCI.sock, error_message, hdr->length - 1, MSG_WAITALL);
+			sem_V(keymng_local(KEY_GCI_SEM));
+                        
+                        if( ret == 0 || ret < hdr->length )
+                        { /* disconnect or error */
 				return ERR_KILL_CLIENT;
 			}
 			error_message[hdr->length] = '\0';
 		}
 		// TODO: Print Error on Terminal and GUI Interface
 		printf("Error <code %x>\n", error_code);
-		switch(error_code) {
+		switch(error_code)
+                {
 			case RFC_ERROR_WARN:
 				return 0;
 			default:
@@ -187,33 +208,34 @@ int parse_msg(t_msg_header *hdr)
 	else if(hdr->type == RFC_QUESTION)
         {
             printf("get question: \n");
-          int i, ret;
-                char message[50];
-                memset(message,0,50);
-                game_setStatusIcon(0);
+            int i, ret;
+            char message[50];
+            memset(message,0,50);
+            game_setStatusIcon(0);
 
-                QuestionMessage fragen;
+            QuestionMessage fragen;
                 
-                printf("\nsize of header: %i\n", hdr->length);
-                if( hdr->length != 0 )
+            printf("\nsize of header: %i\n", hdr->length);
+            
+            if( hdr->length != 0 )
+            {
+                ret = recv(GCI.sock, &fragen, hdr->length, 0);
+                
+                printf("frage: %s", fragen.question);
+                game_setQuestion(fragen.question);
+                bzero(fragen.question,sizeof(fragen.question));
+                //fragen.question = NULL;
+                //show answers
+                for(i=0;i<=3;i++)
                 {
-                   ret = recv(GCI.sock, &fragen, hdr->length, 0);
-                
-                   printf("frage: %s", fragen.question);
-                   game_setQuestion(fragen.question);
-                   bzero(fragen.question,sizeof(fragen.question));
-                   //fragen.question = NULL;
-                    //show answers
-                    for(i=0;i<=3;i++)
-                    {
-                        printf("answer: %s", fragen.answers[i]);
-                        game_setAnswer(i, fragen.answers[i]);
-                       
-                    }
-                   
+                    printf("answer: %s", fragen.answers[i]);
+                    game_setAnswer(i, fragen.answers[i]);                      
+                }
+                   game_setAnswerButtonsEnabled(1);
                     //show Time
                     sprintf(message,"Sie haben %i Sekunden Zeit",ntohs(fragen.timeout));
-               }else
+               }
+               else
                {
                    sprintf(message,"Alle Fragen beantwortet, bitte Warten.");
                }
@@ -259,13 +281,20 @@ int parse_msg(t_msg_header *hdr)
             send_QR(3);
             game_unmarkAnswers();
         }
+/*########################GAME OVER#####################################################*/        
         else if(hdr->type == RFC_GAMEOVER)
         {
             uint8_t rank;
             char message[50];
+            GCI.status=end;
+            
+            sem_P(keymng_local(KEY_GCI_SEM));
             ret = recv(GCI.sock, &rank, hdr->length, MSG_WAITALL);
+            sem_V(keymng_local(KEY_GCI_SEM));
+            
             sprintf(message,"Game Over! Du hast Rang: %i erreicht!",rank);
-            guiShowMessageDialog(message, 1);
+            guiShowMessageDialog(message, 0);
+            raise(SIGINT);      
         }
 
     return 0;

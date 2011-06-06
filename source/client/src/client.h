@@ -14,6 +14,7 @@
 #include "../../common/src/question.h"
 #include "../../common/src/sem.h"
 #include "../../common/src/keymanager.h"
+#include <sys/signal.h>
 #define ERR_OOM -1
 #define ERR_KILL_CLIENT -2
 enum gameStatus
@@ -40,6 +41,9 @@ void send_login(char* name);
 int wait_loginOK();
 void setClientMode();
 void print_help(char* self);
+void endGame();
+void sigint_handler(int sig);
+
 
 
 #endif /*CLIENT_H_*/
