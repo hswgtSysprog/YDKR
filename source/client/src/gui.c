@@ -97,8 +97,7 @@ void preparation_onStartClicked(const char *currentSelection){
 void preparation_onWindowClosed(void)
 {
 
-      char *message = "Bis Bald!";
-      guiShowMessageDialog(message, 1);
+      printf("Bis Bald!");
       raise(SIGINT);
 }
 
@@ -140,7 +139,7 @@ void game_onAnswerClicked(int index)
 
 void game_onWindowClosed(void)
 {
-        char *message = "Bis Bald!";
-        guiShowMessageDialog(message, 1);
-        raise(SIGINT);
+    
+      printf("Bis Bald!");
+      raise(SIGINT);
 }

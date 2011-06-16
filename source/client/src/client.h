@@ -36,6 +36,11 @@ typedef struct
 
 global_client_info GCI;
 
+typedef struct
+{
+    int type;
+    char message[255];
+}errorMSG;
 
 void send_login(char* name);
 int wait_loginOK();

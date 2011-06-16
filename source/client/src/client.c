@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 	char *server = "localhost";
 	char *port   = "54321";
 	int thread;
-	int ret, c;
+	int ret, c, conn=0;
 
 	while(optind < argc) {
 		int option_index = 0;
@@ -83,6 +83,7 @@ int main(int argc, char **argv)
 	GCI.name = name;
 	
 	printf("Benutzername: %s\n", GCI.name);
+        printf("server: %s", server);
 	struct addrinfo *addr_info, *p;
 
 	ret = getaddrinfo(server, port, NULL, &addr_info);
@@ -110,13 +111,13 @@ int main(int argc, char **argv)
 			if(connect(sock, p->ai_addr, p->ai_addrlen) == 0)
 			{
 			    signal(SIGINT, sigint_handler);
+                            // move to better positioon
+                            sem_V(keymng_local(KEY_GCI_SEM));
+                            
                             printf("Socket OK");
                             GCI.sock = sock;
                             send_login(GCI.name);
                             int state = wait_loginOK();
-                            
-                            // move to better positioon
-                            sem_V(keymng_local(KEY_GCI_SEM));
                                 
                             if(state !=0)
                             {
@@ -126,13 +127,15 @@ int main(int argc, char **argv)
 
                             printf("juhu ich bin eingeloggt \n");
                             GCI.status = preparation;
+                            conn =1;
 
                             guiInit(&argc, &argv);
                             printf("GUI init \n");
 
                             setClientMode();
                             preparation_showWindow();
-
+                            guiShowMessageDialog("Willkommen bei You Dont Know Rainer",0);
+                                                        
                             // start the threads
                             thread = pthread_create(&listener_thread_id, NULL, &listener_thread, NULL);
                             
@@ -142,8 +145,9 @@ int main(int argc, char **argv)
                                 exit(0);
                             }
 
-				sleep(2);
+				//sleep(2);
 				
+				//katalog request
 				sendCR();
 				
 				guiMain();
@@ -153,6 +157,7 @@ int main(int argc, char **argv)
 			close(sock);
 			p = p->ai_next;
 		}
+		if(conn==0)
 		printf("Could not connect to server :/\n");
                 
                 freeaddrinfo(addr_info);
@@ -183,8 +188,6 @@ int wait_loginOK()
   int receiver, ret;
   t_msg_header hdr;
   receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
-  // timer fuer timeout hier setzen
-  
   
   if(receiver == 0 || receiver < sizeof(hdr)) 
   {
@@ -192,15 +195,37 @@ int wait_loginOK()
     return -1;
   }
   
-   printf("hdr length erstes: %d \n",hdr.length);
+   
   
   hdr.length = ntohs(hdr.length);
   
   //is it what whe want?
   if(hdr.type != RFC_LOGINRESPONSEOK)
   {
-    printf("message wrong type \n");
-    return -1;
+      
+    if(hdr.type ==RFC_ERRORWARNING)
+    {
+     uint8_t error_code;
+     char *error_message = "Fail!";
+     int ret;
+          
+        ret = recv(GCI.sock, &error_code, sizeof(uint8_t), MSG_WAITALL);
+        
+        if(hdr.length != 1)
+        {
+            error_message = malloc(hdr.length + 1);
+            if(!error_message) raise(SIGINT);
+            ret = recv(GCI.sock, error_message, hdr.length - 1, MSG_WAITALL);
+            error_message[ strlen(error_message )] = '\0';
+        }          
+         
+      printf("Fehler: %s \n", error_message);
+        raise(SIGINT);
+    }
+    printf("unbekannter fehler!\n");
+        raise(SIGINT);
+       
+    
   }
 //receive rest of package and save the getted client ID
   ret = recv(GCI.sock, &GCI.ID, hdr.length, 0);
@@ -282,7 +307,6 @@ void sigint_handler(int sig) {
        signal(sig, SIG_IGN);
         
         printf("Shutting down... ");
-        guiQuit();
         // fuck off, doing things aem random things break all 
         pthread_cancel(listener_thread_id);
         sem_remove(keymng_local(KEY_GCI_SEM));

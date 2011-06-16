@@ -29,6 +29,7 @@ void *listener_thread(void *data)
 	t_msg_header hdr;
 	int receiver=0;
 	int parser=0;
+        char message[50];
 	
 	
 	while(1)
@@ -36,8 +37,11 @@ void *listener_thread(void *data)
 		receiver = recv(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);		
 		if (receiver ==0 || receiver < sizeof(hdr))
 		{
-		 printf("Fehler\n");
-		 return 0;
+                 
+		 sprintf(message,"Die Verbindung zum Server wurde getrennt!");
+                 guiShowErrorDialog(message,1);
+                 raise(SIGINT);
+		
 		}	
 		
 		hdr.length = ntohs(hdr.length);
@@ -76,8 +80,13 @@ int parse_msg(t_msg_header *hdr)
 		
 		// erstmal aufraeumen
 		if(GCI.status==preparation)
-		preparation_clearPlayers();
-		
+                {
+                    preparation_clearPlayers();
+                    
+                }else
+                {
+                  //TODO: clearup playerlist while playing
+                }
 		for(i=0; i < anzahl; ++i) 
 		{
 			// for each player
@@ -85,17 +94,17 @@ int parse_msg(t_msg_header *hdr)
 			if( playername == NULL) { printf("shit happend\n"); exit(-1);}
 				 
 				 
-			sem_P(keymng_local(KEY_GCI_SEM));	 
+				 
 			 // spielername 
 			ret= recv(GCI.sock, playername, 32, MSG_WAITALL);
-                        sem_V(keymng_local(KEY_GCI_SEM));
+                       
 			if( ret ==0 || ret < 32) {
 				return ERR_KILL_CLIENT;
 			}
-			sem_P(keymng_local(KEY_GCI_SEM));
+			
                             recv(GCI.sock, &punktestand, 4, MSG_WAITALL);
                             recv(GCI.sock, &playerid, 1, 0);
-                        sem_V(keymng_local(KEY_GCI_SEM));
+                        
                           
 			length = strlen(playername);
 			printf("Playername: %s \n", playername);
@@ -120,9 +129,9 @@ int parse_msg(t_msg_header *hdr)
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
                 
-                sem_P(keymng_local(KEY_GCI_SEM));
+                
                     ret = recv(GCI.sock, filename, hdr->length, 0);
-		sem_V(keymng_local(KEY_GCI_SEM));
+		
                 if( ret == 0 || ret < hdr->length )
                 {
 			return ERR_KILL_CLIENT;
@@ -142,13 +151,14 @@ int parse_msg(t_msg_header *hdr)
 		char *filename = malloc(hdr->length + 1);
 		if(!filename) return ERR_OOM;
                 
-                sem_P(keymng_local(KEY_GCI_SEM));
+
 		ret = recv(GCI.sock, filename, hdr->length, 0);
-		sem_V(keymng_local(KEY_GCI_SEM));
+
                 
                 if( ret == 0 || ret < hdr->length )
                 {
-			return ERR_KILL_CLIENT;
+			guiShowErrorDialog("Spielstart fehlgeschlagen.", 1);
+                        raise(SIGINT);
 		}
 		filename[hdr->length] = '\0';
 		GCI.status = playing;
@@ -163,47 +173,7 @@ int parse_msg(t_msg_header *hdr)
 		// TODO: Check if filename 0 (it's allowed)
 
 		free(filename);
-	}
-/*##########################ERROR HONEY###########################################*/
-	else if (hdr->type == RFC_ERRORWARNING) {
-		uint8_t error_code;
-		char *error_message = "Fail!";
-                
-                sem_P(keymng_local(KEY_GCI_SEM));
-		ret = recv(GCI.sock, &error_code, sizeof(uint8_t), MSG_WAITALL);
-		sem_V(keymng_local(KEY_GCI_SEM));
-                
-                if(ret == 0 || ret < sizeof(uint8_t))
-                {
-			return ERR_KILL_CLIENT;
-		}
-
-		if(hdr->length != 1)
-                {
-			error_message = malloc(hdr->length + 1);
-			if(!error_message) return ERR_OOM;
-			
-                        sem_P(keymng_local(KEY_GCI_SEM));
-                        ret = recv(GCI.sock, error_message, hdr->length - 1, MSG_WAITALL);
-			sem_V(keymng_local(KEY_GCI_SEM));
-                        
-                        if( ret == 0 || ret < hdr->length )
-                        { /* disconnect or error */
-				return ERR_KILL_CLIENT;
-			}
-			error_message[hdr->length] = '\0';
-		}
-		// TODO: Print Error on Terminal and GUI Interface
-		printf("Error <code %x>\n", error_code);
-		switch(error_code)
-                {
-			case RFC_ERROR_WARN:
-				return 0;
-			default:
-				/* unknown error type */
-				return ERR_KILL_CLIENT;		
-		}
-	}
+	}	
 /*#########################################QUESTION COMES IN###################################################*/
 	else if(hdr->type == RFC_QUESTION)
         {
@@ -288,13 +258,65 @@ int parse_msg(t_msg_header *hdr)
             char message[50];
             GCI.status=end;
             
-            sem_P(keymng_local(KEY_GCI_SEM));
+           
             ret = recv(GCI.sock, &rank, hdr->length, MSG_WAITALL);
-            sem_V(keymng_local(KEY_GCI_SEM));
+            
             
             sprintf(message,"Game Over! Du hast Rang: %i erreicht!",rank);
-            guiShowMessageDialog(message, 0);
+            guiShowMessageDialog(message, 1);
             raise(SIGINT);      
+        }
+        /*##########################ERROR HONEY###########################################*/
+        else if (hdr->type == RFC_ERRORWARNING)
+        {
+                uint8_t error_code;
+                char *error_message = "Fail!";
+                
+                
+                ret = recv(GCI.sock, &error_code, sizeof(uint8_t), MSG_WAITALL);
+                
+                
+                if(ret == 0 || ret < sizeof(uint8_t))
+                {
+                        raise(SIGINT);
+                }
+
+                if(hdr->length != 1)
+                {
+                        error_message = malloc(hdr->length + 1);
+                        if(!error_message) raise(SIGINT);
+                        
+                        
+                        ret = recv(GCI.sock, error_message, hdr->length - 1, MSG_WAITALL);
+                       
+                        
+                        if( ret == 0 || ret < hdr->length )
+                        { /* disconnect or error */
+                                guiShowMessageDialog("Unbekannter Fehler", 1);
+                                raise(SIGINT);
+                        }
+                        error_message[hdr->length] = '\0';
+                }
+                // TODO: Print Error on Terminal and GUI Interface
+                printf("Error <code %x>\n", error_code);
+                switch(error_code)
+                {
+                    case RFC_ERROR_WARN:
+                                guiShowMessageDialog("Warnung!", 0);
+                    break;
+                    case RFC_ERROR_FATAL:
+                        guiShowMessageDialog("Fehler! Das Programm muss beendet werden", 1);
+                        raise(SIGINT);
+                    break;
+                    
+                    case RFC_ERROR_LOGIN_FAIL:
+                        printf("Sie koennen sich nicht anmelden");
+                        raise(SIGINT);
+                    break;
+                    default:
+                        printf("unbekannter fehler, das programm wird abgebrochen");
+                        raise(SIGINT);
+                }
         }
 
     return 0;
