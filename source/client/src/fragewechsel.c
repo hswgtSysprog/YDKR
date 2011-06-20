@@ -28,9 +28,10 @@ void *fragen_thread(void *data)
 {
     while(1)
     {
-        if( sem_P(keymng(KEY_QUESTION)) == -1 ) { 
+        if( sem_P(keymng_local(KEY_QUESTION)) == -1 ) { 
                         if( errno == EIDRM ) return 0;
                 }
+				printf("HALLO ICH BIN HIER");
         send_QR(3);
        // sem_P(keymng_local(KEY_QUESTION));
     }        
