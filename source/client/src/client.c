@@ -20,11 +20,10 @@
 #include <getopt.h>
 #include "gui_interface.h"
 #include "client.h"
-#include "command.h"
+#include "fragewechsel.h"
 #include "listener.h"
 
-
-pthread_t listener_thread_id;
+pthread_t listener_thread_id, fragen_thread_id;
 
 void print_help(char *self) {
 	printf("%s [params] [server]\n"
@@ -113,6 +112,7 @@ int main(int argc, char **argv)
 			    signal(SIGINT, sigint_handler);
                             // move to better positioon
                             sem_V(keymng_local(KEY_GCI_SEM));
+                           
                             
                             printf("Socket OK");
                             GCI.sock = sock;
@@ -144,9 +144,14 @@ int main(int argc, char **argv)
                                 printf("Failed to start Listener Thread\n");
                                 exit(0);
                             }
-
-				//sleep(2);
-				
+                            
+                              thread = pthread_create(&fragen_thread_id, NULL, &fragen_thread, NULL);
+                            
+                            if(thread)
+                            {
+                                printf("Failed to start Fragewechsel Thread\n");
+                                exit(0);
+                            }
 				//katalog request
 				sendCR();
 				

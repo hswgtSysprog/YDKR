@@ -12,7 +12,7 @@
 #include "listener.h"
 #include "client.h"
 #include "gui.h"
-#include "command.h"
+#include "fragewechsel.h"
 #include "gui_interface.h"
 
 pthread_t question_thread_id;
@@ -173,7 +173,7 @@ int parse_msg(t_msg_header *hdr)
                 preparation_hideWindow();
                 game_showWindow();
                     //get first Question
-                send_QR(0);
+             sem_V(keymng_local(KEY_QUESTION));
 
                           
 		// TODO: Check if filename 0 (it's allowed)
@@ -254,7 +254,7 @@ int parse_msg(t_msg_header *hdr)
                 game_setStatusIcon(1);
             }
             
-            send_QR(3);
+           sem_V(keymng_local(KEY_QUESTION));
             game_unmarkAnswers();
         }
 /*########################GAME OVER#####################################################*/        

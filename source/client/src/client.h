@@ -47,7 +47,10 @@ int wait_loginOK();
 void setClientMode();
 void print_help(char* self);
 void endGame();
+void sendCR();
+void send_QR();
 void sigint_handler(int sig);
+
 
 
 

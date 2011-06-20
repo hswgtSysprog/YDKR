@@ -21,7 +21,7 @@
 #include <arpa/inet.h>
 #include "../../common/src/messages.h"
 #include "client.h"
-#include "command.h"
+#include "fragewechsel.h"
 #include "listener.h"
 #include <getopt.h>
 
