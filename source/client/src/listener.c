@@ -86,6 +86,12 @@ int parse_msg(t_msg_header *hdr)
                 }else
                 {
                   //TODO: clearup playerlist while playing
+					int clearP;
+					for(clearP=1;clearP<=6;clearP++){
+						game_setPlayerName(clearP,NULL);
+						game_setPlayerScore(clearP,0);
+					}
+
                 }
 		for(i=0; i < anzahl; ++i) 
 		{
