@@ -1,10 +1,10 @@
 /*
- ============================================================================
- Name        : main.c
- Author      :Kathrin Holzmann
- Version     : Jun 20, 2011 - 08:14:21 AM
- Project     : client
- ============================================================================
+ * ============================================================================
+ * Name        : main.c
+ * Author      :Kathrin Holzmann
+ * Version     : Jun 20, 2011 - 08:14:21 AM
+ * Project     : client
+ * ============================================================================
  */
 
 #include <stdio.h>
@@ -26,13 +26,13 @@
 
 void *fragen_thread(void *data)
 {
-    while(1)
-    {
-        if( sem_P(keymng_local(KEY_QUESTION)) == -1 ) { 
-                        if( errno == EIDRM ) return 0;
-                }
-				printf("HALLO ICH BIN HIER");
-        send_QR(3);
-       // sem_P(keymng_local(KEY_QUESTION));
-    }        
+	while(1)
+	{
+		if( sem_P(keymng_local(KEY_QUESTION)) == -1 ) { 
+			if( errno == EIDRM ) return 0;
+		}
+		printf("HALLO ICH BIN HIER");
+		send_QR(3);
+		// sem_P(keymng_local(KEY_QUESTION));
+	}        
 }

@@ -3,11 +3,11 @@
 
 /*============================================================================
  Name        : client.h
- Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
+ Author      : Kathrin Holzmann
  Version     : May 10, 2011 10:18:15 AM
  Project     : client
  =============================================================================
-*/
+ */
 
 
 #include "../../common/src/messages.h"
@@ -19,9 +19,9 @@
 #define ERR_KILL_CLIENT -2
 enum gameStatus
 {
-    preparation, 
-    playing, 
-    end
+	preparation, 
+	playing, 
+	end
 };
 
 typedef struct
@@ -31,15 +31,15 @@ typedef struct
 	int sock;
 	unsigned long score;
 	char* question;
-        enum gameStatus status;
+	enum gameStatus status;
 }global_client_info;
 
 global_client_info GCI;
 
 typedef struct
 {
-    int type;
-    char message[255];
+	int type;
+	char message[255];
 }errorMSG;
 
 void send_login(char* name);

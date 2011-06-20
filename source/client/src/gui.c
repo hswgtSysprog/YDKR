@@ -1,10 +1,10 @@
 /*
- ============================================================================
- Name        : gui.c
- Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
- Version     : Apr 16, 2011 9:01:56 AM
- Project     : client
- ============================================================================
+ * ============================================================================
+ * Name        : gui.c
+ * Author      : Kathrin Holzmann
+ * Version     : Apr 16, 2011 9:01:56 AM
+ * Project     : client
+ * ============================================================================
  */
 
 #include <stdio.h>
@@ -27,119 +27,118 @@
 
 
 /*
- ========================================================================
- Funktion:
-         preparation_onCatalogChanged
- Kurzbeschreibung:
-         Callback Funktion.
-         Wird aufgerufen wenn der Spielleiter einen neuen Catalog
-         auswaehlt.
- ========================================================================
+ * ========================================================================
+ * Funktion:
+ *         preparation_onCatalogChanged
+ * Kurzbeschreibung:
+ *         Callback Funktion.
+ *         Wird aufgerufen wenn der Spielleiter einen neuen Catalog
+ *         auswaehlt.
+ * ========================================================================
  */
 
 
 void preparation_onCatalogChanged(const char *newSelection)
 {
-  printf("cataloge change \n");
-  printf("selection name?: %s\n", newSelection);
-  
-  if(strlen(newSelection)==0)
-      return;
-  
-  t_msg_header hdr;
-        
-  hdr.type = RFC_CATALOGCHANGE;
-  hdr.length = htons(strlen(newSelection));   
-  sem_P(keymng_local(KEY_GCI_SEM));
-  send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
-  send(GCI.sock, newSelection, strlen(newSelection), 0);
-  sem_V(keymng_local(KEY_GCI_SEM));
-
+	printf("cataloge change \n");
+	printf("selection name?: %s\n", newSelection);
+	
+	if(strlen(newSelection)==0)
+		return;
+	
+	t_msg_header hdr;
+	
+	hdr.type = RFC_CATALOGCHANGE;
+	hdr.length = htons(strlen(newSelection));   
+	sem_P(keymng_local(KEY_GCI_SEM));
+	send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
+	send(GCI.sock, newSelection, strlen(newSelection), 0);
+	sem_V(keymng_local(KEY_GCI_SEM));
+	
 }
 
 /*
- ========================================================================
- Funktion:
-         preparation_onStartClicked
- Kurzbeschreibung:
-         Callback Funktion.
-         Wird aufgerufen wenn der Spielleiter auf die Start Schaltflaeche geklickt hat
- ========================================================================
+ * ========================================================================
+ * Funktion:
+ *         preparation_onStartClicked
+ * Kurzbeschreibung:
+ *         Callback Funktion.
+ *         Wird aufgerufen wenn der Spielleiter auf die Start Schaltflaeche geklickt hat
+ * ========================================================================
  */
 void preparation_onStartClicked(const char *currentSelection){
-    
-    printf("cataloge change \n");
-    printf("selection name?: %s\n", currentSelection);
-  
-    if(strlen(currentSelection)==0)
-      return;
-  
-    t_msg_header hdr;
-    
-    hdr.type = RFC_STARTGAME;
-    hdr.length = htons(strlen(currentSelection));   
-    sem_P(keymng_local(KEY_GCI_SEM));
-    send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
-    send(GCI.sock, currentSelection, strlen(currentSelection), 0);
-    sem_V(keymng_local(KEY_GCI_SEM));
+	
+	printf("cataloge change \n");
+	printf("selection name?: %s\n", currentSelection);
+	
+	if(strlen(currentSelection)==0)
+		return;
+	
+	t_msg_header hdr;
+	
+	hdr.type = RFC_STARTGAME;
+	hdr.length = htons(strlen(currentSelection));   
+	sem_P(keymng_local(KEY_GCI_SEM));
+	send(GCI.sock, &hdr, sizeof(hdr), MSG_MORE);
+	send(GCI.sock, currentSelection, strlen(currentSelection), 0);
+	sem_V(keymng_local(KEY_GCI_SEM));
 }
 
 
 /*
- ========================================================================
- Funktion:
-         preparation_onWindowClosed
- Kurzbeschreibung:
-         Callback Funktion.
-         Wird aufgerufen wenn der Spieler das Fenster schliesst
- ========================================================================
+ * ========================================================================
+ * Funktion:
+ *         preparation_onWindowClosed
+ * Kurzbeschreibung:
+ *         Callback Funktion.
+ *         Wird aufgerufen wenn der Spieler das Fenster schliesst
+ * ========================================================================
  */
 void preparation_onWindowClosed(void)
 {
-
-      printf("Bis Bald!");
-      raise(SIGINT);
+	printf("Bis Bald!");
+	raise(SIGINT);
 }
 
 /*
- ========================================================================
- Funktion:
-         preparation_onAnswerClicked
- Kurzbeschreibung:
-         Callback Funktion.
-         Wird aufgerufen wenn der Spieler eine Antwort gewaehlt hat.
- ========================================================================
+ * ========================================================================
+ * Funktion:
+ *         preparation_onAnswerClicked
+ * Kurzbeschreibung:
+ *         Callback Funktion.
+ *         Wird aufgerufen wenn der Spieler eine Antwort gewaehlt hat.
+ * ========================================================================
  */
 
 void game_onAnswerClicked(int index)
 {
-    printf("Answer clicked: %d\n", index);
-    game_setAnswerButtonsEnabled(0);
-    t_msg_header hdr;
-    hdr.type = RFC_QUESTIONANSWERED;
-    hdr.length = 1;
-    hdr.length=htons(hdr.length);
-   
-    sem_P(keymng_local(KEY_GCI_SEM));
-    send(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
-    send(GCI.sock, &index, 1,0);
-    sem_V(keymng_local(KEY_GCI_SEM));
+	printf("Answer clicked: %d\n", index);
+	game_setAnswerButtonsEnabled(0);
+	t_msg_header hdr;
+	hdr.type = RFC_QUESTIONANSWERED;
+	hdr.length = 1;
+	hdr.length=htons(hdr.length);
+	
+	sem_P(keymng_local(KEY_GCI_SEM));
+	send(GCI.sock, &hdr, sizeof(hdr), MSG_WAITALL);
+	send(GCI.sock, &index, 1,0);
+	sem_V(keymng_local(KEY_GCI_SEM));
 }
 /*
- ========================================================================
- Funktion:
-	 game_onWindowClosed
- Kurzbeschreibung:
-	 Callback Funktion.
-	 Wird aufgerufen wenn ein Benutzer den Schliessen Button (x) des
-	 Anwendungsfensters betaetigt.
-
- ========================================================================
+ * ========================================================================
+ * Funktion:
+ *	 game_onWindowClosed
+ * Kurzbeschreibung:
+ *	 Callback Funktion.
+ *	 Wird aufgerufen wenn ein Benutzer den Schliessen Button (x) des
+ *	 Anwendungsfensters betaetigt.
+ * 
+ * ========================================================================
  */
 
 void game_onWindowClosed(void)
 {
-    
-      printf("Bis Bald!");
-      raise(SIGINT);
+	
+	printf("Bis Bald!");
+	raise(SIGINT);
 }

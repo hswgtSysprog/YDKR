@@ -2,8 +2,8 @@
 #define LISTENER_H
 
 /*============================================================================
- Name        : client.h
- Author      : Rainer Hihn, Kathrin Holzmann, Florian Rosenkranz
+ Name        : listener.h
+ Author      : Kathrin Holzmann
  Version     : May 12, 2011 10:18:15 AM
  Project     : client
  =============================================================================*/
@@ -16,8 +16,8 @@ int parse_msg(t_msg_header *hdr);
 void preparation_refresh_playerlist(t_msg_header *hdr);
 
 typedef struct{
-        uint8_t selection;
-        uint8_t correct;
+	uint8_t selection;
+	uint8_t correct;
 }questionResult;
 
 #endif /* LISTENER_H */
