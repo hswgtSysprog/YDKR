@@ -1,0 +1,98 @@
+\hypertarget{listener_8c}{
+\section{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/listener.c File Reference}
+\label{listener_8c}\index{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/listener.c@{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/listener.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$sys/time.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$netdb.h$>$}\par
+{\ttfamily \#include $<$netinet/in.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include $<$getopt.h$>$}\par
+{\ttfamily \#include \char`\"{}listener.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}client.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}gui.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fragewechsel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}gui\_\-interface.h\char`\"{}}\par
+Include dependency graph for listener.c:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{listener_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{listener_8c_aa643c8c2955aaec54cffd88624cdf33e}{listener\_\-thread} (void $\ast$data)
+\begin{DoxyCompactList}\small\item\em listener thread, gets all the packages from the server \item\end{DoxyCompactList}\item 
+int \hyperlink{listener_8c_aebdd61e703b387f936a7214b62ff438f}{parse\_\-msg} (\hyperlink{structmsg__header}{t\_\-msg\_\-header} $\ast$hdr)
+\begin{DoxyCompactList}\small\item\em function to parse messages from the server \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pthread\_\-t \hyperlink{listener_8c_ae6298cc9f112ae19ebd05c7edc7dbe8a}{question\_\-thread\_\-id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+============================================================================
+
+\begin{DoxyAuthor}{Author}
+: Kathrin Holzmann 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+: May 16, 2011 ============================================================================ 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{listener_8c_aa643c8c2955aaec54cffd88624cdf33e}{
+\index{listener.c@{listener.c}!listener\_\-thread@{listener\_\-thread}}
+\index{listener\_\-thread@{listener\_\-thread}!listener.c@{listener.c}}
+\subsubsection[{listener\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ listener\_\-thread (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}
+\label{listener_8c_aa643c8c2955aaec54cffd88624cdf33e}
+
+
+listener thread, gets all the packages from the server 
+
+=============================================================== 
+\begin{DoxyParams}{Parameters}
+{\em void:$\ast$data} & ============================================================== \\
+\hline
+\end{DoxyParams}
+\hypertarget{listener_8c_aebdd61e703b387f936a7214b62ff438f}{
+\index{listener.c@{listener.c}!parse\_\-msg@{parse\_\-msg}}
+\index{parse\_\-msg@{parse\_\-msg}!listener.c@{listener.c}}
+\subsubsection[{parse\_\-msg}]{\setlength{\rightskip}{0pt plus 5cm}int parse\_\-msg (
+\begin{DoxyParamCaption}
+\item[{{\bf t\_\-msg\_\-header} $\ast$}]{hdr}
+\end{DoxyParamCaption}
+)}}
+\label{listener_8c_aebdd61e703b387f936a7214b62ff438f}
+
+
+function to parse messages from the server 
+
+================================================== 
+\begin{DoxyParams}{Parameters}
+{\em header:$\ast$t\_\-msg\_\-header} & ================================================= \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{listener_8c_ae6298cc9f112ae19ebd05c7edc7dbe8a}{
+\index{listener.c@{listener.c}!question\_\-thread\_\-id@{question\_\-thread\_\-id}}
+\index{question\_\-thread\_\-id@{question\_\-thread\_\-id}!listener.c@{listener.c}}
+\subsubsection[{question\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}pthread\_\-t {\bf question\_\-thread\_\-id}}}
+\label{listener_8c_ae6298cc9f112ae19ebd05c7edc7dbe8a}

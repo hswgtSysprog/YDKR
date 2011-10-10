@@ -16,14 +16,18 @@
 #include "gui_interface.h"
 
 pthread_t question_thread_id;
-/*============================================================================
- * Name        : listener.c
- * Author      : Kathrin Holzmann
- * Version     : May 16, 2011 08:38:47 PM
- * Project     : client
- * =============================================================================
+/**
+ * ============================================================================
+ * @file        : listener.c
+ * @author      : Kathrin Holzmann
+ * @date        : May 16, 2011
+ * ============================================================================
  */
 
+/**===============================================================
+ * @brief listener thread, gets all the packages from the server
+ * @param void:*data
+ * ==============================================================*/
 void *listener_thread(void *data)
 {
 	t_msg_header hdr;
@@ -49,16 +53,10 @@ void *listener_thread(void *data)
 	}
 }
 
-
-/*
- * ========================================================================
- * Funktion:
- *	 refresh_playerlist()
- * Kurzbeschreibung:
- *	Funktion zum aktualisieren der Spielerliste
- * ========================================================================
- */
-
+/**==================================================
+ * @brief function to parse messages from the server
+ * @param header:*t_msg_header
+ * =================================================*/
 
 int parse_msg(t_msg_header *hdr)
 {
@@ -166,15 +164,10 @@ int parse_msg(t_msg_header *hdr)
 		}
 		filename[hdr->length] = '\0';
 			GCI.status = playing;
-			
-			// TODO: Tell the gui to start the game
 			preparation_hideWindow();
 			game_showWindow();
 			//get first Question
 			sem_V(keymng_local(KEY_QUESTION));
-			
-			
-			// TODO: Check if filename 0 (it's allowed)
 			
 			free(filename);
 	}	

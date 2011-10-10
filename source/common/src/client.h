@@ -7,6 +7,14 @@
 #include <stdint.h>
 
 /**
+ * ============================================================================
+ * @file        : client.h
+ * @author      : Kathrin Holzmann
+ * @date        : Apr 10, 2011
+ * ============================================================================
+ */
+
+/**
  * struct das die spielerinfo beinhaltet
  */
 struct client_info {

@@ -1,0 +1,204 @@
+\hypertarget{client_8c}{
+\section{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/client.c File Reference}
+\label{client_8c}\index{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/client.c@{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/client.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$sys/time.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$netdb.h$>$}\par
+{\ttfamily \#include $<$netinet/in.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include $<$getopt.h$>$}\par
+{\ttfamily \#include \char`\"{}gui\_\-interface.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}client.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fragewechsel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}listener.h\char`\"{}}\par
+Include dependency graph for client.c:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{client_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{client_8c_ac594e87e65b86745d13a211ded7339d8}{print\_\-help} (char $\ast$self)
+\begin{DoxyCompactList}\small\item\em prints the help instructions \item\end{DoxyCompactList}\item 
+int \hyperlink{client_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em main thread, starting up the client and the other threads \item\end{DoxyCompactList}\item 
+void \hyperlink{client_8c_a544b7ea288ff725efa662ceb07fa14ce}{send\_\-login} (char $\ast$name)
+\item 
+int \hyperlink{client_8c_a3ff77331b6c7b11926e9ba2185bb3514}{wait\_\-loginOK} ()
+\begin{DoxyCompactList}\small\item\em waits until login response from server is ok -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \item\end{DoxyCompactList}\item 
+void \hyperlink{client_8c_a8eb72d0038a8d927d73051979d247852}{setClientMode} ()
+\begin{DoxyCompactList}\small\item\em sets the Client Mode to privileged or normal -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \item\end{DoxyCompactList}\item 
+void \hyperlink{client_8c_aad8abca9f1cd7f320ff47cbc339e7ce6}{sendCR} ()
+\begin{DoxyCompactList}\small\item\em sends the Catalouge Request -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \item\end{DoxyCompactList}\item 
+void \hyperlink{client_8c_af5fa27f55f83b974722c008df85bc723}{send\_\-QR} (int sleepTime)
+\begin{DoxyCompactList}\small\item\em sends question request to the server after a special waiting time. =========================================================================== \item\end{DoxyCompactList}\item 
+void \hyperlink{client_8c_a258e3b580e688a0cf46e4258525aeaf1}{sigint\_\-handler} (int sig)
+\begin{DoxyCompactList}\small\item\em cleaning up function \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pthread\_\-t \hyperlink{client_8c_a72379812c6fc31ef5e5520084b5a7ee3}{listener\_\-thread\_\-id}
+\item 
+pthread\_\-t \hyperlink{client_8c_a6748da5abcf80456846d3fc37e4fb2b6}{fragen\_\-thread\_\-id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+============================================================================
+
+\begin{DoxyAuthor}{Author}
+: Kathrin Holzmann 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+: Apr 12, 2011 ============================================================================
+\end{DoxyDate}
+============================================================================
+
+\begin{DoxyAuthor}{Author}
+: Kathrin Holzmann 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+: May 12, 2011 ============================================================================ 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{client_8c_a3c04138a5bfe5d72780bb7e82a18e627}{
+\index{client.c@{client.c}!main@{main}}
+\index{main@{main}!client.c@{client.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+main thread, starting up the client and the other threads 
+
+=========================================== 
+\begin{DoxyParams}{Parameters}
+{\em argc:int} & argv$\ast$$\ast$char ========================================== \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8c_ac594e87e65b86745d13a211ded7339d8}{
+\index{client.c@{client.c}!print\_\-help@{print\_\-help}}
+\index{print\_\-help@{print\_\-help}!client.c@{client.c}}
+\subsubsection[{print\_\-help}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-help (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_ac594e87e65b86745d13a211ded7339d8}
+
+
+prints the help instructions 
+
+======================================== 
+\begin{DoxyParams}{Parameters}
+{\em self} & $\ast$char ======================================= \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8c_a544b7ea288ff725efa662ceb07fa14ce}{
+\index{client.c@{client.c}!send\_\-login@{send\_\-login}}
+\index{send\_\-login@{send\_\-login}!client.c@{client.c}}
+\subsubsection[{send\_\-login}]{\setlength{\rightskip}{0pt plus 5cm}void send\_\-login (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_a544b7ea288ff725efa662ceb07fa14ce}
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/void \hyperlink{client_2src_2client_8h_a544b7ea288ff725efa662ceb07fa14ce}{send\_\-login(char$\ast$ name)}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ : sends the login name to the server -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \hypertarget{client_8c_af5fa27f55f83b974722c008df85bc723}{
+\index{client.c@{client.c}!send\_\-QR@{send\_\-QR}}
+\index{send\_\-QR@{send\_\-QR}!client.c@{client.c}}
+\subsubsection[{send\_\-QR}]{\setlength{\rightskip}{0pt plus 5cm}void send\_\-QR (
+\begin{DoxyParamCaption}
+\item[{int}]{sleepTime}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_af5fa27f55f83b974722c008df85bc723}
+
+
+sends question request to the server after a special waiting time. =========================================================================== 
+
+========================================================================== \hypertarget{client_8c_aad8abca9f1cd7f320ff47cbc339e7ce6}{
+\index{client.c@{client.c}!sendCR@{sendCR}}
+\index{sendCR@{sendCR}!client.c@{client.c}}
+\subsubsection[{sendCR}]{\setlength{\rightskip}{0pt plus 5cm}void sendCR (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_aad8abca9f1cd7f320ff47cbc339e7ce6}
+
+
+sends the Catalouge Request -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/void \hyperlink{client_8c_aad8abca9f1cd7f320ff47cbc339e7ce6}{sendCR()}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \hypertarget{client_8c_a8eb72d0038a8d927d73051979d247852}{
+\index{client.c@{client.c}!setClientMode@{setClientMode}}
+\index{setClientMode@{setClientMode}!client.c@{client.c}}
+\subsubsection[{setClientMode}]{\setlength{\rightskip}{0pt plus 5cm}void setClientMode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_a8eb72d0038a8d927d73051979d247852}
+
+
+sets the Client Mode to privileged or normal -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/void \hyperlink{client_8c_a8eb72d0038a8d927d73051979d247852}{setClientMode()}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \hypertarget{client_8c_a258e3b580e688a0cf46e4258525aeaf1}{
+\index{client.c@{client.c}!sigint\_\-handler@{sigint\_\-handler}}
+\index{sigint\_\-handler@{sigint\_\-handler}!client.c@{client.c}}
+\subsubsection[{sigint\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void sigint\_\-handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_a258e3b580e688a0cf46e4258525aeaf1}
+
+
+cleaning up function 
+
+========================================== 
+\begin{DoxyParams}{Parameters}
+{\em signal:INT} & ============================================ \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8c_a3ff77331b6c7b11926e9ba2185bb3514}{
+\index{client.c@{client.c}!wait\_\-loginOK@{wait\_\-loginOK}}
+\index{wait\_\-loginOK@{wait\_\-loginOK}!client.c@{client.c}}
+\subsubsection[{wait\_\-loginOK}]{\setlength{\rightskip}{0pt plus 5cm}int wait\_\-loginOK (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_8c_a3ff77331b6c7b11926e9ba2185bb3514}
+
+
+waits until login response from server is ok -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/int wat\_\-loginOK()-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+\subsection{Variable Documentation}
+\hypertarget{client_8c_a6748da5abcf80456846d3fc37e4fb2b6}{
+\index{client.c@{client.c}!fragen\_\-thread\_\-id@{fragen\_\-thread\_\-id}}
+\index{fragen\_\-thread\_\-id@{fragen\_\-thread\_\-id}!client.c@{client.c}}
+\subsubsection[{fragen\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}pthread\_\-t {\bf fragen\_\-thread\_\-id}}}
+\label{client_8c_a6748da5abcf80456846d3fc37e4fb2b6}
+\hypertarget{client_8c_a72379812c6fc31ef5e5520084b5a7ee3}{
+\index{client.c@{client.c}!listener\_\-thread\_\-id@{listener\_\-thread\_\-id}}
+\index{listener\_\-thread\_\-id@{listener\_\-thread\_\-id}!client.c@{client.c}}
+\subsubsection[{listener\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}pthread\_\-t {\bf listener\_\-thread\_\-id}}}
+\label{client_8c_a72379812c6fc31ef5e5520084b5a7ee3}

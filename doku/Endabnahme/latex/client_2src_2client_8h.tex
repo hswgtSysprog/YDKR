@@ -1,0 +1,223 @@
+\hypertarget{client_2src_2client_8h}{
+\section{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/client.h File Reference}
+\label{client_2src_2client_8h}\index{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/client.h@{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/client.h}}
+}
+{\ttfamily \#include \char`\"{}../../common/src/messages.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}../../common/src/question.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}../../common/src/sem.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}../../common/src/keymanager.h\char`\"{}}\par
+{\ttfamily \#include $<$sys/signal.h$>$}\par
+Include dependency graph for client.h:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{client_2src_2client_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{client_2src_2client_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structglobal__client__info}{global\_\-client\_\-info}
+\item 
+struct \hyperlink{structerror_m_s_g}{errorMSG}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{client_2src_2client_8h_ad8f2a644dcd54e9e4a3678d899a5a4f7}{ERR\_\-OOM}~-\/1
+\item 
+\#define \hyperlink{client_2src_2client_8h_a87e9272b1fcf0daa57b86fafcb90c0fe}{ERR\_\-KILL\_\-CLIENT}~-\/2
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0}{gameStatus} \{ \hyperlink{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a482c39b4341ccf2ef0f91f784d67f8c8}{preparation}, 
+\hyperlink{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a593fcb971576d8ee918ec9eaad2678d6}{playing}, 
+\hyperlink{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a80b1a820e533d7cf0e1715319339e6d0}{end}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{client_2src_2client_8h_a544b7ea288ff725efa662ceb07fa14ce}{send\_\-login} (char $\ast$name)
+\item 
+int \hyperlink{client_2src_2client_8h_a3ff77331b6c7b11926e9ba2185bb3514}{wait\_\-loginOK} ()
+\begin{DoxyCompactList}\small\item\em waits until login response from server is ok -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \item\end{DoxyCompactList}\item 
+void \hyperlink{client_2src_2client_8h_a8eb72d0038a8d927d73051979d247852}{setClientMode} ()
+\begin{DoxyCompactList}\small\item\em sets the Client Mode to privileged or normal -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \item\end{DoxyCompactList}\item 
+void \hyperlink{client_2src_2client_8h_ac594e87e65b86745d13a211ded7339d8}{print\_\-help} (char $\ast$self)
+\begin{DoxyCompactList}\small\item\em prints the help instructions \item\end{DoxyCompactList}\item 
+void \hyperlink{client_2src_2client_8h_aeda119595fcc834db9cfec532a90cf79}{endGame} ()
+\item 
+void \hyperlink{client_2src_2client_8h_aad8abca9f1cd7f320ff47cbc339e7ce6}{sendCR} ()
+\begin{DoxyCompactList}\small\item\em sends the Catalouge Request -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \item\end{DoxyCompactList}\item 
+void \hyperlink{client_2src_2client_8h_af5d329b25a95dcde91df03bed1327d0a}{send\_\-QR} ()
+\item 
+void \hyperlink{client_2src_2client_8h_a258e3b580e688a0cf46e4258525aeaf1}{sigint\_\-handler} (int sig)
+\begin{DoxyCompactList}\small\item\em cleaning up function \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structglobal__client__info}{global\_\-client\_\-info} \hyperlink{client_2src_2client_8h_a1727bd3a3224e60ebfd7841bfb09edf2}{GCI}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{client_2src_2client_8h_a87e9272b1fcf0daa57b86fafcb90c0fe}{
+\index{client/src/client.h@{client/src/client.h}!ERR\_\-KILL\_\-CLIENT@{ERR\_\-KILL\_\-CLIENT}}
+\index{ERR\_\-KILL\_\-CLIENT@{ERR\_\-KILL\_\-CLIENT}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{ERR\_\-KILL\_\-CLIENT}]{\setlength{\rightskip}{0pt plus 5cm}\#define ERR\_\-KILL\_\-CLIENT~-\/2}}
+\label{client_2src_2client_8h_a87e9272b1fcf0daa57b86fafcb90c0fe}
+\hypertarget{client_2src_2client_8h_ad8f2a644dcd54e9e4a3678d899a5a4f7}{
+\index{client/src/client.h@{client/src/client.h}!ERR\_\-OOM@{ERR\_\-OOM}}
+\index{ERR\_\-OOM@{ERR\_\-OOM}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{ERR\_\-OOM}]{\setlength{\rightskip}{0pt plus 5cm}\#define ERR\_\-OOM~-\/1}}
+\label{client_2src_2client_8h_ad8f2a644dcd54e9e4a3678d899a5a4f7}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0}{
+\index{client/src/client.h@{client/src/client.h}!gameStatus@{gameStatus}}
+\index{gameStatus@{gameStatus}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{gameStatus}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf gameStatus}}}
+\label{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{preparation@{preparation}!client/src/client.h@{client/src/client.h}}\index{client/src/client.h@{client/src/client.h}!preparation@{preparation}}\item[{\em 
+\hypertarget{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a482c39b4341ccf2ef0f91f784d67f8c8}{
+preparation}
+\label{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a482c39b4341ccf2ef0f91f784d67f8c8}
+}]\index{playing@{playing}!client/src/client.h@{client/src/client.h}}\index{client/src/client.h@{client/src/client.h}!playing@{playing}}\item[{\em 
+\hypertarget{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a593fcb971576d8ee918ec9eaad2678d6}{
+playing}
+\label{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a593fcb971576d8ee918ec9eaad2678d6}
+}]\index{end@{end}!client/src/client.h@{client/src/client.h}}\index{client/src/client.h@{client/src/client.h}!end@{end}}\item[{\em 
+\hypertarget{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a80b1a820e533d7cf0e1715319339e6d0}{
+end}
+\label{client_2src_2client_8h_a12ca651cd1b9eb7aeeb0d0c8a2cdd5e0a80b1a820e533d7cf0e1715319339e6d0}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\hypertarget{client_2src_2client_8h_aeda119595fcc834db9cfec532a90cf79}{
+\index{client/src/client.h@{client/src/client.h}!endGame@{endGame}}
+\index{endGame@{endGame}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{endGame}]{\setlength{\rightskip}{0pt plus 5cm}void endGame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_aeda119595fcc834db9cfec532a90cf79}
+\hypertarget{client_2src_2client_8h_ac594e87e65b86745d13a211ded7339d8}{
+\index{client/src/client.h@{client/src/client.h}!print\_\-help@{print\_\-help}}
+\index{print\_\-help@{print\_\-help}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{print\_\-help}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-help (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_ac594e87e65b86745d13a211ded7339d8}
+
+
+prints the help instructions 
+
+======================================== 
+\begin{DoxyParams}{Parameters}
+{\em self} & $\ast$char ======================================= \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_2src_2client_8h_a544b7ea288ff725efa662ceb07fa14ce}{
+\index{client/src/client.h@{client/src/client.h}!send\_\-login@{send\_\-login}}
+\index{send\_\-login@{send\_\-login}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{send\_\-login}]{\setlength{\rightskip}{0pt plus 5cm}void send\_\-login (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_a544b7ea288ff725efa662ceb07fa14ce}
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/void \hyperlink{client_2src_2client_8h_a544b7ea288ff725efa662ceb07fa14ce}{send\_\-login(char$\ast$ name)}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ : sends the login name to the server -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \hypertarget{client_2src_2client_8h_af5d329b25a95dcde91df03bed1327d0a}{
+\index{client/src/client.h@{client/src/client.h}!send\_\-QR@{send\_\-QR}}
+\index{send\_\-QR@{send\_\-QR}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{send\_\-QR}]{\setlength{\rightskip}{0pt plus 5cm}void send\_\-QR (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_af5d329b25a95dcde91df03bed1327d0a}
+\hypertarget{client_2src_2client_8h_aad8abca9f1cd7f320ff47cbc339e7ce6}{
+\index{client/src/client.h@{client/src/client.h}!sendCR@{sendCR}}
+\index{sendCR@{sendCR}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{sendCR}]{\setlength{\rightskip}{0pt plus 5cm}void sendCR (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_aad8abca9f1cd7f320ff47cbc339e7ce6}
+
+
+sends the Catalouge Request -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/void \hyperlink{client_8c_aad8abca9f1cd7f320ff47cbc339e7ce6}{sendCR()}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \hypertarget{client_2src_2client_8h_a8eb72d0038a8d927d73051979d247852}{
+\index{client/src/client.h@{client/src/client.h}!setClientMode@{setClientMode}}
+\index{setClientMode@{setClientMode}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{setClientMode}]{\setlength{\rightskip}{0pt plus 5cm}void setClientMode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_a8eb72d0038a8d927d73051979d247852}
+
+
+sets the Client Mode to privileged or normal -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/void \hyperlink{client_8c_a8eb72d0038a8d927d73051979d247852}{setClientMode()}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ \hypertarget{client_2src_2client_8h_a258e3b580e688a0cf46e4258525aeaf1}{
+\index{client/src/client.h@{client/src/client.h}!sigint\_\-handler@{sigint\_\-handler}}
+\index{sigint\_\-handler@{sigint\_\-handler}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{sigint\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void sigint\_\-handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_a258e3b580e688a0cf46e4258525aeaf1}
+
+
+cleaning up function 
+
+========================================== 
+\begin{DoxyParams}{Parameters}
+{\em signal:INT} & ============================================ \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_2src_2client_8h_a3ff77331b6c7b11926e9ba2185bb3514}{
+\index{client/src/client.h@{client/src/client.h}!wait\_\-loginOK@{wait\_\-loginOK}}
+\index{wait\_\-loginOK@{wait\_\-loginOK}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{wait\_\-loginOK}]{\setlength{\rightskip}{0pt plus 5cm}int wait\_\-loginOK (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{client_2src_2client_8h_a3ff77331b6c7b11926e9ba2185bb3514}
+
+
+waits until login response from server is ok -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/int wat\_\-loginOK()-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ 
+
+\subsection{Variable Documentation}
+\hypertarget{client_2src_2client_8h_a1727bd3a3224e60ebfd7841bfb09edf2}{
+\index{client/src/client.h@{client/src/client.h}!GCI@{GCI}}
+\index{GCI@{GCI}!client/src/client.h@{client/src/client.h}}
+\subsubsection[{GCI}]{\setlength{\rightskip}{0pt plus 5cm}{\bf global\_\-client\_\-info} {\bf GCI}}}
+\label{client_2src_2client_8h_a1727bd3a3224e60ebfd7841bfb09edf2}

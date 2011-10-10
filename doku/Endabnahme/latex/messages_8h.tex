@@ -1,0 +1,388 @@
+\hypertarget{messages_8h}{
+\section{/home/kathrin/Documents/fh/sysprog/YDKR/source/common/src/messages.h File Reference}
+\label{messages_8h}\index{/home/kathrin/Documents/fh/sysprog/YDKR/source/common/src/messages.h@{/home/kathrin/Documents/fh/sysprog/YDKR/source/common/src/messages.h}}
+}
+{\ttfamily \#include $<$stdint.h$>$}\par
+{\ttfamily \#include $<$pthread.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include \char`\"{}./question.h\char`\"{}}\par
+Include dependency graph for messages.h:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{messages_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{messages_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmsg__header}{msg\_\-header}
+\item 
+struct \hyperlink{structlogin__request}{login\_\-request}
+\item 
+struct \hyperlink{structlogin__response___o_k}{login\_\-response\_\-OK}
+\item 
+struct \hyperlink{structplayer__list}{player\_\-list}
+\item 
+struct \hyperlink{structcatalog__request}{catalog\_\-request}
+\item 
+struct \hyperlink{structcatalog__response}{catalog\_\-response}
+\item 
+struct \hyperlink{structcatalog__change}{catalog\_\-change}
+\item 
+struct \hyperlink{structstart__game}{start\_\-game}
+\item 
+struct \hyperlink{structquestion__request}{question\_\-request}
+\item 
+struct \hyperlink{structquestion}{question}
+\item 
+struct \hyperlink{structquestion__answered}{question\_\-answered}
+\item 
+struct \hyperlink{structquestion__result}{question\_\-result}
+\item 
+struct \hyperlink{structgame__over}{game\_\-over}
+\item 
+struct \hyperlink{structerror__warning}{error\_\-warning}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{messages_8h_a1dce0e03c9ad36ace3b6192e1f69c4b2}{RFC\_\-LOGINREQUEST}~1
+\item 
+\#define \hyperlink{messages_8h_a45b9b014ea9cc4ef53c723f68e005155}{RFC\_\-LOGINRESPONSEOK}~2
+\item 
+\#define \hyperlink{messages_8h_a86bdfb4ab44ef7e31369b4f2e63fd804}{RFC\_\-PLAYERLIST}~3
+\item 
+\#define \hyperlink{messages_8h_a78ec98552d512af077794e628d26bbff}{RFC\_\-CATALOGREQUEST}~4
+\item 
+\#define \hyperlink{messages_8h_a226bfe026ade1e70c3b4f1eca76618b8}{RFC\_\-CATALOGRESPONSE}~5
+\item 
+\#define \hyperlink{messages_8h_a6225ab7262f316cf4ae061bbf42fae67}{RFC\_\-CATALOGCHANGE}~6
+\item 
+\#define \hyperlink{messages_8h_adaa36364e6b312fc72bd6f004d78e44a}{RFC\_\-STARTGAME}~7
+\item 
+\#define \hyperlink{messages_8h_a7d74d25e41201fdf9b4b9685a5532b6c}{RFC\_\-QUESTIONREQUEST}~8
+\item 
+\#define \hyperlink{messages_8h_a79910d3b948a09c05033c15e6988db1d}{RFC\_\-QUESTION}~9
+\item 
+\#define \hyperlink{messages_8h_ac16eb304e7b4fcff8869e554ebedbe48}{RFC\_\-QUESTIONANSWERED}~10
+\item 
+\#define \hyperlink{messages_8h_adef6e89b5167278719247404b62fc4a4}{RFC\_\-QUESTIONRESULT}~11
+\item 
+\#define \hyperlink{messages_8h_afd976df8169e258638dee8ccf57cabcb}{RFC\_\-GAMEOVER}~12
+\item 
+\#define \hyperlink{messages_8h_af8bd9e4dd08de7f461fa72b44d487d4a}{RFC\_\-ERRORWARNING}~255
+\item 
+\#define \hyperlink{messages_8h_a0e61edf18ebeac89626cb0baaaf18365}{RFC\_\-ROLE\_\-DONTCARE}~0
+\item 
+\#define \hyperlink{messages_8h_afd1dc013168eaca5364d87988e1746df}{RFC\_\-ROLE\_\-SLAVE}~1
+\item 
+\#define \hyperlink{messages_8h_abf9400f93d4872de85ad9b2aca7e4376}{RFC\_\-ROLE\_\-MASTER}~2
+\item 
+\#define \hyperlink{messages_8h_acd89697454b504d241e47086e959196a}{RFC\_\-ERROR\_\-WARN}~0
+\item 
+\#define \hyperlink{messages_8h_ac59ceeedd4d699fe4f5d5d66f563e725}{RFC\_\-ERROR\_\-FATAL}~1
+\item 
+\#define \hyperlink{messages_8h_ae523111e3b55fe5c0022c35a979b3a02}{RFC\_\-ERROR\_\-LOGIN\_\-FAIL}~10
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmsg__header}{msg\_\-header} \hyperlink{messages_8h_a2a441fa9aad06caf96bf752aa747b454}{t\_\-msg\_\-header}
+\item 
+typedef struct \hyperlink{structlogin__request}{login\_\-request} \hyperlink{messages_8h_aac05ebc44380cbae5856e58ba5522a6b}{LOGINREQUEST}
+\item 
+typedef struct \hyperlink{structlogin__response___o_k}{login\_\-response\_\-OK} \hyperlink{messages_8h_adac20f2e95f9c8429fa76ad73f0419f1}{LOGINRESPONSEOK}
+\item 
+typedef struct \hyperlink{structplayer__list}{player\_\-list} \hyperlink{messages_8h_a101b2c6e8fbcc6b4ed575ad1cc62cada}{PLAYERLIST}
+\item 
+typedef struct \hyperlink{structplayer__list}{player\_\-list} \hyperlink{messages_8h_a0e23d35bd42753b72472b8abf0ca7a4c}{playerls}
+\item 
+typedef struct \hyperlink{structcatalog__request}{catalog\_\-request} \hyperlink{messages_8h_ac459784b82e78c11fec927c2e43e5811}{CATALOGREQUEST}
+\item 
+typedef struct \hyperlink{structcatalog__request}{catalog\_\-request} \hyperlink{messages_8h_a8b9a864b59bdf979c8fea4dd168c8d0b}{catareq}
+\item 
+typedef struct \hyperlink{structcatalog__response}{catalog\_\-response} \hyperlink{messages_8h_ad7bf6bbd12b4949d92231a71bdb31821}{CATALOGRESPONSE}
+\item 
+typedef struct \hyperlink{structcatalog__response}{catalog\_\-response} \hyperlink{messages_8h_a2a5dd0eb5fa32b1d467928ae2bb9c54b}{catares}
+\item 
+typedef struct \hyperlink{structcatalog__change}{catalog\_\-change} \hyperlink{messages_8h_af9d5f8f515366cca46765027b901fcde}{CATALOGCHANGE}
+\item 
+typedef struct \hyperlink{structcatalog__change}{catalog\_\-change} \hyperlink{messages_8h_aad134b225615d6c89d9a3669f05c61ca}{catach}
+\item 
+typedef struct \hyperlink{structstart__game}{start\_\-game} \hyperlink{messages_8h_ac9b0984540d87d2a7042613a1dd55c71}{STARTGAME}
+\item 
+typedef struct \hyperlink{structstart__game}{start\_\-game} \hyperlink{messages_8h_a8eb2f7d1015f2a5493f63b916ce09a15}{startgm}
+\item 
+typedef struct \hyperlink{structquestion__request}{question\_\-request} \hyperlink{messages_8h_ab12610bbbb5fb4ed4d10125caae29520}{QUESTIONREQUEST}
+\item 
+typedef struct \hyperlink{structquestion__request}{question\_\-request} \hyperlink{messages_8h_a4a336b540e903a537da72d9db8311e9a}{questionreq}
+\item 
+typedef struct \hyperlink{structquestion}{question} \hyperlink{messages_8h_abb8fbc5152b7015dcec9e67091e5e846}{QUESTION}
+\item 
+typedef struct \hyperlink{structquestion__answered}{question\_\-answered} \hyperlink{messages_8h_a71d62bd0a2427c2e39390a6b8811b448}{QUESTIONANSWERED}
+\item 
+typedef struct \hyperlink{structquestion__result}{question\_\-result} \hyperlink{messages_8h_a009828b79dccfea860e8f5e367e459dd}{QUESTIONRESULT}
+\item 
+typedef struct \hyperlink{structgame__over}{game\_\-over} \hyperlink{messages_8h_ad98ecd36579207a26dfcccd96a207368}{GAMEOVER}
+\item 
+typedef struct \hyperlink{structerror__warning}{error\_\-warning} \hyperlink{messages_8h_ae7da5395e49e5c1f5e229d73e5d22e70}{ERRORWARNING}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmsg__header}{msg\_\-header} \hyperlink{messages_8h_aefe298f440566dcc65ae47c848d82514}{\_\-\_\-attribute\_\-\_\-} ((\_\-\_\-packed\_\-\_\-))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\_\-t \hyperlink{messages_8h_a1d127017fb298b889f4ba24752d08b8e}{type}
+\item 
+uint16\_\-t \hyperlink{messages_8h_a1892eba2086d12ac2b09005aeb09ea3b}{length}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+============================================================================
+
+\begin{DoxyAuthor}{Author}
+: Kathrin Holzmann 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+: May 12, 2011 ============================================================================ 
+\end{DoxyDate}
+
+
+\subsection{Define Documentation}
+\hypertarget{messages_8h_a6225ab7262f316cf4ae061bbf42fae67}{
+\index{messages.h@{messages.h}!RFC\_\-CATALOGCHANGE@{RFC\_\-CATALOGCHANGE}}
+\index{RFC\_\-CATALOGCHANGE@{RFC\_\-CATALOGCHANGE}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-CATALOGCHANGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-CATALOGCHANGE~6}}
+\label{messages_8h_a6225ab7262f316cf4ae061bbf42fae67}
+\hypertarget{messages_8h_a78ec98552d512af077794e628d26bbff}{
+\index{messages.h@{messages.h}!RFC\_\-CATALOGREQUEST@{RFC\_\-CATALOGREQUEST}}
+\index{RFC\_\-CATALOGREQUEST@{RFC\_\-CATALOGREQUEST}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-CATALOGREQUEST}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-CATALOGREQUEST~4}}
+\label{messages_8h_a78ec98552d512af077794e628d26bbff}
+\hypertarget{messages_8h_a226bfe026ade1e70c3b4f1eca76618b8}{
+\index{messages.h@{messages.h}!RFC\_\-CATALOGRESPONSE@{RFC\_\-CATALOGRESPONSE}}
+\index{RFC\_\-CATALOGRESPONSE@{RFC\_\-CATALOGRESPONSE}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-CATALOGRESPONSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-CATALOGRESPONSE~5}}
+\label{messages_8h_a226bfe026ade1e70c3b4f1eca76618b8}
+\hypertarget{messages_8h_ac59ceeedd4d699fe4f5d5d66f563e725}{
+\index{messages.h@{messages.h}!RFC\_\-ERROR\_\-FATAL@{RFC\_\-ERROR\_\-FATAL}}
+\index{RFC\_\-ERROR\_\-FATAL@{RFC\_\-ERROR\_\-FATAL}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ERROR\_\-FATAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ERROR\_\-FATAL~1}}
+\label{messages_8h_ac59ceeedd4d699fe4f5d5d66f563e725}
+\hypertarget{messages_8h_ae523111e3b55fe5c0022c35a979b3a02}{
+\index{messages.h@{messages.h}!RFC\_\-ERROR\_\-LOGIN\_\-FAIL@{RFC\_\-ERROR\_\-LOGIN\_\-FAIL}}
+\index{RFC\_\-ERROR\_\-LOGIN\_\-FAIL@{RFC\_\-ERROR\_\-LOGIN\_\-FAIL}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ERROR\_\-LOGIN\_\-FAIL}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ERROR\_\-LOGIN\_\-FAIL~10}}
+\label{messages_8h_ae523111e3b55fe5c0022c35a979b3a02}
+\hypertarget{messages_8h_acd89697454b504d241e47086e959196a}{
+\index{messages.h@{messages.h}!RFC\_\-ERROR\_\-WARN@{RFC\_\-ERROR\_\-WARN}}
+\index{RFC\_\-ERROR\_\-WARN@{RFC\_\-ERROR\_\-WARN}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ERROR\_\-WARN}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ERROR\_\-WARN~0}}
+\label{messages_8h_acd89697454b504d241e47086e959196a}
+\hypertarget{messages_8h_af8bd9e4dd08de7f461fa72b44d487d4a}{
+\index{messages.h@{messages.h}!RFC\_\-ERRORWARNING@{RFC\_\-ERRORWARNING}}
+\index{RFC\_\-ERRORWARNING@{RFC\_\-ERRORWARNING}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ERRORWARNING}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ERRORWARNING~255}}
+\label{messages_8h_af8bd9e4dd08de7f461fa72b44d487d4a}
+\hypertarget{messages_8h_afd976df8169e258638dee8ccf57cabcb}{
+\index{messages.h@{messages.h}!RFC\_\-GAMEOVER@{RFC\_\-GAMEOVER}}
+\index{RFC\_\-GAMEOVER@{RFC\_\-GAMEOVER}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-GAMEOVER}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-GAMEOVER~12}}
+\label{messages_8h_afd976df8169e258638dee8ccf57cabcb}
+\hypertarget{messages_8h_a1dce0e03c9ad36ace3b6192e1f69c4b2}{
+\index{messages.h@{messages.h}!RFC\_\-LOGINREQUEST@{RFC\_\-LOGINREQUEST}}
+\index{RFC\_\-LOGINREQUEST@{RFC\_\-LOGINREQUEST}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-LOGINREQUEST}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-LOGINREQUEST~1}}
+\label{messages_8h_a1dce0e03c9ad36ace3b6192e1f69c4b2}
+\hypertarget{messages_8h_a45b9b014ea9cc4ef53c723f68e005155}{
+\index{messages.h@{messages.h}!RFC\_\-LOGINRESPONSEOK@{RFC\_\-LOGINRESPONSEOK}}
+\index{RFC\_\-LOGINRESPONSEOK@{RFC\_\-LOGINRESPONSEOK}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-LOGINRESPONSEOK}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-LOGINRESPONSEOK~2}}
+\label{messages_8h_a45b9b014ea9cc4ef53c723f68e005155}
+\hypertarget{messages_8h_a86bdfb4ab44ef7e31369b4f2e63fd804}{
+\index{messages.h@{messages.h}!RFC\_\-PLAYERLIST@{RFC\_\-PLAYERLIST}}
+\index{RFC\_\-PLAYERLIST@{RFC\_\-PLAYERLIST}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-PLAYERLIST}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-PLAYERLIST~3}}
+\label{messages_8h_a86bdfb4ab44ef7e31369b4f2e63fd804}
+\hypertarget{messages_8h_a79910d3b948a09c05033c15e6988db1d}{
+\index{messages.h@{messages.h}!RFC\_\-QUESTION@{RFC\_\-QUESTION}}
+\index{RFC\_\-QUESTION@{RFC\_\-QUESTION}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-QUESTION}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-QUESTION~9}}
+\label{messages_8h_a79910d3b948a09c05033c15e6988db1d}
+\hypertarget{messages_8h_ac16eb304e7b4fcff8869e554ebedbe48}{
+\index{messages.h@{messages.h}!RFC\_\-QUESTIONANSWERED@{RFC\_\-QUESTIONANSWERED}}
+\index{RFC\_\-QUESTIONANSWERED@{RFC\_\-QUESTIONANSWERED}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-QUESTIONANSWERED}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-QUESTIONANSWERED~10}}
+\label{messages_8h_ac16eb304e7b4fcff8869e554ebedbe48}
+\hypertarget{messages_8h_a7d74d25e41201fdf9b4b9685a5532b6c}{
+\index{messages.h@{messages.h}!RFC\_\-QUESTIONREQUEST@{RFC\_\-QUESTIONREQUEST}}
+\index{RFC\_\-QUESTIONREQUEST@{RFC\_\-QUESTIONREQUEST}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-QUESTIONREQUEST}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-QUESTIONREQUEST~8}}
+\label{messages_8h_a7d74d25e41201fdf9b4b9685a5532b6c}
+\hypertarget{messages_8h_adef6e89b5167278719247404b62fc4a4}{
+\index{messages.h@{messages.h}!RFC\_\-QUESTIONRESULT@{RFC\_\-QUESTIONRESULT}}
+\index{RFC\_\-QUESTIONRESULT@{RFC\_\-QUESTIONRESULT}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-QUESTIONRESULT}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-QUESTIONRESULT~11}}
+\label{messages_8h_adef6e89b5167278719247404b62fc4a4}
+\hypertarget{messages_8h_a0e61edf18ebeac89626cb0baaaf18365}{
+\index{messages.h@{messages.h}!RFC\_\-ROLE\_\-DONTCARE@{RFC\_\-ROLE\_\-DONTCARE}}
+\index{RFC\_\-ROLE\_\-DONTCARE@{RFC\_\-ROLE\_\-DONTCARE}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ROLE\_\-DONTCARE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ROLE\_\-DONTCARE~0}}
+\label{messages_8h_a0e61edf18ebeac89626cb0baaaf18365}
+\hypertarget{messages_8h_abf9400f93d4872de85ad9b2aca7e4376}{
+\index{messages.h@{messages.h}!RFC\_\-ROLE\_\-MASTER@{RFC\_\-ROLE\_\-MASTER}}
+\index{RFC\_\-ROLE\_\-MASTER@{RFC\_\-ROLE\_\-MASTER}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ROLE\_\-MASTER}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ROLE\_\-MASTER~2}}
+\label{messages_8h_abf9400f93d4872de85ad9b2aca7e4376}
+\hypertarget{messages_8h_afd1dc013168eaca5364d87988e1746df}{
+\index{messages.h@{messages.h}!RFC\_\-ROLE\_\-SLAVE@{RFC\_\-ROLE\_\-SLAVE}}
+\index{RFC\_\-ROLE\_\-SLAVE@{RFC\_\-ROLE\_\-SLAVE}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-ROLE\_\-SLAVE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-ROLE\_\-SLAVE~1}}
+\label{messages_8h_afd1dc013168eaca5364d87988e1746df}
+\hypertarget{messages_8h_adaa36364e6b312fc72bd6f004d78e44a}{
+\index{messages.h@{messages.h}!RFC\_\-STARTGAME@{RFC\_\-STARTGAME}}
+\index{RFC\_\-STARTGAME@{RFC\_\-STARTGAME}!messages.h@{messages.h}}
+\subsubsection[{RFC\_\-STARTGAME}]{\setlength{\rightskip}{0pt plus 5cm}\#define RFC\_\-STARTGAME~7}}
+\label{messages_8h_adaa36364e6b312fc72bd6f004d78e44a}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{messages_8h_aad134b225615d6c89d9a3669f05c61ca}{
+\index{messages.h@{messages.h}!catach@{catach}}
+\index{catach@{catach}!messages.h@{messages.h}}
+\subsubsection[{catach}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf catalog\_\-change} {\bf catach}}}
+\label{messages_8h_aad134b225615d6c89d9a3669f05c61ca}
+\hypertarget{messages_8h_af9d5f8f515366cca46765027b901fcde}{
+\index{messages.h@{messages.h}!CATALOGCHANGE@{CATALOGCHANGE}}
+\index{CATALOGCHANGE@{CATALOGCHANGE}!messages.h@{messages.h}}
+\subsubsection[{CATALOGCHANGE}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf catalog\_\-change} {\bf CATALOGCHANGE}}}
+\label{messages_8h_af9d5f8f515366cca46765027b901fcde}
+\hypertarget{messages_8h_ac459784b82e78c11fec927c2e43e5811}{
+\index{messages.h@{messages.h}!CATALOGREQUEST@{CATALOGREQUEST}}
+\index{CATALOGREQUEST@{CATALOGREQUEST}!messages.h@{messages.h}}
+\subsubsection[{CATALOGREQUEST}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf catalog\_\-request} {\bf CATALOGREQUEST}}}
+\label{messages_8h_ac459784b82e78c11fec927c2e43e5811}
+\hypertarget{messages_8h_ad7bf6bbd12b4949d92231a71bdb31821}{
+\index{messages.h@{messages.h}!CATALOGRESPONSE@{CATALOGRESPONSE}}
+\index{CATALOGRESPONSE@{CATALOGRESPONSE}!messages.h@{messages.h}}
+\subsubsection[{CATALOGRESPONSE}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf catalog\_\-response} {\bf CATALOGRESPONSE}}}
+\label{messages_8h_ad7bf6bbd12b4949d92231a71bdb31821}
+\hypertarget{messages_8h_a8b9a864b59bdf979c8fea4dd168c8d0b}{
+\index{messages.h@{messages.h}!catareq@{catareq}}
+\index{catareq@{catareq}!messages.h@{messages.h}}
+\subsubsection[{catareq}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf catalog\_\-request} {\bf catareq}}}
+\label{messages_8h_a8b9a864b59bdf979c8fea4dd168c8d0b}
+\hypertarget{messages_8h_a2a5dd0eb5fa32b1d467928ae2bb9c54b}{
+\index{messages.h@{messages.h}!catares@{catares}}
+\index{catares@{catares}!messages.h@{messages.h}}
+\subsubsection[{catares}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf catalog\_\-response} {\bf catares}}}
+\label{messages_8h_a2a5dd0eb5fa32b1d467928ae2bb9c54b}
+\hypertarget{messages_8h_ae7da5395e49e5c1f5e229d73e5d22e70}{
+\index{messages.h@{messages.h}!ERRORWARNING@{ERRORWARNING}}
+\index{ERRORWARNING@{ERRORWARNING}!messages.h@{messages.h}}
+\subsubsection[{ERRORWARNING}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf error\_\-warning} {\bf ERRORWARNING}}}
+\label{messages_8h_ae7da5395e49e5c1f5e229d73e5d22e70}
+\hypertarget{messages_8h_ad98ecd36579207a26dfcccd96a207368}{
+\index{messages.h@{messages.h}!GAMEOVER@{GAMEOVER}}
+\index{GAMEOVER@{GAMEOVER}!messages.h@{messages.h}}
+\subsubsection[{GAMEOVER}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf game\_\-over} {\bf GAMEOVER}}}
+\label{messages_8h_ad98ecd36579207a26dfcccd96a207368}
+\hypertarget{messages_8h_aac05ebc44380cbae5856e58ba5522a6b}{
+\index{messages.h@{messages.h}!LOGINREQUEST@{LOGINREQUEST}}
+\index{LOGINREQUEST@{LOGINREQUEST}!messages.h@{messages.h}}
+\subsubsection[{LOGINREQUEST}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf login\_\-request} {\bf LOGINREQUEST}}}
+\label{messages_8h_aac05ebc44380cbae5856e58ba5522a6b}
+\hypertarget{messages_8h_adac20f2e95f9c8429fa76ad73f0419f1}{
+\index{messages.h@{messages.h}!LOGINRESPONSEOK@{LOGINRESPONSEOK}}
+\index{LOGINRESPONSEOK@{LOGINRESPONSEOK}!messages.h@{messages.h}}
+\subsubsection[{LOGINRESPONSEOK}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf login\_\-response\_\-OK} {\bf LOGINRESPONSEOK}}}
+\label{messages_8h_adac20f2e95f9c8429fa76ad73f0419f1}
+\hypertarget{messages_8h_a101b2c6e8fbcc6b4ed575ad1cc62cada}{
+\index{messages.h@{messages.h}!PLAYERLIST@{PLAYERLIST}}
+\index{PLAYERLIST@{PLAYERLIST}!messages.h@{messages.h}}
+\subsubsection[{PLAYERLIST}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf player\_\-list} {\bf PLAYERLIST}}}
+\label{messages_8h_a101b2c6e8fbcc6b4ed575ad1cc62cada}
+\hypertarget{messages_8h_a0e23d35bd42753b72472b8abf0ca7a4c}{
+\index{messages.h@{messages.h}!playerls@{playerls}}
+\index{playerls@{playerls}!messages.h@{messages.h}}
+\subsubsection[{playerls}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf player\_\-list} {\bf playerls}}}
+\label{messages_8h_a0e23d35bd42753b72472b8abf0ca7a4c}
+\hypertarget{messages_8h_abb8fbc5152b7015dcec9e67091e5e846}{
+\index{messages.h@{messages.h}!QUESTION@{QUESTION}}
+\index{QUESTION@{QUESTION}!messages.h@{messages.h}}
+\subsubsection[{QUESTION}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf question} {\bf QUESTION}}}
+\label{messages_8h_abb8fbc5152b7015dcec9e67091e5e846}
+\hypertarget{messages_8h_a71d62bd0a2427c2e39390a6b8811b448}{
+\index{messages.h@{messages.h}!QUESTIONANSWERED@{QUESTIONANSWERED}}
+\index{QUESTIONANSWERED@{QUESTIONANSWERED}!messages.h@{messages.h}}
+\subsubsection[{QUESTIONANSWERED}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf question\_\-answered} {\bf QUESTIONANSWERED}}}
+\label{messages_8h_a71d62bd0a2427c2e39390a6b8811b448}
+\hypertarget{messages_8h_a4a336b540e903a537da72d9db8311e9a}{
+\index{messages.h@{messages.h}!questionreq@{questionreq}}
+\index{questionreq@{questionreq}!messages.h@{messages.h}}
+\subsubsection[{questionreq}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf question\_\-request} {\bf questionreq}}}
+\label{messages_8h_a4a336b540e903a537da72d9db8311e9a}
+\hypertarget{messages_8h_ab12610bbbb5fb4ed4d10125caae29520}{
+\index{messages.h@{messages.h}!QUESTIONREQUEST@{QUESTIONREQUEST}}
+\index{QUESTIONREQUEST@{QUESTIONREQUEST}!messages.h@{messages.h}}
+\subsubsection[{QUESTIONREQUEST}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf question\_\-request} {\bf QUESTIONREQUEST}}}
+\label{messages_8h_ab12610bbbb5fb4ed4d10125caae29520}
+\hypertarget{messages_8h_a009828b79dccfea860e8f5e367e459dd}{
+\index{messages.h@{messages.h}!QUESTIONRESULT@{QUESTIONRESULT}}
+\index{QUESTIONRESULT@{QUESTIONRESULT}!messages.h@{messages.h}}
+\subsubsection[{QUESTIONRESULT}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf question\_\-result} {\bf QUESTIONRESULT}}}
+\label{messages_8h_a009828b79dccfea860e8f5e367e459dd}
+\hypertarget{messages_8h_ac9b0984540d87d2a7042613a1dd55c71}{
+\index{messages.h@{messages.h}!STARTGAME@{STARTGAME}}
+\index{STARTGAME@{STARTGAME}!messages.h@{messages.h}}
+\subsubsection[{STARTGAME}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf start\_\-game} {\bf STARTGAME}}}
+\label{messages_8h_ac9b0984540d87d2a7042613a1dd55c71}
+\hypertarget{messages_8h_a8eb2f7d1015f2a5493f63b916ce09a15}{
+\index{messages.h@{messages.h}!startgm@{startgm}}
+\index{startgm@{startgm}!messages.h@{messages.h}}
+\subsubsection[{startgm}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf start\_\-game} {\bf startgm}}}
+\label{messages_8h_a8eb2f7d1015f2a5493f63b916ce09a15}
+\hypertarget{messages_8h_a2a441fa9aad06caf96bf752aa747b454}{
+\index{messages.h@{messages.h}!t\_\-msg\_\-header@{t\_\-msg\_\-header}}
+\index{t\_\-msg\_\-header@{t\_\-msg\_\-header}!messages.h@{messages.h}}
+\subsubsection[{t\_\-msg\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf msg\_\-header} {\bf t\_\-msg\_\-header}}}
+\label{messages_8h_a2a441fa9aad06caf96bf752aa747b454}
+
+
+\subsection{Function Documentation}
+\hypertarget{messages_8h_aefe298f440566dcc65ae47c848d82514}{
+\index{messages.h@{messages.h}!\_\-\_\-attribute\_\-\_\-@{\_\-\_\-attribute\_\-\_\-}}
+\index{\_\-\_\-attribute\_\-\_\-@{\_\-\_\-attribute\_\-\_\-}!messages.h@{messages.h}}
+\subsubsection[{\_\-\_\-attribute\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf msg\_\-header} \_\-\_\-attribute\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{(\_\-\_\-packed\_\-\_\-)}]{}
+\end{DoxyParamCaption}
+)}}
+\label{messages_8h_aefe298f440566dcc65ae47c848d82514}
+
+
+\subsection{Variable Documentation}
+\hypertarget{messages_8h_a1892eba2086d12ac2b09005aeb09ea3b}{
+\index{messages.h@{messages.h}!length@{length}}
+\index{length@{length}!messages.h@{messages.h}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf length}}}
+\label{messages_8h_a1892eba2086d12ac2b09005aeb09ea3b}
+\hypertarget{messages_8h_a1d127017fb298b889f4ba24752d08b8e}{
+\index{messages.h@{messages.h}!type@{type}}
+\index{type@{type}!messages.h@{messages.h}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf type}}}
+\label{messages_8h_a1d127017fb298b889f4ba24752d08b8e}

@@ -1,12 +1,13 @@
 #ifndef LISTENER_H
 #define LISTENER_H
 
-/*============================================================================
- Name        : listener.h
- Author      : Kathrin Holzmann
- Version     : May 12, 2011 10:18:15 AM
- Project     : client
- =============================================================================*/
+/**
+ * ============================================================================
+ * @file        : client.c
+ * @author      : Kathrin Holzmann
+ * @date        : May 12, 2011
+ * ============================================================================
+ */
 
 #include "../../common/src/messages.h"
 #include "../../common/src/question.h"

@@ -1,10 +1,10 @@
-/*
- * keymanager.h
- *
- *  Created on: May 10, 2011
- *      Author: kathrin
+/**
+ * ============================================================================
+ * @file        : client.h
+ * @author      : Kathrin Holzmann
+ * @date        : May 10, 2011
+ * ============================================================================
  */
-
 #ifndef KEYMANAGER_H_
 #define KEYMANAGER_H_
 

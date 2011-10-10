@@ -1,13 +1,12 @@
 #ifndef MESSAGES_H_
 #define MESSAGES_H_
 
-/*
- * keymanager.h
- *
- *  Created on: May 12, 2011
- *      Author: kathrin
- *  Changed on: May 16, 2011
- *  	Author: fl0
+/**
+ * ============================================================================
+ * @file        : messages.h
+ * @author      : Kathrin Holzmann
+ * @date        : May 12, 2011
+ * ============================================================================
  */
 
 #include <stdint.h>

@@ -1,0 +1,93 @@
+\hypertarget{keymanager_8h}{
+\section{/home/kathrin/Documents/fh/sysprog/YDKR/source/common/src/keymanager.h File Reference}
+\label{keymanager_8h}\index{/home/kathrin/Documents/fh/sysprog/YDKR/source/common/src/keymanager.h@{/home/kathrin/Documents/fh/sysprog/YDKR/source/common/src/keymanager.h}}
+}
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$sys/ipc.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+Include dependency graph for keymanager.h:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{keymanager_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{keymanager_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{keymanager_8h_ab771bcecf77941d1a588b0625fd4d1bb}{KEY\_\-GCI\_\-SEM}~0x42
+\item 
+\#define \hyperlink{keymanager_8h_aa9e5a514b5a73d06614bcfe54635251f}{KEY\_\-GCISOCK\_\-SEM}~0x23
+\item 
+\#define \hyperlink{keymanager_8h_ad4ad91532da4ae5e6efeec6b91fb7c99}{KEY\_\-COMMAND\_\-MQ}~0x41
+\item 
+\#define \hyperlink{keymanager_8h_a3420736b242b9ea2ad402f629fdca240}{KEY\_\-RANKING}~0x44
+\item 
+\#define \hyperlink{keymanager_8h_a3727ebd605eebecd9823d39a0426eef0}{KEY\_\-QUESTION}~0x43
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+key\_\-t \hyperlink{keymanager_8h_a77e0ec3d1a2c477ad576e1af0b8fa19e}{keymng} (int offset)
+\item 
+key\_\-t \hyperlink{keymanager_8h_acd307105c0de9b745d2caf7aff6d7f45}{keymng\_\-local} (int offset)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{keymanager_8h_ad4ad91532da4ae5e6efeec6b91fb7c99}{
+\index{keymanager.h@{keymanager.h}!KEY\_\-COMMAND\_\-MQ@{KEY\_\-COMMAND\_\-MQ}}
+\index{KEY\_\-COMMAND\_\-MQ@{KEY\_\-COMMAND\_\-MQ}!keymanager.h@{keymanager.h}}
+\subsubsection[{KEY\_\-COMMAND\_\-MQ}]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-COMMAND\_\-MQ~0x41}}
+\label{keymanager_8h_ad4ad91532da4ae5e6efeec6b91fb7c99}
+\hypertarget{keymanager_8h_ab771bcecf77941d1a588b0625fd4d1bb}{
+\index{keymanager.h@{keymanager.h}!KEY\_\-GCI\_\-SEM@{KEY\_\-GCI\_\-SEM}}
+\index{KEY\_\-GCI\_\-SEM@{KEY\_\-GCI\_\-SEM}!keymanager.h@{keymanager.h}}
+\subsubsection[{KEY\_\-GCI\_\-SEM}]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-GCI\_\-SEM~0x42}}
+\label{keymanager_8h_ab771bcecf77941d1a588b0625fd4d1bb}
+\hypertarget{keymanager_8h_aa9e5a514b5a73d06614bcfe54635251f}{
+\index{keymanager.h@{keymanager.h}!KEY\_\-GCISOCK\_\-SEM@{KEY\_\-GCISOCK\_\-SEM}}
+\index{KEY\_\-GCISOCK\_\-SEM@{KEY\_\-GCISOCK\_\-SEM}!keymanager.h@{keymanager.h}}
+\subsubsection[{KEY\_\-GCISOCK\_\-SEM}]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-GCISOCK\_\-SEM~0x23}}
+\label{keymanager_8h_aa9e5a514b5a73d06614bcfe54635251f}
+\hypertarget{keymanager_8h_a3727ebd605eebecd9823d39a0426eef0}{
+\index{keymanager.h@{keymanager.h}!KEY\_\-QUESTION@{KEY\_\-QUESTION}}
+\index{KEY\_\-QUESTION@{KEY\_\-QUESTION}!keymanager.h@{keymanager.h}}
+\subsubsection[{KEY\_\-QUESTION}]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-QUESTION~0x43}}
+\label{keymanager_8h_a3727ebd605eebecd9823d39a0426eef0}
+\hypertarget{keymanager_8h_a3420736b242b9ea2ad402f629fdca240}{
+\index{keymanager.h@{keymanager.h}!KEY\_\-RANKING@{KEY\_\-RANKING}}
+\index{KEY\_\-RANKING@{KEY\_\-RANKING}!keymanager.h@{keymanager.h}}
+\subsubsection[{KEY\_\-RANKING}]{\setlength{\rightskip}{0pt plus 5cm}\#define KEY\_\-RANKING~0x44}}
+\label{keymanager_8h_a3420736b242b9ea2ad402f629fdca240}
+
+
+\subsection{Function Documentation}
+\hypertarget{keymanager_8h_a77e0ec3d1a2c477ad576e1af0b8fa19e}{
+\index{keymanager.h@{keymanager.h}!keymng@{keymng}}
+\index{keymng@{keymng}!keymanager.h@{keymanager.h}}
+\subsubsection[{keymng}]{\setlength{\rightskip}{0pt plus 5cm}key\_\-t keymng (
+\begin{DoxyParamCaption}
+\item[{int}]{offset}
+\end{DoxyParamCaption}
+)}}
+\label{keymanager_8h_a77e0ec3d1a2c477ad576e1af0b8fa19e}
+\hypertarget{keymanager_8h_acd307105c0de9b745d2caf7aff6d7f45}{
+\index{keymanager.h@{keymanager.h}!keymng\_\-local@{keymng\_\-local}}
+\index{keymng\_\-local@{keymng\_\-local}!keymanager.h@{keymanager.h}}
+\subsubsection[{keymng\_\-local}]{\setlength{\rightskip}{0pt plus 5cm}key\_\-t keymng\_\-local (
+\begin{DoxyParamCaption}
+\item[{int}]{offset}
+\end{DoxyParamCaption}
+)}}
+\label{keymanager_8h_acd307105c0de9b745d2caf7aff6d7f45}

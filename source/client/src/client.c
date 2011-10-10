@@ -1,9 +1,8 @@
-/*
+/**
  * ============================================================================
- * Name        : client.c
- * Author      : Kathrin Holzmann
- * Version     : Apr 12, 2011 - 10:44:39 AM
- * Project     : client
+ * @file        : client.c
+ * @author      : Kathrin Holzmann
+ * @date        : Apr 12, 2011
  * ============================================================================
  */
 
@@ -25,6 +24,10 @@
 
 pthread_t listener_thread_id, fragen_thread_id;
 
+/**========================================
+ * @brief prints the help instructions
+ * @param self *char
+ * =======================================*/
 void print_help(char *self)
 {
 	printf("%s [params] [server]\n"
@@ -37,7 +40,10 @@ void print_help(char *self)
 }
 
 
-// hauptfunktion erwartet server und portnummer
+/**===========================================
+ * @brief main thread, starting up the client and the other threads
+ * @param argc:int argv**char
+ * ==========================================*/
 int main(int argc, char **argv)
 {
 	char *name   = "Guest";
@@ -171,7 +177,7 @@ int main(int argc, char **argv)
 }
 
 
-/*-----------void send_login(char* name)----------------------
+/**-----------void send_login(char* name)----------------------
  * @description: sends the login name to the server
  * -----------------------------------------------------------*/
 void send_login(char* name)
@@ -186,8 +192,8 @@ void send_login(char* name)
 	printf("login was send \n");
 }
 
-/*-----------int wat_loginOK()---------------------------
- * @description: waits until login response is ok
+/**-----------int wat_loginOK()---------------------------
+ * @brief waits until login response from server is ok
  * -----------------------------------------------------------*/
 int wait_loginOK()
 {
@@ -247,8 +253,8 @@ int wait_loginOK()
 	return 0;
 }
 
-/*-----------void setClientMode()---------------------------
- * @description: sets the Client Mode to privileged or normal
+/**-----------void setClientMode()---------------------------
+ * @brief sets the Client Mode to privileged or normal
  * -----------------------------------------------------------*/
 
 void setClientMode()
@@ -265,8 +271,8 @@ void setClientMode()
 }
 
 
-/*-----------void sendCR()---------------------------
- * @description: sends the Catalouge Request
+/**-----------void sendCR()---------------------------------
+ * @brief sends the Catalouge Request
  * -----------------------------------------------------------*/
 
 void sendCR()
@@ -285,12 +291,9 @@ void sendCR()
 	printf("CR was send \n"); 
 }
 
-/* ========================================================================
- * Funktion:
- *        send_QR
- * Kurzbeschreibung:
- *        Fordert die nächste Frage an.
- * ========================================================================
+/** ==========================================================================
+ * @brief sends question request to the server after a special waiting time.
+ * ===========================================================================
  */
 
 void send_QR(int sleepTime)
@@ -308,6 +311,11 @@ void send_QR(int sleepTime)
 	
 	printf("QR was send \n"); 
 }
+
+/**==========================================
+ * @brief cleaning up function
+ * @param signal:INT
+ * ============================================*/
 
 void sigint_handler(int sig)
 {

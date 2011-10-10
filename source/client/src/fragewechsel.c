@@ -1,9 +1,8 @@
-/*
+/**
  * ============================================================================
- * Name        : main.c
- * Author      :Kathrin Holzmann
- * Version     : Jun 20, 2011 - 08:14:21 AM
- * Project     : client
+ * @file        : fragewechsel.c
+ * @author      : Kathrin Holzmann
+ * @date        : Jun 20, 2011
  * ============================================================================
  */
 
@@ -23,6 +22,10 @@
 #include "client.h"
 #include "listener.h"
 #include "fragewechsel.h"
+
+/**================================================================
+ * @brief thread which calls send_QR function if sempahore is free
+ * =================================================================*/
 
 void *fragen_thread(void *data)
 {

@@ -1,0 +1,494 @@
+\hypertarget{gui__interface_8h}{
+\section{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/gui\_\-interface.h File Reference}
+\label{gui__interface_8h}\index{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/gui\_\-interface.h@{/home/kathrin/Documents/fh/sysprog/YDKR/source/client/src/gui\_\-interface.h}}
+}
+This graph shows which files directly or indirectly include this file:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{gui__interface_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55bab4f1278da4bc7589a96802478485fd10}{GUI\_\-MAX\_\-USERS} =  6, 
+\hyperlink{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55ba7785d3316c59dbc69b19f63981942c89}{GUI\_\-NUM\_\-ANSWERS} =  4
+ \}
+\item 
+enum \hyperlink{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56}{StatusIcon} \{ \hyperlink{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56a36bc4001254d4d0593a29b4a0ac65653}{STATUS\_\-ICON\_\-NONE} =  0, 
+\hyperlink{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56ac2e1374f6a0e04d77f772684e875186b}{STATUS\_\-ICON\_\-CORRECT} =  1, 
+\hyperlink{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56abea72006d82bedc88f9ab3fd0053b7a4}{STATUS\_\-ICON\_\-WRONG} =  2, 
+\hyperlink{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56aff8a777fb949e5ac8e2bacc5cfb5314d}{STATUS\_\-ICON\_\-TIMEOUT} =  3
+ \}
+\begin{DoxyCompactList}\small\item\em Übergabewert für game\_\-setStatusIcon. \item\end{DoxyCompactList}\item 
+enum \hyperlink{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50dee}{PreparationMode} \{ \hyperlink{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deead33e46472ab55edf914ac6e17f49c416}{PREPARATION\_\-MODE\_\-BUSY} =  0, 
+\hyperlink{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deea4e49c1752049aed3217edcf80f85afe7}{PREPARATION\_\-MODE\_\-NORMAL} =  1, 
+\hyperlink{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deea88e87c22fd8676bfde95bb1cca5a4966}{PREPARATION\_\-MODE\_\-PRIVILEGED} =  2
+ \}
+\begin{DoxyCompactList}\small\item\em Übergabewert für preparation\_\-setMode. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gui__interface_8h_a819bbcd1bc0fea1744a07658b92a4e12}{guiInit} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+\item 
+void \hyperlink{gui__interface_8h_acfc60a28e55e1d7d5da60352b53044c7}{guiMain} (void)
+\item 
+void \hyperlink{gui__interface_8h_a2ec7878b1f11f1f134f79a07868d364a}{guiQuit} (void)
+\item 
+void \hyperlink{gui__interface_8h_a8ce970b7037206ed1ee356509e14b8a4}{guiDestroy} (void)
+\item 
+void \hyperlink{gui__interface_8h_a0a89a8fadecb0e31637d37a9d6deef1a}{guiShowErrorDialog} (const char $\ast$message, int quitOnClose)
+\item 
+void \hyperlink{gui__interface_8h_a066ee7949821ca5af3f4f2efde09a523}{guiShowMessageDialog} (const char $\ast$message, int quitOnClose)
+\item 
+void \hyperlink{gui__interface_8h_abb290af51dc45dcda93559994642f17a}{preparation\_\-setMode} (\hyperlink{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50dee}{PreparationMode} mode)
+\item 
+void \hyperlink{gui__interface_8h_a27762bb527640d590f562d914e6606c2}{preparation\_\-showWindow} (void)
+\item 
+void \hyperlink{gui__interface_8h_a334ee774572ceb7914a5857a24ab41b4}{preparation\_\-addCatalog} (const char $\ast$name)
+\item 
+int \hyperlink{gui__interface_8h_aece8101859ac86c33b7402fe26d3ae0d}{preparation\_\-selectCatalog} (const char $\ast$name)
+\item 
+void \hyperlink{gui__interface_8h_a218be68e749cd6cc4edfc0203754966c}{preparation\_\-addPlayer} (const char $\ast$name)
+\item 
+int \hyperlink{gui__interface_8h_a02f99539d4e3a7047621fc02b5ace4f2}{preparation\_\-removePlayer} (const char $\ast$name)
+\item 
+void \hyperlink{gui__interface_8h_ab49f6c6c7761e88c3844e03ffe347d0b}{preparation\_\-clearPlayers} (void)
+\item 
+void \hyperlink{gui__interface_8h_a36e5280b4ddf98dbdbdf1910bb965366}{preparation\_\-hideWindow} (void)
+\item 
+void \hyperlink{gui__interface_8h_aa07683aaf6fc9d5d4edd9a121451252f}{preparation\_\-reset} (void)
+\item 
+void \hyperlink{gui__interface_8h_ae1668ab012c3cdaddb0eb4f3f3f65bf4}{preparation\_\-onCatalogChanged} (const char $\ast$newSelection)
+\item 
+void \hyperlink{gui__interface_8h_a3fa54fc6ad4c3c005c34d965f485acc1}{preparation\_\-onStartClicked} (const char $\ast$currentSelection)
+\item 
+void \hyperlink{gui__interface_8h_aa0b6239c0fa80055895d9668c3cb8674}{preparation\_\-onWindowClosed} (void)
+\item 
+void \hyperlink{gui__interface_8h_a92a23d536ff75bbfa86bcd9e5a695fe9}{game\_\-showWindow} (void)
+\item 
+void \hyperlink{gui__interface_8h_ab56ef3132244269c5378371638b3064b}{game\_\-setStatusText} (const char $\ast$text)
+\item 
+void \hyperlink{gui__interface_8h_a55f8afa06033b467196ccd5a46225da3}{game\_\-setStatusIcon} (\hyperlink{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56}{StatusIcon} icon)
+\item 
+void \hyperlink{gui__interface_8h_a012d522d531fb1432569eaaf43e3d6ee}{game\_\-setQuestion} (const char $\ast$text)
+\item 
+void \hyperlink{gui__interface_8h_ad01c163ae271d8e3578f308f0922b8ff}{game\_\-setAnswer} (int index, const char $\ast$text)
+\item 
+void \hyperlink{gui__interface_8h_a3864747f4aad5d38f65d6ddf8ced5837}{game\_\-markAnswerCorrect} (int index)
+\item 
+void \hyperlink{gui__interface_8h_ac780657bd254c88b19bed16c9d44c702}{game\_\-markAnswerWrong} (int index)
+\item 
+void \hyperlink{gui__interface_8h_a08c12836896a6b4625f5bd209b3ccf2f}{game\_\-unmarkAnswers} (void)
+\item 
+void \hyperlink{gui__interface_8h_a58a363f236f29f8dc329bf276a0286e6}{game\_\-setAnswerButtonsEnabled} (int enable)
+\item 
+void \hyperlink{gui__interface_8h_af85faec39899017aefe4d46c2a5ad838}{game\_\-setPlayerName} (int position, const char $\ast$name)
+\item 
+void \hyperlink{gui__interface_8h_a3388d28c32ad891207cc22f245821e68}{game\_\-setPlayerScore} (int position, unsigned long score)
+\item 
+void \hyperlink{gui__interface_8h_a4eaf3c079eb53afb1d286f76b6d383a1}{game\_\-highlightPlayer} (int position)
+\item 
+void \hyperlink{gui__interface_8h_a409bf5d1890aceb9faa1129511b6fca4}{game\_\-hideWindow} (void)
+\item 
+void \hyperlink{gui__interface_8h_a05cddc86cdca6cac72dddefeaf3c142e}{game\_\-reset} (void)
+\item 
+void \hyperlink{gui__interface_8h_a497a03837ef1b64798d50914c1caa06f}{game\_\-onAnswerClicked} (int index)
+\item 
+void \hyperlink{gui__interface_8h_aac4987aa3c13f02fcaca620822dabfd1}{game\_\-onWindowClosed} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55b}{
+\subsubsection[{"@0}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}
+\label{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55b}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{GUI\_\-MAX\_\-USERS@{GUI\_\-MAX\_\-USERS}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!GUI\_\-MAX\_\-USERS@{GUI\_\-MAX\_\-USERS}}\item[{\em 
+\hypertarget{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55bab4f1278da4bc7589a96802478485fd10}{
+GUI\_\-MAX\_\-USERS}
+\label{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55bab4f1278da4bc7589a96802478485fd10}
+}]maximal 6 User \index{GUI\_\-NUM\_\-ANSWERS@{GUI\_\-NUM\_\-ANSWERS}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!GUI\_\-NUM\_\-ANSWERS@{GUI\_\-NUM\_\-ANSWERS}}\item[{\em 
+\hypertarget{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55ba7785d3316c59dbc69b19f63981942c89}{
+GUI\_\-NUM\_\-ANSWERS}
+\label{gui__interface_8h_a06fc87d81c62e9abb8790b6e5713c55ba7785d3316c59dbc69b19f63981942c89}
+}]pro Frage 4 Antwortmöglichkeiten \end{description}
+\end{Desc}
+
+\hypertarget{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50dee}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!PreparationMode@{PreparationMode}}
+\index{PreparationMode@{PreparationMode}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{PreparationMode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PreparationMode}}}
+\label{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50dee}
+
+
+Übergabewert für preparation\_\-setMode. 
+
+Spezifiziert den Modus, in dem sich das Vorbereitungsfenster befindet. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{PREPARATION\_\-MODE\_\-BUSY@{PREPARATION\_\-MODE\_\-BUSY}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!PREPARATION\_\-MODE\_\-BUSY@{PREPARATION\_\-MODE\_\-BUSY}}\item[{\em 
+\hypertarget{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deead33e46472ab55edf914ac6e17f49c416}{
+PREPARATION\_\-MODE\_\-BUSY}
+\label{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deead33e46472ab55edf914ac6e17f49c416}
+}]Momentan beschäftigt, es werden keine Eingaben zugelassen \index{PREPARATION\_\-MODE\_\-NORMAL@{PREPARATION\_\-MODE\_\-NORMAL}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!PREPARATION\_\-MODE\_\-NORMAL@{PREPARATION\_\-MODE\_\-NORMAL}}\item[{\em 
+\hypertarget{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deea4e49c1752049aed3217edcf80f85afe7}{
+PREPARATION\_\-MODE\_\-NORMAL}
+\label{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deea4e49c1752049aed3217edcf80f85afe7}
+}]Normaler Modus, Katalogauswahl und Start durch User nicht möglich \index{PREPARATION\_\-MODE\_\-PRIVILEGED@{PREPARATION\_\-MODE\_\-PRIVILEGED}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!PREPARATION\_\-MODE\_\-PRIVILEGED@{PREPARATION\_\-MODE\_\-PRIVILEGED}}\item[{\em 
+\hypertarget{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deea88e87c22fd8676bfde95bb1cca5a4966}{
+PREPARATION\_\-MODE\_\-PRIVILEGED}
+\label{gui__interface_8h_ae5d479acbc4120e50d265a7a0fd50deea88e87c22fd8676bfde95bb1cca5a4966}
+}]Modus für den Spielleiter, Katalogauswahl und Start möglich \end{description}
+\end{Desc}
+
+\hypertarget{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!StatusIcon@{StatusIcon}}
+\index{StatusIcon@{StatusIcon}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{StatusIcon}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf StatusIcon}}}
+\label{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56}
+
+
+Übergabewert für game\_\-setStatusIcon. 
+
+Spezifiziert das in der Statuszeile des Spielfenster anzuzeigende Icon. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{STATUS\_\-ICON\_\-NONE@{STATUS\_\-ICON\_\-NONE}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!STATUS\_\-ICON\_\-NONE@{STATUS\_\-ICON\_\-NONE}}\item[{\em 
+\hypertarget{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56a36bc4001254d4d0593a29b4a0ac65653}{
+STATUS\_\-ICON\_\-NONE}
+\label{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56a36bc4001254d4d0593a29b4a0ac65653}
+}]Kein Statusicon anzeigen \index{STATUS\_\-ICON\_\-CORRECT@{STATUS\_\-ICON\_\-CORRECT}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!STATUS\_\-ICON\_\-CORRECT@{STATUS\_\-ICON\_\-CORRECT}}\item[{\em 
+\hypertarget{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56ac2e1374f6a0e04d77f772684e875186b}{
+STATUS\_\-ICON\_\-CORRECT}
+\label{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56ac2e1374f6a0e04d77f772684e875186b}
+}]Icon für richtige Antwort anzeigen \index{STATUS\_\-ICON\_\-WRONG@{STATUS\_\-ICON\_\-WRONG}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!STATUS\_\-ICON\_\-WRONG@{STATUS\_\-ICON\_\-WRONG}}\item[{\em 
+\hypertarget{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56abea72006d82bedc88f9ab3fd0053b7a4}{
+STATUS\_\-ICON\_\-WRONG}
+\label{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56abea72006d82bedc88f9ab3fd0053b7a4}
+}]Icon für falsche Antwort anzeigen \index{STATUS\_\-ICON\_\-TIMEOUT@{STATUS\_\-ICON\_\-TIMEOUT}!gui\_\-interface.h@{gui\_\-interface.h}}\index{gui\_\-interface.h@{gui\_\-interface.h}!STATUS\_\-ICON\_\-TIMEOUT@{STATUS\_\-ICON\_\-TIMEOUT}}\item[{\em 
+\hypertarget{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56aff8a777fb949e5ac8e2bacc5cfb5314d}{
+STATUS\_\-ICON\_\-TIMEOUT}
+\label{gui__interface_8h_a9002e872736dc09e98af8c2f1f6f5c56aff8a777fb949e5ac8e2bacc5cfb5314d}
+}]Icon für \char`\"{}Zeit abgelaufen\char`\"{} anzeigen \end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\hypertarget{gui__interface_8h_a409bf5d1890aceb9faa1129511b6fca4}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-hideWindow@{game\_\-hideWindow}}
+\index{game\_\-hideWindow@{game\_\-hideWindow}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-hideWindow}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-hideWindow (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a409bf5d1890aceb9faa1129511b6fca4}
+\hypertarget{gui__interface_8h_a4eaf3c079eb53afb1d286f76b6d383a1}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-highlightPlayer@{game\_\-highlightPlayer}}
+\index{game\_\-highlightPlayer@{game\_\-highlightPlayer}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-highlightPlayer}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-highlightPlayer (
+\begin{DoxyParamCaption}
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a4eaf3c079eb53afb1d286f76b6d383a1}
+\hypertarget{gui__interface_8h_a3864747f4aad5d38f65d6ddf8ced5837}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-markAnswerCorrect@{game\_\-markAnswerCorrect}}
+\index{game\_\-markAnswerCorrect@{game\_\-markAnswerCorrect}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-markAnswerCorrect}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-markAnswerCorrect (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a3864747f4aad5d38f65d6ddf8ced5837}
+\hypertarget{gui__interface_8h_ac780657bd254c88b19bed16c9d44c702}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-markAnswerWrong@{game\_\-markAnswerWrong}}
+\index{game\_\-markAnswerWrong@{game\_\-markAnswerWrong}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-markAnswerWrong}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-markAnswerWrong (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_ac780657bd254c88b19bed16c9d44c702}
+\hypertarget{gui__interface_8h_a497a03837ef1b64798d50914c1caa06f}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-onAnswerClicked@{game\_\-onAnswerClicked}}
+\index{game\_\-onAnswerClicked@{game\_\-onAnswerClicked}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-onAnswerClicked}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-onAnswerClicked (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a497a03837ef1b64798d50914c1caa06f}
+\hypertarget{gui__interface_8h_aac4987aa3c13f02fcaca620822dabfd1}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-onWindowClosed@{game\_\-onWindowClosed}}
+\index{game\_\-onWindowClosed@{game\_\-onWindowClosed}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-onWindowClosed}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-onWindowClosed (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_aac4987aa3c13f02fcaca620822dabfd1}
+\hypertarget{gui__interface_8h_a05cddc86cdca6cac72dddefeaf3c142e}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-reset@{game\_\-reset}}
+\index{game\_\-reset@{game\_\-reset}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a05cddc86cdca6cac72dddefeaf3c142e}
+\hypertarget{gui__interface_8h_ad01c163ae271d8e3578f308f0922b8ff}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setAnswer@{game\_\-setAnswer}}
+\index{game\_\-setAnswer@{game\_\-setAnswer}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setAnswer}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setAnswer (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_ad01c163ae271d8e3578f308f0922b8ff}
+\hypertarget{gui__interface_8h_a58a363f236f29f8dc329bf276a0286e6}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setAnswerButtonsEnabled@{game\_\-setAnswerButtonsEnabled}}
+\index{game\_\-setAnswerButtonsEnabled@{game\_\-setAnswerButtonsEnabled}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setAnswerButtonsEnabled}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setAnswerButtonsEnabled (
+\begin{DoxyParamCaption}
+\item[{int}]{enable}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a58a363f236f29f8dc329bf276a0286e6}
+\hypertarget{gui__interface_8h_af85faec39899017aefe4d46c2a5ad838}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setPlayerName@{game\_\-setPlayerName}}
+\index{game\_\-setPlayerName@{game\_\-setPlayerName}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setPlayerName}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setPlayerName (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_af85faec39899017aefe4d46c2a5ad838}
+\hypertarget{gui__interface_8h_a3388d28c32ad891207cc22f245821e68}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setPlayerScore@{game\_\-setPlayerScore}}
+\index{game\_\-setPlayerScore@{game\_\-setPlayerScore}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setPlayerScore}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setPlayerScore (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{unsigned long}]{score}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a3388d28c32ad891207cc22f245821e68}
+\hypertarget{gui__interface_8h_a012d522d531fb1432569eaaf43e3d6ee}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setQuestion@{game\_\-setQuestion}}
+\index{game\_\-setQuestion@{game\_\-setQuestion}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setQuestion}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setQuestion (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a012d522d531fb1432569eaaf43e3d6ee}
+\hypertarget{gui__interface_8h_a55f8afa06033b467196ccd5a46225da3}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setStatusIcon@{game\_\-setStatusIcon}}
+\index{game\_\-setStatusIcon@{game\_\-setStatusIcon}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setStatusIcon}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setStatusIcon (
+\begin{DoxyParamCaption}
+\item[{{\bf StatusIcon}}]{icon}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a55f8afa06033b467196ccd5a46225da3}
+\hypertarget{gui__interface_8h_ab56ef3132244269c5378371638b3064b}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-setStatusText@{game\_\-setStatusText}}
+\index{game\_\-setStatusText@{game\_\-setStatusText}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-setStatusText}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-setStatusText (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_ab56ef3132244269c5378371638b3064b}
+\hypertarget{gui__interface_8h_a92a23d536ff75bbfa86bcd9e5a695fe9}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-showWindow@{game\_\-showWindow}}
+\index{game\_\-showWindow@{game\_\-showWindow}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-showWindow}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-showWindow (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a92a23d536ff75bbfa86bcd9e5a695fe9}
+\hypertarget{gui__interface_8h_a08c12836896a6b4625f5bd209b3ccf2f}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!game\_\-unmarkAnswers@{game\_\-unmarkAnswers}}
+\index{game\_\-unmarkAnswers@{game\_\-unmarkAnswers}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{game\_\-unmarkAnswers}]{\setlength{\rightskip}{0pt plus 5cm}void game\_\-unmarkAnswers (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a08c12836896a6b4625f5bd209b3ccf2f}
+\hypertarget{gui__interface_8h_a8ce970b7037206ed1ee356509e14b8a4}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!guiDestroy@{guiDestroy}}
+\index{guiDestroy@{guiDestroy}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{guiDestroy}]{\setlength{\rightskip}{0pt plus 5cm}void guiDestroy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a8ce970b7037206ed1ee356509e14b8a4}
+\hypertarget{gui__interface_8h_a819bbcd1bc0fea1744a07658b92a4e12}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!guiInit@{guiInit}}
+\index{guiInit@{guiInit}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{guiInit}]{\setlength{\rightskip}{0pt plus 5cm}void guiInit (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{argc, }
+\item[{char $\ast$$\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a819bbcd1bc0fea1744a07658b92a4e12}
+\hypertarget{gui__interface_8h_acfc60a28e55e1d7d5da60352b53044c7}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!guiMain@{guiMain}}
+\index{guiMain@{guiMain}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{guiMain}]{\setlength{\rightskip}{0pt plus 5cm}void guiMain (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_acfc60a28e55e1d7d5da60352b53044c7}
+\hypertarget{gui__interface_8h_a2ec7878b1f11f1f134f79a07868d364a}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!guiQuit@{guiQuit}}
+\index{guiQuit@{guiQuit}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{guiQuit}]{\setlength{\rightskip}{0pt plus 5cm}void guiQuit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a2ec7878b1f11f1f134f79a07868d364a}
+\hypertarget{gui__interface_8h_a0a89a8fadecb0e31637d37a9d6deef1a}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!guiShowErrorDialog@{guiShowErrorDialog}}
+\index{guiShowErrorDialog@{guiShowErrorDialog}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{guiShowErrorDialog}]{\setlength{\rightskip}{0pt plus 5cm}void guiShowErrorDialog (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{message, }
+\item[{int}]{quitOnClose}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a0a89a8fadecb0e31637d37a9d6deef1a}
+\hypertarget{gui__interface_8h_a066ee7949821ca5af3f4f2efde09a523}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!guiShowMessageDialog@{guiShowMessageDialog}}
+\index{guiShowMessageDialog@{guiShowMessageDialog}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{guiShowMessageDialog}]{\setlength{\rightskip}{0pt plus 5cm}void guiShowMessageDialog (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{message, }
+\item[{int}]{quitOnClose}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a066ee7949821ca5af3f4f2efde09a523}
+\hypertarget{gui__interface_8h_a334ee774572ceb7914a5857a24ab41b4}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-addCatalog@{preparation\_\-addCatalog}}
+\index{preparation\_\-addCatalog@{preparation\_\-addCatalog}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-addCatalog}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-addCatalog (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a334ee774572ceb7914a5857a24ab41b4}
+\hypertarget{gui__interface_8h_a218be68e749cd6cc4edfc0203754966c}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-addPlayer@{preparation\_\-addPlayer}}
+\index{preparation\_\-addPlayer@{preparation\_\-addPlayer}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-addPlayer}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-addPlayer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a218be68e749cd6cc4edfc0203754966c}
+\hypertarget{gui__interface_8h_ab49f6c6c7761e88c3844e03ffe347d0b}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-clearPlayers@{preparation\_\-clearPlayers}}
+\index{preparation\_\-clearPlayers@{preparation\_\-clearPlayers}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-clearPlayers}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-clearPlayers (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_ab49f6c6c7761e88c3844e03ffe347d0b}
+\hypertarget{gui__interface_8h_a36e5280b4ddf98dbdbdf1910bb965366}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-hideWindow@{preparation\_\-hideWindow}}
+\index{preparation\_\-hideWindow@{preparation\_\-hideWindow}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-hideWindow}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-hideWindow (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a36e5280b4ddf98dbdbdf1910bb965366}
+\hypertarget{gui__interface_8h_ae1668ab012c3cdaddb0eb4f3f3f65bf4}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-onCatalogChanged@{preparation\_\-onCatalogChanged}}
+\index{preparation\_\-onCatalogChanged@{preparation\_\-onCatalogChanged}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-onCatalogChanged}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-onCatalogChanged (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{newSelection}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_ae1668ab012c3cdaddb0eb4f3f3f65bf4}
+\hypertarget{gui__interface_8h_a3fa54fc6ad4c3c005c34d965f485acc1}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-onStartClicked@{preparation\_\-onStartClicked}}
+\index{preparation\_\-onStartClicked@{preparation\_\-onStartClicked}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-onStartClicked}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-onStartClicked (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{currentSelection}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a3fa54fc6ad4c3c005c34d965f485acc1}
+\hypertarget{gui__interface_8h_aa0b6239c0fa80055895d9668c3cb8674}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-onWindowClosed@{preparation\_\-onWindowClosed}}
+\index{preparation\_\-onWindowClosed@{preparation\_\-onWindowClosed}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-onWindowClosed}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-onWindowClosed (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_aa0b6239c0fa80055895d9668c3cb8674}
+\hypertarget{gui__interface_8h_a02f99539d4e3a7047621fc02b5ace4f2}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-removePlayer@{preparation\_\-removePlayer}}
+\index{preparation\_\-removePlayer@{preparation\_\-removePlayer}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-removePlayer}]{\setlength{\rightskip}{0pt plus 5cm}int preparation\_\-removePlayer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a02f99539d4e3a7047621fc02b5ace4f2}
+\hypertarget{gui__interface_8h_aa07683aaf6fc9d5d4edd9a121451252f}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-reset@{preparation\_\-reset}}
+\index{preparation\_\-reset@{preparation\_\-reset}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_aa07683aaf6fc9d5d4edd9a121451252f}
+\hypertarget{gui__interface_8h_aece8101859ac86c33b7402fe26d3ae0d}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-selectCatalog@{preparation\_\-selectCatalog}}
+\index{preparation\_\-selectCatalog@{preparation\_\-selectCatalog}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-selectCatalog}]{\setlength{\rightskip}{0pt plus 5cm}int preparation\_\-selectCatalog (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_aece8101859ac86c33b7402fe26d3ae0d}
+\hypertarget{gui__interface_8h_abb290af51dc45dcda93559994642f17a}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-setMode@{preparation\_\-setMode}}
+\index{preparation\_\-setMode@{preparation\_\-setMode}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-setMode}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-setMode (
+\begin{DoxyParamCaption}
+\item[{{\bf PreparationMode}}]{mode}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_abb290af51dc45dcda93559994642f17a}
+\hypertarget{gui__interface_8h_a27762bb527640d590f562d914e6606c2}{
+\index{gui\_\-interface.h@{gui\_\-interface.h}!preparation\_\-showWindow@{preparation\_\-showWindow}}
+\index{preparation\_\-showWindow@{preparation\_\-showWindow}!gui_interface.h@{gui\_\-interface.h}}
+\subsubsection[{preparation\_\-showWindow}]{\setlength{\rightskip}{0pt plus 5cm}void preparation\_\-showWindow (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{gui__interface_8h_a27762bb527640d590f562d914e6606c2}

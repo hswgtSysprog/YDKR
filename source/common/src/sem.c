@@ -4,6 +4,14 @@
 #include <signal.h>
 #include "sem.h"
 
+/**
+ * ============================================================================
+ * @file        : sem.c
+ * @author      : Kathrin Holzmann
+ * @date        : June 02, 2011
+ * ============================================================================
+ */
+
 int sem_open(key_t key) {
 	int id = semget(key, 0, 0); /* Semaphor benutzen */
 	if (id == -1) { /* Semaphor existiert noch nicht */
