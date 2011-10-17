@@ -333,3 +333,9 @@ void sigint_handler(int sig)
 	
 	exit(0);
 }
+
+void preparation_onCatalogChanged(const char *newSelection) { return; }
+void preparation_onStartClicked(const char *currentSelection) { return; }
+void preparation_onWindowClosed(void) { return; }
+void game_onAnswerClicked(int index) { return; }
+void game_onWindowClosed(void) { return; }
