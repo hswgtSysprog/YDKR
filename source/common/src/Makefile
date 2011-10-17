@@ -6,7 +6,7 @@
 CC=gcc
 MAKE=make
 
-CFLAGS=
+CFLAGS=-m32
 
 SRCS=sem.c keymanager.c 
 
